@@ -8,6 +8,6 @@ namespace LearningCard.Model
 {
     interface IQuestion
     {
-        public String getQuestion();
+        String getQuestion { get;  }
     }
 }

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LearningCard
+namespace LearningCard.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for QnA.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class QnA : UserControl
     {
-        public MainWindow()
+        public QnA()
         {
             InitializeComponent();
         }

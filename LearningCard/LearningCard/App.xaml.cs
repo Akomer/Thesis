@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
+using LearningCard;
+
 namespace LearningCard
 {
     /// <summary>
@@ -13,5 +15,18 @@ namespace LearningCard
     /// </summary>
     public partial class App : Application
     {
+        private View.MainWindow mainWindow;
+        private ViewModel.MainWindowViewModel mainWindowViewModel;
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            this.mainWindow = new View.MainWindow();
+            this.mainWindowViewModel = new ViewModel.MainWindowViewModel();
+            this.mainWindow.DataContext = this.mainWindowViewModel;
+
+            this.mainWindow.Show();
+        }
     }
 }

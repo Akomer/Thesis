@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LearningCard.Model
 {
-    interface IAnswer
+    public interface IAnswer
     {
-        public String getAnswer();
-        public Boolean checkAnswer();
+        String getAnswer { get;  }
+        Boolean checkAnswer { get;  }
     }
 }
