@@ -13,16 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using LearningCard;
-
 namespace LearningCard.View
 {
     /// <summary>
-    /// Interaction logic for QnA.xaml
+    /// Interaction logic for AnswerUserControl.xaml
     /// </summary>
-    public partial class QnA : UserControl
+    public partial class AnswerUserControl : UserControl
     {
-        public QnA()
+        public AnswerUserControl()
         {
             InitializeComponent();
         }

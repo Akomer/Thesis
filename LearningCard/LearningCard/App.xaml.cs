@@ -18,6 +18,8 @@ namespace LearningCard
         private View.MainWindow mainWindow;
         private ViewModel.MainWindowViewModel mainWindowViewModel;
 
+
+
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -25,6 +27,8 @@ namespace LearningCard
             this.mainWindow = new View.MainWindow();
             this.mainWindowViewModel = new ViewModel.MainWindowViewModel();
             this.mainWindow.DataContext = this.mainWindowViewModel;
+
+
 
             this.mainWindow.Show();
         }

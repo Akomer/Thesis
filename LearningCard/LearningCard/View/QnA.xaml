@@ -11,8 +11,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" MinHeight="100"/>
         </Grid.RowDefinitions>
-        <UserControl Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <UserControl Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding QuestionUC}"/>
         <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Height="5" VerticalAlignment="Center" ResizeDirection="Rows"/>
-        <UserControl Grid.Row="2"/>
+        <UserControl Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding AnswerUC}"/>
     </Grid>
 </UserControl>

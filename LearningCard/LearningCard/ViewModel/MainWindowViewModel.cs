@@ -11,6 +11,8 @@ namespace LearningCard.ViewModel
         public MainWindowViewModel()
         {
             this.mainContent = new View.QnA();
+            this.mainContent.DataContext = new ViewModel.QnAViewModel();
+
             this.OnPropertyChanged("mainContent");
         }
 
