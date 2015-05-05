@@ -15,7 +15,7 @@ namespace LearningCard
     /// </summary>
     public partial class App : Application
     {
-        private View.MainWindow mainWindow;
+        private Window mainWindow;
         private ViewModel.MainWindowViewModel mainWindowViewModel;
 
 
@@ -28,9 +28,14 @@ namespace LearningCard
             this.mainWindowViewModel = new ViewModel.MainWindowViewModel();
             this.mainWindow.DataContext = this.mainWindowViewModel;
 
-
+            this.mainWindowViewModel.ChangeMainWindowContent += new ViewModel.MyEventDelegate(VM_ChangeMainWindow);
 
             this.mainWindow.Show();
+        }
+
+        private void VM_ChangeMainWindow(ViewModel.ViewModelChangeEventArgs _args)
+        {
+            this.mainWindow = (Window)Activator.CreateInstance(_args.Data);
         }
     }
 }

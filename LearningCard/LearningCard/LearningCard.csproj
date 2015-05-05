@@ -55,12 +55,21 @@
     </ApplicationDefinition>
     <Compile Include="ViewModel\AnswerViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
+    <Compile Include="ViewModel\MainUserControlViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModelBase.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\QnAViewModel.cs" />
     <Compile Include="ViewModel\QuestionViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ViewModel\ViewModelChangeEventArgs.cs" />
     <Compile Include="View\AnswerUserControl.xaml.cs">
       <DependentUpon>AnswerUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CreateQnA.xaml.cs">
+      <DependentUpon>CreateQnA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainUserControl.xaml.cs">
+      <DependentUpon>MainUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -76,6 +85,14 @@
       <DependentUpon>QuestionUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="View\AnswerUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CreateQnA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
