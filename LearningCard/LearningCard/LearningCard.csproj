@@ -54,6 +54,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\AnswerViewModel.cs" />
+    <Compile Include="ViewModel\CreateQnAViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
     <Compile Include="ViewModel\MainUserControlViewModel.cs" />
     <Compile Include="ViewModel\MainViewModelBase.cs" />
@@ -61,7 +62,7 @@
     <Compile Include="ViewModel\QnAViewModel.cs" />
     <Compile Include="ViewModel\QuestionViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="ViewModel\ViewModelChangeEventArgs.cs" />
+    <Compile Include="ViewModel\MainControlChangeEventArgs.cs" />
     <Compile Include="View\AnswerUserControl.xaml.cs">
       <DependentUpon>AnswerUserControl.xaml</DependentUpon>
     </Compile>

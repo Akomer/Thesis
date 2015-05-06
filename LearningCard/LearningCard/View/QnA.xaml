@@ -10,9 +10,18 @@
             <RowDefinition Height="*" MinHeight="100"/>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" MinHeight="100"/>
+            <RowDefinition Height="auto" MinHeight="30"/>
         </Grid.RowDefinitions>
         <UserControl Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding QuestionUC}"/>
         <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Height="5" VerticalAlignment="Center" ResizeDirection="Rows"/>
         <UserControl Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding AnswerUC}"/>
+        <Grid Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Send"/>
+            <Button Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Skip" />
+        </Grid>
     </Grid>
 </UserControl>

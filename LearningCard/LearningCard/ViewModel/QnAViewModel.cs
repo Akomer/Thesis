@@ -9,7 +9,7 @@ using LearningCard;
 
 namespace LearningCard.ViewModel
 {
-    class QnAViewModel : ViewModelBase
+    class QnAViewModel : MainViewModelBase
     {
         public QnAViewModel()
         {

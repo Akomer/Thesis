@@ -30,12 +30,14 @@ namespace LearningCard.ViewModel
             this.mainContent.DataContext = this.mainContentViewModel;
             // this.mainContent.DataContext = new ViewModel.QnAViewModel();
 
-            this.mainContentViewModel.ChangeMainWindowContent += new ViewModel.MyEventDelegate(VM_ChangeMainWindow);
+            this.mainContentViewModel.ChangeMainWindowContent += new ViewModel.Event_mainControlChange(VM_ChangeMainWindow);
         }
 
-        private void VM_ChangeMainWindow(ViewModel.ViewModelChangeEventArgs _args)
+        private void VM_ChangeMainWindow(ViewModel.MainControlChangeEventArgs _args)
         {
-            this.mainContent = (UserControl)Activator.CreateInstance(_args.Data);
+            this.mainContent = (UserControl)Activator.CreateInstance(_args.NewUserControl);
+            this.mainContentViewModel = (ViewModel.MainViewModelBase)Activator.CreateInstance(_args.NewViewModel);
+            this.mainContent.DataContext = this.mainContentViewModel;
         }
     }
 }

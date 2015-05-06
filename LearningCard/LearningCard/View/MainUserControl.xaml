@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              MinHeight="300" MinWidth="300">
     <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Padding="5" Content="Start New Quiz" />
+        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Padding="5" Content="Start New Quiz" Command="{Binding ClickCommand_StartNewQnA}"/>
         <Button VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Padding="5" Content="Create New Quiz" Command="{Binding ClickCommand_CreateNewQnA}"/>
     </StackPanel>
 </UserControl>

@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace LearningCard.ViewModel
 {
-    public delegate void MyEventDelegate(ViewModel.ViewModelChangeEventArgs args);
+    public delegate void Event_mainControlChange(ViewModel.MainControlChangeEventArgs args);
 
     public class MainViewModelBase : ViewModelBase
     {
-        public event MyEventDelegate ChangeMainWindowContent;
+        public event Event_mainControlChange ChangeMainWindowContent;
 
-        protected void OnChangeMainWindowContent(Type T)
+        protected void OnChangeMainWindowContent(Type t_uc, Type t_vm)
         {
             if (this.ChangeMainWindowContent != null)
             {
-                this.ChangeMainWindowContent(new ViewModel.ViewModelChangeEventArgs(T));
+                this.ChangeMainWindowContent(new ViewModel.MainControlChangeEventArgs(t_uc, t_vm));
             }
         }
     }

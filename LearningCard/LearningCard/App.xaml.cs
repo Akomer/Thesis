@@ -28,14 +28,14 @@ namespace LearningCard
             this.mainWindowViewModel = new ViewModel.MainWindowViewModel();
             this.mainWindow.DataContext = this.mainWindowViewModel;
 
-            this.mainWindowViewModel.ChangeMainWindowContent += new ViewModel.MyEventDelegate(VM_ChangeMainWindow);
+            this.mainWindowViewModel.ChangeMainWindowContent += new ViewModel.Event_mainControlChange(VM_ChangeMainWindow);
 
             this.mainWindow.Show();
         }
 
-        private void VM_ChangeMainWindow(ViewModel.ViewModelChangeEventArgs _args)
+        private void VM_ChangeMainWindow(ViewModel.MainControlChangeEventArgs _args)
         {
-            this.mainWindow = (Window)Activator.CreateInstance(_args.Data);
+            this.mainWindow = (Window)Activator.CreateInstance(_args.NewUserControl);
         }
     }
 }
