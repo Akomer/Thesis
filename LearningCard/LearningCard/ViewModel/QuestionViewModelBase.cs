@@ -8,11 +8,16 @@ namespace LearningCard.ViewModel
 {
     class QuestionViewModelBase : ViewModelBase
     {
-        protected Model.IQuestion qModel;
+        protected Model.IQuestion QuestionModel;
+
+        public QuestionViewModelBase(Model.IQuestion qModel)
+        {
+            this.QuestionModel = qModel;
+        }
 
         public Model.IQuestion GetModel()
         {
-            return this.qModel;
+            return this.QuestionModel;
         }
     }
 }

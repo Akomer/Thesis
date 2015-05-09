@@ -204,7 +204,11 @@ namespace LearningCard.ViewModel
                     System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 return;
             }
-            this.QnAModel.AddCard(this.CardTitle);
+            QuestionViewModelBase qVMB = (QuestionViewModelBase)this.QuestionPanelList[this.QuestionType_SelectedIndex].DataContext;
+            Model.IQuestion qModel = qVMB.GetModel();
+            AnswerViewModelBase aVMB = (AnswerViewModelBase)this.AnswerPanelList[this.AnswerType_SelectedIndex].DataContext;
+            Model.IAnswer aModel = aVMB.GetModel();
+            this.QnAModel.AddCard(this.CardTitle, qModel, aModel);
             this.OnPropertyChanged("CardTitleList");
         }
     }

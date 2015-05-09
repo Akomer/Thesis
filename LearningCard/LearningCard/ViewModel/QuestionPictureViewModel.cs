@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace LearningCard.ViewModel
 {
-    class QuestionPictureViewModel : ViewModelBase
+    class QuestionPictureViewModel : QuestionViewModelBase
     {
         private Model.QuestionPictureModel QuestionModel;
 
@@ -39,7 +39,7 @@ namespace LearningCard.ViewModel
             }
         }
 
-        public QuestionPictureViewModel(Model.QuestionPictureModel qModel)
+        public QuestionPictureViewModel(Model.QuestionPictureModel qModel) : base(qModel)
         {
             this.QuestionModel = qModel;
             this.EnableImageChange = false;

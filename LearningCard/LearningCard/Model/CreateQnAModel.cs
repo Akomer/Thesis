@@ -20,14 +20,14 @@ namespace LearningCard.Model
             this.CardPack.Add(new Card() { Title = "T3" });
         }
 
-        public void AddCard(String title)
-        {
-            this.CardPack.Add(new Card() { Title = title });
-        }
+        // public void AddCard(String title)
+        // {
+        //     this.CardPack.Add(new Card() { Title = title });
+        // }
 
-        //public void AddCard(String title, IQuestion question, IAnswer answer)
-        //{
-        //    this.CardPack.Add(new Card() { Title = title, Question = question, Answer = answer });
-        //}
+        public void AddCard(String title, IQuestion question, IAnswer answer)
+        {
+            this.CardPack.Add(new Card() { Title = title, Question = question, Answer = answer });
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LearningCard.ViewModel
 {
-    class QuestionTextViewModel : ViewModelBase
+    class QuestionTextViewModel : QuestionViewModelBase
     {
         private Model.QuestionTextModel QuestionModel;
 
@@ -23,7 +23,7 @@ namespace LearningCard.ViewModel
             }
         }
 
-        public QuestionTextViewModel(Model.QuestionTextModel qModel)
+        public QuestionTextViewModel(Model.QuestionTextModel qModel) : base(qModel)
         {
             this.QuestionModel = qModel;
         }

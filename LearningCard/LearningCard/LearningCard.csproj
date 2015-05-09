@@ -61,6 +61,7 @@
     <Compile Include="Model\QuestionPictureModel.cs" />
     <Compile Include="Model\QuestionTextModel.cs" />
     <Compile Include="ViewModel\AnswerTextViewModel.cs" />
+    <Compile Include="ViewModel\AnswerViewModelBase.cs" />
     <Compile Include="ViewModel\CreateQnAViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
     <Compile Include="ViewModel\MainUserControlViewModel.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="ViewModel\QnAViewModel.cs" />
     <Compile Include="ViewModel\QuestionPictureViewModel.cs" />
     <Compile Include="ViewModel\QuestionTextViewModel.cs" />
+    <Compile Include="ViewModel\QuestionViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\MainControlChangeEventArgs.cs" />
     <Compile Include="View\AnswerTextUserControl.xaml.cs">
