@@ -13,10 +13,10 @@ namespace LearningCard.ViewModel
     {
         public QnAViewModel()
         {
-            this.QuestionUC = new View.QuestionUserControl();
+            this.QuestionUC = new View.QuestionTextUserControl();
             this.OnPropertyChanged("QuestionUC");
 
-            this.AnswerUC = new View.AnswerUserControl();
+            this.AnswerUC = new View.AnswerTextUserControl();
             this.OnPropertyChanged("AnswerUC");
         }
 

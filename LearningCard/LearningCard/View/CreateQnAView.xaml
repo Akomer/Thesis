@@ -33,8 +33,7 @@
                 <UserControl Grid.Row="0" Content="{Binding QuestionPanel}" VerticalAlignment="Stretch" Margin="5" />
                 <ListBox Grid.Row="1" HorizontalAlignment="Stretch" ItemsSource="{Binding QuestionTypeList}" VerticalAlignment="Center" 
                          ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"
-                          ScrollViewer.IsDeferredScrollingEnabled="True" Height="50" 
-                         SelectionChanged="ListBox_SelectionChanged" SelectedIndex="{Binding QuestionType_SelectedIndex}"/>
+                          ScrollViewer.IsDeferredScrollingEnabled="True" Height="50" SelectedIndex="{Binding QuestionType_SelectedIndex}"/>
             </Grid>
             <GridSplitter Grid.Row="1" Height="5" ResizeDirection="Rows" HorizontalAlignment="Stretch" Margin="2"/>
             <Grid Grid.Row="2" VerticalAlignment="Stretch" MinHeight="150" Background="Firebrick">
@@ -45,7 +44,7 @@
                 <UserControl Grid.Row="0" Content="{Binding AnswerPanel}" VerticalAlignment="Stretch" Margin="5"/>
                 <ListBox Grid.Row="1" HorizontalAlignment="Stretch" ItemsSource="{Binding AnswerTypeList}" VerticalAlignment="Center" 
                          ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"
-                         ScrollViewer.IsDeferredScrollingEnabled="True" Height="50"/>
+                         ScrollViewer.IsDeferredScrollingEnabled="True" Height="50" SelectedIndex="{Binding AnswerType_SelectedIndex}"/>
             </Grid>
             <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Button VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="Add Card" Margin="10" Padding="5" 

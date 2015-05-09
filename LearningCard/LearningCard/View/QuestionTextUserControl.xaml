@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="LearningCard.View.QuestionUserControl"
+﻿<UserControl x:Class="LearningCard.View.QuestionTextUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,6 +6,6 @@
              mc:Ignorable="d" 
              MinHeight="150" MinWidth="150">
     <Grid VerticalAlignment="Stretch">
-        <TextBox VerticalAlignment="Stretch" AcceptsReturn="True"> QUESTIONNN!!!</TextBox>
+        <TextBox VerticalAlignment="Stretch" AcceptsReturn="True" Text="{Binding QuestionText}"/>
     </Grid>
 </UserControl>

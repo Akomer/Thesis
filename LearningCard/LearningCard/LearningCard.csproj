@@ -54,12 +54,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\AnswerTextModel.cs" />
     <Compile Include="Model\Card.cs" />
     <Compile Include="Model\CreateQnAModel.cs" />
     <Compile Include="Model\QuestionItem.cs" />
-    <Compile Include="Model\QuestionPicture.cs" />
-    <Compile Include="Model\QuestionText.cs" />
-    <Compile Include="ViewModel\AnswerViewModel.cs" />
+    <Compile Include="Model\QuestionPictureModel.cs" />
+    <Compile Include="Model\QuestionTextModel.cs" />
+    <Compile Include="ViewModel\AnswerTextViewModel.cs" />
     <Compile Include="ViewModel\CreateQnAViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
     <Compile Include="ViewModel\MainUserControlViewModel.cs" />
@@ -67,11 +68,11 @@
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\QnAViewModel.cs" />
     <Compile Include="ViewModel\QuestionPictureViewModel.cs" />
-    <Compile Include="ViewModel\QuestionViewModel.cs" />
+    <Compile Include="ViewModel\QuestionTextViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\MainControlChangeEventArgs.cs" />
-    <Compile Include="View\AnswerUserControl.xaml.cs">
-      <DependentUpon>AnswerUserControl.xaml</DependentUpon>
+    <Compile Include="View\AnswerTextUserControl.xaml.cs">
+      <DependentUpon>AnswerTextUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CreateQnAView.xaml.cs">
       <DependentUpon>CreateQnAView.xaml</DependentUpon>
@@ -92,10 +93,10 @@
     <Compile Include="View\QuestionPictureUserControl.xaml.cs">
       <DependentUpon>QuestionPictureUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\QuestionUserControl.xaml.cs">
-      <DependentUpon>QuestionUserControl.xaml</DependentUpon>
+    <Compile Include="View\QuestionTextUserControl.xaml.cs">
+      <DependentUpon>QuestionTextUserControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\AnswerUserControl.xaml">
+    <Page Include="View\AnswerTextUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,7 +120,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\QuestionUserControl.xaml">
+    <Page Include="View\QuestionTextUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -10,7 +10,7 @@ namespace LearningCard.ViewModel
 {
     class QuestionPictureViewModel : ViewModelBase
     {
-        private Model.QuestionPicture QuestionModel;
+        private Model.QuestionPictureModel QuestionModel;
 
         public BitmapImage ImageSource
         {
@@ -19,7 +19,7 @@ namespace LearningCard.ViewModel
                 BitmapImage img_src = new BitmapImage();
                 img_src.BeginInit();
                 // img_src.UriSource = new Uri("C:\\Users\\Speeder\\Pictures\\kirito1.jpg");
-                img_src.UriSource = (Uri)this.QuestionModel.GetQuestion()[0].Data;
+                img_src.UriSource = this.QuestionModel.ImageSRC;
                 img_src.EndInit();
                 return img_src;
             }
@@ -31,15 +31,15 @@ namespace LearningCard.ViewModel
         {
             get
             {
-                return (String)this.QuestionModel.GetQuestion()[1].Data;
+                return this.QuestionModel.Text;
             }
             set 
             {
-                // this.QuestionModel.
+                this.QuestionModel.Text = value;
             }
         }
 
-        public QuestionPictureViewModel(Model.QuestionPicture qModel)
+        public QuestionPictureViewModel(Model.QuestionPictureModel qModel)
         {
             this.QuestionModel = qModel;
             this.EnableImageChange = false;
@@ -54,11 +54,7 @@ namespace LearningCard.ViewModel
             dialog.Title = "Select an image file";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                this.ImageSource = new BitmapImage();
-                this.ImageSource.BeginInit();
-                this.ImageSource.UriSource = new Uri(dialog.FileName);
-                this.ImageSource.EndInit();
-
+                this.QuestionModel.ImageSRC = new Uri(dialog.FileName);
                 this.OnPropertyChanged("ImageSource");
             }
         }

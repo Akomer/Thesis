@@ -12,6 +12,7 @@ namespace LearningCard.ViewModel
     class CreateQnAViewModel : MainViewModelBase
     {
         private Int32 _QuestionType_SelectedIndex;
+        private Int32 _AnswerType_SelectedIndex;
         private Int32 _Card_SelectedIndex;
         private String _CardTitle;
         private Model.CreateQnAModel QnAModel { get; set; }
@@ -55,7 +56,22 @@ namespace LearningCard.ViewModel
                 _QuestionType_SelectedIndex = value;
 
                 this.QuestionType_SelectionChanged();
-                // this.OnPropertyChanged("QuestionType_SelectedIndex");
+            }
+        }
+        public Int32 AnswerType_SelectedIndex
+        {
+            get { return _AnswerType_SelectedIndex; }
+
+            set
+            {
+                if (_AnswerType_SelectedIndex == value)
+                {
+                    return;
+                }
+
+                _AnswerType_SelectedIndex = value;
+
+                this.AnswerType_SelectionChanged();
             }
         }
         public Int32 Card_SelectedIndex
@@ -90,17 +106,23 @@ namespace LearningCard.ViewModel
             this.AnswerTypeList.Add("Chocies");
             this.OnPropertyChanged("AnswerTypeList");
 
-            this.QuestionPanelList = new List<UserControl>() {null, null };
-
-            this.AnswerPanel = new View.AnswerUserControl();
-            this.OnPropertyChanged("AnswerPanel");
+            this.QuestionPanelList = new List<UserControl>();
+            foreach (String item in this.QuestionTypeList)
+            {
+                this.QuestionPanelList.Add(null);
+            }
+            this.AnswerPanelList = new List<UserControl>();
+            foreach (String item in this.AnswerTypeList)
+            {
+                this.AnswerPanelList.Add(null);
+            }
 
             this.Command_AddCard = new DelegateCommand(x => this.Execute_AddCard());
 
             this._QuestionType_SelectedIndex = -1;
         }
 
-        public void QuestionType_SelectionChanged()
+        private void QuestionType_SelectionChanged()
         {
             if (this.QuestionPanelList[this.QuestionType_SelectedIndex] == null)
             {
@@ -109,6 +131,16 @@ namespace LearningCard.ViewModel
             this.QuestionPanel = this.QuestionPanelList[this.QuestionType_SelectedIndex];
             this.OnPropertyChanged("QuestionPanel");
         }
+
+        private void AnswerType_SelectionChanged()
+        {
+            if (this.AnswerPanelList[this.AnswerType_SelectedIndex] == null)
+            {
+                this.AnswerPanelList[this.AnswerType_SelectedIndex] = this.AnswerViewGenerator(AnswerType_SelectedIndex);
+            }
+            this.AnswerPanel = this.AnswerPanelList[this.AnswerType_SelectedIndex];
+            this.OnPropertyChanged("AnswerPanel");
+        }        
 
         private void Card_SelectionChanged()
         {
@@ -128,12 +160,20 @@ namespace LearningCard.ViewModel
 
         private UserControl QuestionViewGenerator(Int32 t)
         {
-            if (t == 0) return new View.QuestionUserControl();
+            if (t == 0)
+            {
+                UserControl v = new View.QuestionTextUserControl();
+                ViewModel.QuestionTextViewModel dc = new ViewModel.QuestionTextViewModel(
+                    new Model.QuestionTextModel("New Question - text")
+                );
+                v.DataContext = dc;
+                return v;
+            }
             if (t == 1)
             {
                 UserControl v = new View.QuestionPictureUserControl();
                 ViewModel.QuestionPictureViewModel dc = new ViewModel.QuestionPictureViewModel(
-                    new Model.QuestionPicture(new Uri("C:\\Users\\Speeder\\Pictures\\kirito1.jpg"), "Title of picture Q." )
+                    new Model.QuestionPictureModel(new Uri("C:\\Users\\Speeder\\Pictures\\kirito1.jpg"), "Title of picture Q." )
                 );
                 dc.EnableImageChange = true;
                 v.DataContext = dc;
@@ -142,8 +182,28 @@ namespace LearningCard.ViewModel
             return null;
         }
 
+        private UserControl AnswerViewGenerator(Int32 t)
+        {
+            if (t == 0)
+            {
+                UserControl v = new View.AnswerTextUserControl();
+                ViewModel.AnswerTextViewModel dc = new ViewModel.AnswerTextViewModel(
+                    new Model.AnswerTextModel("New Answer - text")
+                );
+                v.DataContext = dc;
+                return v;
+            }
+            return null;
+        }
+
         private void Execute_AddCard()
         {
+            if(this.CardTitle == "" || this.CardTitle == null)
+            {
+                System.Windows.Forms.MessageBox.Show("Can not add a card without title", "Missing Title",
+                    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                return;
+            }
             this.QnAModel.AddCard(this.CardTitle);
             this.OnPropertyChanged("CardTitleList");
         }

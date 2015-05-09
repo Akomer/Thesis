@@ -8,7 +8,7 @@ namespace LearningCard.Model
 {
     public interface IAnswer
     {
-        String getAnswer { get;  }
-        Boolean checkAnswer { get;  }
+        Type GetQuestionType();
+        Boolean CheckAnswer();
     }
 }

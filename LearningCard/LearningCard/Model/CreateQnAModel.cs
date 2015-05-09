@@ -24,5 +24,10 @@ namespace LearningCard.Model
         {
             this.CardPack.Add(new Card() { Title = title });
         }
+
+        //public void AddCard(String title, IQuestion question, IAnswer answer)
+        //{
+        //    this.CardPack.Add(new Card() { Title = title, Question = question, Answer = answer });
+        //}
     }
 }

@@ -8,6 +8,6 @@ namespace LearningCard.Model
 {
     interface IQuestion
     {
-        List<QuestionItem> GetQuestion();
+        Type GetQuestionType();
     }
 }
