@@ -6,7 +6,18 @@
              mc:Ignorable="d" 
              MinHeight="300" MinWidth="400">
     <DockPanel Background="ForestGreen" LastChildFill="True">
-        <ListView VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="10" DockPanel.Dock="Right">Alma123123123</ListView>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Content="Card Title" />
+            <TextBox Text="{Binding CardTitle}" Width="200" Margin="5"/>
+        </StackPanel>
+        <ListView VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="10" DockPanel.Dock="Right" 
+                  ItemsSource="{Binding CardTitleList}" SelectedIndex="{Binding Card_SelectedIndex}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Title}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" MinHeight="150"/>
@@ -19,9 +30,11 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <UserControl Grid.Row="0" Content="{Binding QuestionPanel}" VerticalAlignment="Stretch" Margin="5"/>
-                <ListBox Grid.Row="1" HorizontalAlignment="Stretch" ItemsSource="{Binding QuestionTypeList}" VerticalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto"
-                         ScrollViewer.CanContentScroll="True" ScrollViewer.IsDeferredScrollingEnabled="True" Height="50"/>
+                <UserControl Grid.Row="0" Content="{Binding QuestionPanel}" VerticalAlignment="Stretch" Margin="5" />
+                <ListBox Grid.Row="1" HorizontalAlignment="Stretch" ItemsSource="{Binding QuestionTypeList}" VerticalAlignment="Center" 
+                         ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"
+                          ScrollViewer.IsDeferredScrollingEnabled="True" Height="50" 
+                         SelectionChanged="ListBox_SelectionChanged" SelectedIndex="{Binding QuestionType_SelectedIndex}"/>
             </Grid>
             <GridSplitter Grid.Row="1" Height="5" ResizeDirection="Rows" HorizontalAlignment="Stretch" Margin="2"/>
             <Grid Grid.Row="2" VerticalAlignment="Stretch" MinHeight="150" Background="Firebrick">
@@ -35,7 +48,8 @@
                          ScrollViewer.IsDeferredScrollingEnabled="True" Height="50"/>
             </Grid>
             <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="Add Card" Margin="10" Padding="5"/>
+                <Button VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="Add Card" Margin="10" Padding="5" 
+                        Command="{Binding Command_AddCard}"/>
             </StackPanel>
         </Grid>
     </DockPanel>

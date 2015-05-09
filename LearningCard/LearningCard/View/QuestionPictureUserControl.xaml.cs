@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace LearningCard.View
 {
     /// <summary>
-    /// Interaction logic for CreateQuest.xaml
+    /// Interaction logic for QuestionPictureUserControl.xaml
     /// </summary>
-    public partial class CreateQuest : UserControl
+    public partial class QuestionPictureUserControl : UserControl
     {
-        public CreateQuest()
+        public QuestionPictureUserControl()
         {
             InitializeComponent();
         }

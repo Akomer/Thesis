@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -53,6 +54,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Card.cs" />
+    <Compile Include="Model\CreateQnAModel.cs" />
     <Compile Include="ViewModel\AnswerViewModel.cs" />
     <Compile Include="ViewModel\CreateQnAViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
@@ -60,14 +63,15 @@
     <Compile Include="ViewModel\MainViewModelBase.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\QnAViewModel.cs" />
+    <Compile Include="ViewModel\QuestionPictureViewModel.cs" />
     <Compile Include="ViewModel\QuestionViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\MainControlChangeEventArgs.cs" />
     <Compile Include="View\AnswerUserControl.xaml.cs">
       <DependentUpon>AnswerUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CreateQnA.xaml.cs">
-      <DependentUpon>CreateQnA.xaml</DependentUpon>
+    <Compile Include="View\CreateQnAView.xaml.cs">
+      <DependentUpon>CreateQnAView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainUserControl.xaml.cs">
       <DependentUpon>MainUserControl.xaml</DependentUpon>
@@ -82,6 +86,9 @@
     <Compile Include="View\QnA.xaml.cs">
       <DependentUpon>QnA.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\QuestionPictureUserControl.xaml.cs">
+      <DependentUpon>QuestionPictureUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\QuestionUserControl.xaml.cs">
       <DependentUpon>QuestionUserControl.xaml</DependentUpon>
     </Compile>
@@ -89,7 +96,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CreateQnA.xaml">
+    <Page Include="View\CreateQnAView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,6 +109,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\QnA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuestionPictureUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
