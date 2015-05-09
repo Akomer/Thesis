@@ -68,7 +68,6 @@ namespace LearningCard.ViewModel
                 {
                     return;
                 }
-
                 _Card_SelectedIndex = value;
 
                 this.Card_SelectionChanged();
@@ -91,13 +90,6 @@ namespace LearningCard.ViewModel
             this.AnswerTypeList.Add("Chocies");
             this.OnPropertyChanged("AnswerTypeList");
 
-            // this.CardTitleList = new ObservableCollection<String>();
-            // this.CardTitleList.Add("First title");
-            // this.CardTitleList.Add("Title 2.");
-            // this.OnPropertyChanged("CardTitleList");
-
-            // this.QuestionPanel = new View.QuestionUserControl();
-            // this.OnPropertyChanged("QuestionPanel");
             this.QuestionPanelList = new List<UserControl>() {null, null };
 
             this.AnswerPanel = new View.AnswerUserControl();
@@ -112,7 +104,7 @@ namespace LearningCard.ViewModel
         {
             if (this.QuestionPanelList[this.QuestionType_SelectedIndex] == null)
             {
-                this.QuestionPanelList[this.QuestionType_SelectedIndex] = this.QuestinViewGenerator(QuestionType_SelectedIndex);
+                this.QuestionPanelList[this.QuestionType_SelectedIndex] = this.QuestionViewGenerator(QuestionType_SelectedIndex);
             }
             this.QuestionPanel = this.QuestionPanelList[this.QuestionType_SelectedIndex];
             this.OnPropertyChanged("QuestionPanel");
@@ -124,19 +116,25 @@ namespace LearningCard.ViewModel
             {
                 this.CardTitle = "New Card";
             }
+            else if (this._Card_SelectedIndex == -1)
+            {
+                return;
+            }
             else
             {
                 this.CardTitle = this.QnAModel.CardPack[this._Card_SelectedIndex].Title;
             }
         }
 
-        private UserControl QuestinViewGenerator(Int32 t)
+        private UserControl QuestionViewGenerator(Int32 t)
         {
             if (t == 0) return new View.QuestionUserControl();
             if (t == 1)
             {
                 UserControl v = new View.QuestionPictureUserControl();
-                ViewModel.QuestionPictureViewModel dc = new ViewModel.QuestionPictureViewModel();
+                ViewModel.QuestionPictureViewModel dc = new ViewModel.QuestionPictureViewModel(
+                    new Model.QuestionPicture(new Uri("C:\\Users\\Speeder\\Pictures\\kirito1.jpg"), "Title of picture Q." )
+                );
                 dc.EnableImageChange = true;
                 v.DataContext = dc;
                 return v;

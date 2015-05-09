@@ -8,6 +8,9 @@ namespace LearningCard.Model
 {
     class Card
     {
+        IAnswer Answer { get; set; }
+        IQuestion Question { get; set; }
+
         public String Title { get; set; }
     }
 }

@@ -56,6 +56,9 @@
     </ApplicationDefinition>
     <Compile Include="Model\Card.cs" />
     <Compile Include="Model\CreateQnAModel.cs" />
+    <Compile Include="Model\QuestionItem.cs" />
+    <Compile Include="Model\QuestionPicture.cs" />
+    <Compile Include="Model\QuestionText.cs" />
     <Compile Include="ViewModel\AnswerViewModel.cs" />
     <Compile Include="ViewModel\CreateQnAViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
@@ -150,7 +153,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

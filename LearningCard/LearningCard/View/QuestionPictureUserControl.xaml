@@ -10,7 +10,7 @@
             <RowDefinition Height="*" MinHeight="50"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" Text="Alma Korte, kiskep" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" 
+        <TextBox Grid.Row="0" Text="{Binding QuestionText}" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" 
                  AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
         <ScrollViewer Grid.Row="1">
             <Image Margin="10" Source="{Binding ImageSource}" MaxHeight="500" MaxWidth="500" MinHeight="100"
