@@ -15,9 +15,6 @@ namespace LearningCard.Model
         public CreateQnAModel()
         {
             this.CardPack = new List<Card>();
-            this.CardPack.Add(new Card() { Title = "T1" });
-            this.CardPack.Add(new Card() { Title = "T2" });
-            this.CardPack.Add(new Card() { Title = "T3" });
         }
 
         // public void AddCard(String title)

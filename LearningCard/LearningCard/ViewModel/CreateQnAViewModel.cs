@@ -15,11 +15,16 @@ namespace LearningCard.ViewModel
         private Int32 _AnswerType_SelectedIndex;
         private Int32 _Card_SelectedIndex;
         private String _CardTitle;
+        private UserControl _QuestionPanel;
+        private UserControl _AnswerPanel;
         private Model.CreateQnAModel QnAModel { get; set; }
 
         public String CardTitle 
         { 
-            get {return this._CardTitle;}
+            get 
+            {
+                return this._CardTitle;
+            }
             set 
             { 
                 this._CardTitle = value;
@@ -38,9 +43,31 @@ namespace LearningCard.ViewModel
             }
             set { }
         }
-        public UserControl QuestionPanel {get; set; }
+        public UserControl QuestionPanel
+        {
+            get
+            {
+                return this._QuestionPanel;
+            }
+            set
+            {
+                this._QuestionPanel = value;
+                this.OnPropertyChanged("QuestionPanel");
+            }
+        }
         private List<UserControl> QuestionPanelList;
-        public UserControl AnswerPanel { get; set; }
+        public UserControl AnswerPanel
+        {
+            get
+            {
+                return this._AnswerPanel;
+            }
+            set
+            {
+                this._AnswerPanel = value;
+                this.OnPropertyChanged("AnswerPanel");
+            }
+        }
         private List<UserControl> AnswerPanelList;
         public Int32 QuestionType_SelectedIndex
         {
@@ -56,6 +83,7 @@ namespace LearningCard.ViewModel
                 _QuestionType_SelectedIndex = value;
 
                 this.QuestionType_SelectionChanged();
+                this.OnPropertyChanged("QuestionType_SelectedIndex");
             }
         }
         public Int32 AnswerType_SelectedIndex
@@ -72,6 +100,7 @@ namespace LearningCard.ViewModel
                 _AnswerType_SelectedIndex = value;
 
                 this.AnswerType_SelectionChanged();
+                this.OnPropertyChanged("AnswerType_SelectedIndex");
             }
         }
         public Int32 Card_SelectedIndex
@@ -87,7 +116,6 @@ namespace LearningCard.ViewModel
                 _Card_SelectedIndex = value;
 
                 this.Card_SelectionChanged();
-                // this.OnPropertyChanged("QuestionType_SelectedIndex");
             }
         }
         public DelegateCommand Command_AddCard { get; set; }
@@ -106,55 +134,86 @@ namespace LearningCard.ViewModel
             this.AnswerTypeList.Add("Chocies");
             this.OnPropertyChanged("AnswerTypeList");
 
-            this.QuestionPanelList = new List<UserControl>();
-            foreach (String item in this.QuestionTypeList)
-            {
-                this.QuestionPanelList.Add(null);
-            }
-            this.AnswerPanelList = new List<UserControl>();
-            foreach (String item in this.AnswerTypeList)
-            {
-                this.AnswerPanelList.Add(null);
-            }
+            this.GenerateNewCardParts();
 
             this.Command_AddCard = new DelegateCommand(x => this.Execute_AddCard());
 
-            this._QuestionType_SelectedIndex = -1;
+            this._Card_SelectedIndex = -1;
         }
 
         private void QuestionType_SelectionChanged()
         {
+            if (this.QuestionType_SelectedIndex == -1)
+            {
+                return;
+            }
             if (this.QuestionPanelList[this.QuestionType_SelectedIndex] == null)
             {
                 this.QuestionPanelList[this.QuestionType_SelectedIndex] = this.QuestionViewGenerator(QuestionType_SelectedIndex);
             }
             this.QuestionPanel = this.QuestionPanelList[this.QuestionType_SelectedIndex];
-            this.OnPropertyChanged("QuestionPanel");
+            // this.OnPropertyChanged("QuestionPanel");
         }
 
         private void AnswerType_SelectionChanged()
         {
+            if (this.AnswerType_SelectedIndex == -1)
+            {
+                return;
+            }
             if (this.AnswerPanelList[this.AnswerType_SelectedIndex] == null)
             {
                 this.AnswerPanelList[this.AnswerType_SelectedIndex] = this.AnswerViewGenerator(AnswerType_SelectedIndex);
             }
             this.AnswerPanel = this.AnswerPanelList[this.AnswerType_SelectedIndex];
-            this.OnPropertyChanged("AnswerPanel");
+            // this.OnPropertyChanged("AnswerPanel");
         }        
 
         private void Card_SelectionChanged()
         {
-            if (this._Card_SelectedIndex == this.QnAModel.CardPack.Count)
+            if (this.Card_SelectedIndex == this.QnAModel.CardPack.Count)
             {
-                this.CardTitle = "New Card";
+                this.CardTitle = null;
+                this.QuestionType_SelectedIndex = 0;
+                this.AnswerType_SelectedIndex = 0;
+                this.QuestionPanel = this.QuestionPanelList[this.QuestionType_SelectedIndex];
+                this.AnswerPanel = this.AnswerPanelList[this.AnswerType_SelectedIndex];
             }
-            else if (this._Card_SelectedIndex == -1)
+            else if (this.Card_SelectedIndex == -1)
             {
                 return;
             }
             else
             {
-                this.CardTitle = this.QnAModel.CardPack[this._Card_SelectedIndex].Title;
+                this.CardTitle = this.QnAModel.CardPack[this.Card_SelectedIndex].Title;
+                UserControl qView = null;
+                if (this.QnAModel.CardPack[this.Card_SelectedIndex].Question.GetType().Name == "QuestionTextModel")
+                {
+                    qView = new View.QuestionTextUserControl();
+                    ViewModel.QuestionTextViewModel dc = new ViewModel.QuestionTextViewModel(
+                        (Model.QuestionTextModel)this.QnAModel.CardPack[this.Card_SelectedIndex].Question);
+                    qView.DataContext = dc;
+                }
+                else if (this.QnAModel.CardPack[this.Card_SelectedIndex].Question.GetType().Name == "QuestionPictureModel")
+                {
+                    qView = new View.QuestionPictureUserControl();
+                    ViewModel.QuestionPictureViewModel dc = new ViewModel.QuestionPictureViewModel(
+                        (Model.QuestionPictureModel)this.QnAModel.CardPack[this.Card_SelectedIndex].Question);
+                    qView.DataContext = dc;
+                }
+                this.QuestionPanel = qView;
+                // this.OnPropertyChanged("QuestionPanel");
+
+                UserControl aView = null;
+                if (this.QnAModel.CardPack[this.Card_SelectedIndex].Answer.GetType().Name == "AnswerTextModel")
+                {
+                    aView = new View.AnswerTextUserControl();
+                    ViewModel.AnswerTextViewModel dc = new ViewModel.AnswerTextViewModel(
+                        (Model.AnswerTextModel)this.QnAModel.CardPack[this.Card_SelectedIndex].Answer);
+                    aView.DataContext = dc;
+                }
+                this.AnswerPanel = aView;
+                // this.OnPropertyChanged("AnswerPanel");
             }
         }
 
@@ -204,12 +263,50 @@ namespace LearningCard.ViewModel
                     System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 return;
             }
+            if (this.QuestionPanel == null)
+            {
+                System.Windows.Forms.MessageBox.Show("Can not add a card without Question", "Missing Question",
+                    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                return;
+            }
+            if (this.AnswerPanel == null)
+            {
+                System.Windows.Forms.MessageBox.Show("Can not add a card without Answer", "Missing Answer",
+                    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                return;
+            }
             QuestionViewModelBase qVMB = (QuestionViewModelBase)this.QuestionPanelList[this.QuestionType_SelectedIndex].DataContext;
             Model.IQuestion qModel = qVMB.GetModel();
             AnswerViewModelBase aVMB = (AnswerViewModelBase)this.AnswerPanelList[this.AnswerType_SelectedIndex].DataContext;
             Model.IAnswer aModel = aVMB.GetModel();
             this.QnAModel.AddCard(this.CardTitle, qModel, aModel);
             this.OnPropertyChanged("CardTitleList");
+
+            this.ClearAfterNewCardAdded();
+        }
+
+        private void ClearAfterNewCardAdded()
+        {
+            this.GenerateNewCardParts();
+            this.CardTitle = null;
+            this.QuestionPanel = null;
+            this.AnswerPanel = null;
+        }
+
+        private void GenerateNewCardParts()
+        {
+            this.QuestionPanelList = new List<UserControl>();
+            foreach (String item in this.QuestionTypeList)
+            {
+                this.QuestionPanelList.Add(null);
+            }
+            this.AnswerPanelList = new List<UserControl>();
+            foreach (String item in this.AnswerTypeList)
+            {
+                this.AnswerPanelList.Add(null);
+            }
+            this.QuestionType_SelectedIndex = -1;
+            this.AnswerType_SelectedIndex = -1;
         }
     }
 }
