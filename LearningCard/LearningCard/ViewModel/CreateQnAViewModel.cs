@@ -252,7 +252,7 @@ namespace LearningCard.ViewModel
             {
                 UserControl v = new View.QuestionPictureUserControl();
                 ViewModel.QuestionPictureViewModel dc = new ViewModel.QuestionPictureViewModel(
-                    new Model.QuestionPictureModel(new Uri("C:\\Users\\Speeder\\Pictures\\kirito1.jpg"), "Title of picture Q." )
+                    new Model.QuestionPictureModel(new Uri(@"/Images/kirito1.jpg", UriKind.Relative), "Title of picture Q." )
                 );
                 dc.EnableImageChange = true;
                 v.DataContext = dc;
