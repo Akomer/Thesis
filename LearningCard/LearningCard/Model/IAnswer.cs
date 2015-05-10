@@ -11,7 +11,7 @@ namespace LearningCard.Model
     [KnownType(typeof(AnswerTextModel))]
     abstract class IAnswer
     {
-        public abstract Type GetQuestionType();
+        public abstract Type GetAnswerType();
         public abstract Boolean CheckAnswer();
     }
 }

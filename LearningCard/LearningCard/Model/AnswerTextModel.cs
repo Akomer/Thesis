@@ -18,7 +18,7 @@ namespace LearningCard.Model
             this.Text = txt;
         }
 
-        public override Type GetQuestionType()
+        public override Type GetAnswerType()
         {
             return this.GetType();
         }

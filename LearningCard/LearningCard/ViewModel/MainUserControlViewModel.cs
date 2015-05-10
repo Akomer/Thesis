@@ -20,7 +20,7 @@ namespace LearningCard.ViewModel
 
         private void Execute_StartNewQnA()
         {
-            this.OnChangeMainWindowContent(typeof(View.QnA), typeof(ViewModel.QnAViewModel));
+            this.OnChangeMainWindowContent(typeof(View.QnAUserControl), typeof(ViewModel.QnAViewModel));
         }
         private void Execute_CreateNewQnA()
         {

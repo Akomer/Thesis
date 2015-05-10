@@ -20,9 +20,9 @@ namespace LearningCard.View
     /// <summary>
     /// Interaction logic for QnA.xaml
     /// </summary>
-    public partial class QnA : UserControl
+    public partial class QnAUserControl : UserControl
     {
-        public QnA()
+        public QnAUserControl()
         {
             InitializeComponent();
         }

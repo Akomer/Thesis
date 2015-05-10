@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="LearningCard.View.QnA"
+﻿<UserControl x:Class="LearningCard.View.QnAUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,15 +7,17 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
             <RowDefinition Height="*" MinHeight="100"/>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" MinHeight="100"/>
             <RowDefinition Height="auto" MinHeight="30"/>
         </Grid.RowDefinitions>
-        <UserControl Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding QuestionUC}"/>
-        <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Height="5" VerticalAlignment="Center" ResizeDirection="Rows"/>
-        <UserControl Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding AnswerUC}"/>
-        <Grid Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="30">
+        <Label Grid.Row="0" Margin="10" Content="{Binding CardTitle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <UserControl Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding QuestionPanel}"/>
+        <GridSplitter Grid.Row="2" HorizontalAlignment="Stretch" Height="5" VerticalAlignment="Center" ResizeDirection="Rows"/>
+        <UserControl Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding AnswerPanel}"/>
+        <Grid Grid.Row="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="30">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />

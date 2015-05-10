@@ -10,7 +10,6 @@ namespace LearningCard.Model
 {
     class CreateQnAModel
     {
-        public Uri SourceFile;
         public List<Model.Card> CardPack;
 
         public CreateQnAModel()

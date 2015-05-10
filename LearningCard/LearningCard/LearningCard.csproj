@@ -59,6 +59,7 @@
     <Compile Include="Model\Card.cs" />
     <Compile Include="Model\CreateQnAModel.cs" />
     <Compile Include="Model\DataContracts.cs" />
+    <Compile Include="Model\QnAModel.cs" />
     <Compile Include="Model\QuestionItem.cs" />
     <Compile Include="Model\QuestionPictureModel.cs" />
     <Compile Include="Model\QuestionTextModel.cs" />
@@ -91,8 +92,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\QnA.xaml.cs">
-      <DependentUpon>QnA.xaml</DependentUpon>
+    <Compile Include="View\QnAUserControl.xaml.cs">
+      <DependentUpon>QnAUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\QuestionPictureUserControl.xaml.cs">
       <DependentUpon>QuestionPictureUserControl.xaml</DependentUpon>
@@ -116,7 +117,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\QnA.xaml">
+    <Page Include="View\QnAUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
