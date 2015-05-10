@@ -14,7 +14,7 @@ namespace LearningCard.Model
         public String Title { get; set; }
         [DataMember]
         public IQuestion Question { get; set; }
-        [IgnoreDataMember]
+        [DataMember]
         public IAnswer Answer { get; set; }
     }
 }

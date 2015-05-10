@@ -18,12 +18,12 @@ namespace LearningCard.Model
             this.Text = txt;
         }
 
-        public Type GetQuestionType()
+        public override Type GetQuestionType()
         {
             return this.GetType();
         }
 
-        public Boolean CheckAnswer()
+        public override Boolean CheckAnswer()
         {
             return false;
         }

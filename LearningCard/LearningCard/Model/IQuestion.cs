@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace LearningCard.Model
 {
-    //[DataContract]
-    interface IQuestion
+    [DataContract]
+    [KnownType(typeof(QuestionPictureModel))]
+    [KnownType(typeof(QuestionTextModel))]
+    abstract class IQuestion
     {
-        Type GetQuestionType();
+        public abstract Type GetQuestionType();
     }
 }

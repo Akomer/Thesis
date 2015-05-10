@@ -120,7 +120,8 @@ namespace LearningCard.ViewModel
             }
         }
         public DelegateCommand Command_AddCard { get; set; }
-        public DelegateCommand Command_SaceCardPack { get; set; }
+        public DelegateCommand Command_SaveCardPack { get; set; }
+        public DelegateCommand Command_LoadCardPack { get; set; }
         public String AddModifyButtonText 
         {
             get
@@ -151,7 +152,8 @@ namespace LearningCard.ViewModel
             this.GenerateNewCardParts();
 
             this.Command_AddCard = new DelegateCommand(x => this.Execute_AddCard());
-            this.Command_SaceCardPack = new DelegateCommand(x => this.Execute_SaceCardPack());
+            this.Command_SaveCardPack = new DelegateCommand(x => this.Execute_SaceCardPack());
+            this.Command_LoadCardPack = new DelegateCommand(x => this.Execute_LoadCardPack());
 
             this._Card_SelectedIndex = -1;
             this.AddModifyButtonText = "Add Card";
@@ -318,7 +320,20 @@ namespace LearningCard.ViewModel
             saveDialog.Title = "Save new card pack";
             if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                this.QnAModel.SaceCardPack(saveDialog.FileName);
+                this.QnAModel.SaveCardPack(saveDialog.FileName);
+            }
+        }
+
+        private void Execute_LoadCardPack()
+        {
+            System.Windows.Forms.OpenFileDialog loadDialog = new System.Windows.Forms.OpenFileDialog();
+            loadDialog.Filter = "Card Pack (*.lcp)|*.lcp|Any File (*.*)|*.*";
+            loadDialog.Title = "Load card pack";
+            if (loadDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.QnAModel.LoadCardPack(loadDialog.FileName);
+                this.OnPropertyChanged("CardTitleList");
+                this.Card_SelectedIndex = -1;
             }
         }
 

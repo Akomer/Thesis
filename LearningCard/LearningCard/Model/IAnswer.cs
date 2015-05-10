@@ -7,10 +7,11 @@ using System.Runtime.Serialization;
 
 namespace LearningCard.Model
 {
-    //[DataContract]
-    public interface IAnswer
+    [DataContract]
+    [KnownType(typeof(AnswerTextModel))]
+    abstract class IAnswer
     {
-        Type GetQuestionType();
-        Boolean CheckAnswer();
+        public abstract Type GetQuestionType();
+        public abstract Boolean CheckAnswer();
     }
 }

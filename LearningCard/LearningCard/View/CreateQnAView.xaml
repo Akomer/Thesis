@@ -50,7 +50,9 @@
                 <Button VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="{Binding AddModifyButtonText}" Margin="10" Padding="5" 
                         Command="{Binding Command_AddCard}"/>
                 <Button VerticalAlignment="Center" HorizontalAlignment="Center" Content="Save Card Pack" Margin="10" Padding="5"
-                        Command="{Binding Command_SaceCardPack}" />
+                        Command="{Binding Command_SaveCardPack}" />
+                <Button VerticalAlignment="Center" HorizontalAlignment="Center" Content="Load Card Pack" Margin="10" Padding="5"
+                        Command="{Binding Command_LoadCardPack}" />
             </StackPanel>
         </Grid>
     </DockPanel>
