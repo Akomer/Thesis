@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace LearningCard.Model
 {
+    [DataContract]
     class Card
     {
-        public IAnswer Answer { get; set; }
-        public IQuestion Question { get; set; }
-
+    	[DataMember]
         public String Title { get; set; }
+        [DataMember]
+        public IQuestion Question { get; set; }
+        [IgnoreDataMember]
+        public IAnswer Answer { get; set; }
     }
 }

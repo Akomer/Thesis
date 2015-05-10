@@ -17,6 +17,7 @@ namespace LearningCard.ViewModel
         private String _CardTitle;
         private UserControl _QuestionPanel;
         private UserControl _AnswerPanel;
+        private String _AddModifyButtonText;
         private Model.CreateQnAModel QnAModel { get; set; }
 
         public String CardTitle 
@@ -119,6 +120,19 @@ namespace LearningCard.ViewModel
             }
         }
         public DelegateCommand Command_AddCard { get; set; }
+        public DelegateCommand Command_SaceCardPack { get; set; }
+        public String AddModifyButtonText 
+        {
+            get
+            {
+                return this._AddModifyButtonText;
+            }
+            set
+            {
+                this._AddModifyButtonText = value;
+                this.OnPropertyChanged("AddModifyButtonText");
+            }
+        }
 
         public CreateQnAViewModel()
         {
@@ -137,8 +151,10 @@ namespace LearningCard.ViewModel
             this.GenerateNewCardParts();
 
             this.Command_AddCard = new DelegateCommand(x => this.Execute_AddCard());
+            this.Command_SaceCardPack = new DelegateCommand(x => this.Execute_SaceCardPack());
 
             this._Card_SelectedIndex = -1;
+            this.AddModifyButtonText = "Add Card";
         }
 
         private void QuestionType_SelectionChanged()
@@ -171,8 +187,9 @@ namespace LearningCard.ViewModel
 
         private void Card_SelectionChanged()
         {
-            if (this.Card_SelectedIndex == this.QnAModel.CardPack.Count)
+            if (this.IsNewCard())
             {
+                this.AddModifyButtonText = "Add Card";
                 this.CardTitle = null;
                 this.QuestionType_SelectedIndex = 0;
                 this.AnswerType_SelectedIndex = 0;
@@ -185,6 +202,7 @@ namespace LearningCard.ViewModel
             }
             else
             {
+                this.AddModifyButtonText = "Modify Card Title";
                 this.CardTitle = this.QnAModel.CardPack[this.Card_SelectedIndex].Title;
                 UserControl qView = null;
                 if (this.QnAModel.CardPack[this.Card_SelectedIndex].Question.GetType().Name == "QuestionTextModel")
@@ -275,14 +293,33 @@ namespace LearningCard.ViewModel
                     System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 return;
             }
-            QuestionViewModelBase qVMB = (QuestionViewModelBase)this.QuestionPanelList[this.QuestionType_SelectedIndex].DataContext;
-            Model.IQuestion qModel = qVMB.GetModel();
-            AnswerViewModelBase aVMB = (AnswerViewModelBase)this.AnswerPanelList[this.AnswerType_SelectedIndex].DataContext;
-            Model.IAnswer aModel = aVMB.GetModel();
-            this.QnAModel.AddCard(this.CardTitle, qModel, aModel);
+            if (this.IsNewCard() || this.Card_SelectedIndex == -1)
+            {
+                QuestionViewModelBase qVMB = (QuestionViewModelBase)this.QuestionPanelList[this.QuestionType_SelectedIndex].DataContext;
+                Model.IQuestion qModel = qVMB.GetModel();
+                AnswerViewModelBase aVMB = (AnswerViewModelBase)this.AnswerPanelList[this.AnswerType_SelectedIndex].DataContext;
+                Model.IAnswer aModel = aVMB.GetModel();
+                this.QnAModel.AddCard(this.CardTitle, qModel, aModel);
+                this.ClearAfterNewCardAdded();
+            }
+            else
+            {
+                this.QnAModel.CardPack[this.Card_SelectedIndex].Title = this.CardTitle;
+                //this.QnAModel.CardPack[this.Card_SelectedIndex].Question 
+            }
             this.OnPropertyChanged("CardTitleList");
+            
+        }
 
-            this.ClearAfterNewCardAdded();
+        private void Execute_SaceCardPack()
+        {
+            System.Windows.Forms.SaveFileDialog saveDialog = new System.Windows.Forms.SaveFileDialog();
+            saveDialog.Filter = "Card Pack (*.lcp)|*.lcp|Any File (*.*)|*.*";
+            saveDialog.Title = "Save new card pack";
+            if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.QnAModel.SaceCardPack(saveDialog.FileName);
+            }
         }
 
         private void ClearAfterNewCardAdded()
@@ -307,6 +344,11 @@ namespace LearningCard.ViewModel
             }
             this.QuestionType_SelectedIndex = -1;
             this.AnswerType_SelectedIndex = -1;
+        }
+
+        private Boolean IsNewCard()
+        {
+            return this.Card_SelectedIndex == this.QnAModel.CardPack.Count;
         }
     }
 }

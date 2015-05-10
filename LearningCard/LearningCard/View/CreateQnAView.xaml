@@ -47,8 +47,10 @@
                          ScrollViewer.IsDeferredScrollingEnabled="True" Height="50" SelectedIndex="{Binding AnswerType_SelectedIndex}"/>
             </Grid>
             <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="Add Card" Margin="10" Padding="5" 
+                <Button VerticalAlignment="Center" HorizontalAlignment="Stretch" Content="{Binding AddModifyButtonText}" Margin="10" Padding="5" 
                         Command="{Binding Command_AddCard}"/>
+                <Button VerticalAlignment="Center" HorizontalAlignment="Center" Content="Save Card Pack" Margin="10" Padding="5"
+                        Command="{Binding Command_SaceCardPack}" />
             </StackPanel>
         </Grid>
     </DockPanel>
