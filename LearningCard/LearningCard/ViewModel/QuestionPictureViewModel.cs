@@ -39,7 +39,8 @@ namespace LearningCard.ViewModel
             }
         }
 
-        public QuestionPictureViewModel(Model.QuestionPictureModel qModel) : base(qModel)
+        public QuestionPictureViewModel(Model.QuestionPictureModel qModel, Boolean changeAble = true)
+            : base(qModel, changeAble)
         {
             this.QuestionModel = qModel;
             this.EnableImageChange = false;

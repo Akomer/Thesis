@@ -11,7 +11,14 @@ namespace LearningCard.ViewModel
 {
     class QnAViewModel : MainViewModelBase
     {
-        private Model.Card ActualCard;
+        private Model.Card ActualCard
+        {
+            get
+            {
+                return this.QnAModel.GetCard();
+            }
+            set{}
+        }
         private UserControl _QuestionPanel;
         private UserControl _AnswerPanel;
 
@@ -52,6 +59,8 @@ namespace LearningCard.ViewModel
                 this.OnPropertyChanged("AnswerPanel");
             }
         }
+        public DelegateCommand Command_CheckAnswer { get; set; }
+        public DelegateCommand Command_SkipAnswer { get; set; }
 
         public QnAViewModel()
         {
@@ -64,10 +73,10 @@ namespace LearningCard.ViewModel
                 {
                     this.QnAModel = new Model.QnAModel(loadDialog.FileName);
                 }
+                
             }
-
-            this.ActualCard = this.QnAModel.GetCard();
-
+            this.Command_CheckAnswer = new DelegateCommand(x => this.Execute_CheckAnswer());
+            this.Command_SkipAnswer = new DelegateCommand(x => this.Execute_SkipAnswer());
             this.GenerateFullCard();
         }
 
@@ -75,6 +84,7 @@ namespace LearningCard.ViewModel
         {
             this.QuestionPanel = this.QuestionViewGenerator();
             this.AnswerPanel = this.AnswerViewGenerator();
+            this.OnPropertyChanged("CardTitle");
         }
 
         private UserControl QuestionViewGenerator()
@@ -83,7 +93,7 @@ namespace LearningCard.ViewModel
             {
                 UserControl v = new View.QuestionTextUserControl();
                 ViewModel.QuestionTextViewModel dc = new ViewModel.QuestionTextViewModel(
-                    (Model.QuestionTextModel)this.ActualCard.Question
+                    (Model.QuestionTextModel)this.ActualCard.Question, false
                 );
                 v.DataContext = dc;
                 return v;
@@ -92,7 +102,7 @@ namespace LearningCard.ViewModel
             {
                 UserControl v = new View.QuestionPictureUserControl();
                 ViewModel.QuestionPictureViewModel dc = new ViewModel.QuestionPictureViewModel(
-                    (Model.QuestionPictureModel)this.ActualCard.Question
+                    (Model.QuestionPictureModel)this.ActualCard.Question, false
                 );
                 dc.EnableImageChange = true;
                 v.DataContext = dc;
@@ -107,11 +117,47 @@ namespace LearningCard.ViewModel
             {
                 UserControl v = new View.AnswerTextUserControl();
                 ViewModel.AnswerTextViewModel dc = new ViewModel.AnswerTextViewModel( 
-                    (Model.AnswerTextModel)this.ActualCard.Answer );
+                    (Model.AnswerTextModel)this.QnAModel.UserAnswer );
                 v.DataContext = dc;
                 return v;
             }
             return null;
+        }
+
+        private void Execute_CheckAnswer()
+        {
+            if (this.QnAModel.CheckAnswer())
+            {
+                System.Windows.Forms.MessageBox.Show("Right answer\nCongrat", "Right Answer",
+                    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.None);
+                this.QnAModel.AnswerWasRight();
+            }
+            else if (this.QnAModel.UserAnswer.GetAnswerType() == typeof(Model.AnswerTextModel))
+            {
+                Model.AnswerTextModel rightAnswerModel = (Model.AnswerTextModel)this.QnAModel.GetCard().Answer;
+                String rightAnswer = rightAnswerModel.Text;
+                if (System.Windows.Forms.MessageBox.Show("Is your answer right?\n" + rightAnswer, "Check your answer",
+                    System.Windows.Forms.MessageBoxButtons.YesNo,
+                    System.Windows.Forms.MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    this.QnAModel.AnswerWasRight();
+                }
+                else
+                {
+                    this.QnAModel.AnswerWasWrong();
+                }
+            }
+            else
+            {
+                this.QnAModel.AnswerWasWrong();
+            }
+            this.GenerateFullCard();
+        }
+
+        private void Execute_SkipAnswer()
+        {
+            this.QnAModel.AnswerWasWrong();
+            this.GenerateFullCard();
         }
     }
 }

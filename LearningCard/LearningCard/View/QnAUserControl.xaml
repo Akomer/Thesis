@@ -22,8 +22,8 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Send"/>
-            <Button Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Skip" />
+            <Button Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Check Answer" Command="{Binding Command_CheckAnswer}"/>
+            <Button Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Skip" Command="{Binding Command_SkipAnswer}"/>
         </Grid>
     </Grid>
 </UserControl>

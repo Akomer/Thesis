@@ -6,6 +6,6 @@
              mc:Ignorable="d" 
              MinHeight="150" MinWidth="150">
     <Grid VerticalAlignment="Stretch">
-        <TextBox VerticalAlignment="Stretch" AcceptsReturn="True" Text="{Binding QuestionText}"/>
+        <TextBox VerticalAlignment="Stretch" AcceptsReturn="True" Text="{Binding QuestionText}" IsEnabled="{Binding isChangeable}"/>
     </Grid>
 </UserControl>

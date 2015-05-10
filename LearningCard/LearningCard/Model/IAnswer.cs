@@ -12,6 +12,6 @@ namespace LearningCard.Model
     abstract class IAnswer
     {
         public abstract Type GetAnswerType();
-        public abstract Boolean CheckAnswer();
+        public abstract Boolean CheckAnswer(IAnswer UserAnswer);
     }
 }

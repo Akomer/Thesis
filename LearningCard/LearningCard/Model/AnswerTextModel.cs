@@ -23,9 +23,10 @@ namespace LearningCard.Model
             return this.GetType();
         }
 
-        public override Boolean CheckAnswer()
+        public override Boolean CheckAnswer(IAnswer UserAnwser)
         {
-            return false;
+            AnswerTextModel uAnser = (AnswerTextModel)UserAnwser;
+            return this.Text == uAnser.Text;
         }
     }
 }

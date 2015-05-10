@@ -11,13 +11,13 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         <TextBox Grid.Row="0" Text="{Binding QuestionText}" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" 
-                 AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                 AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" IsEnabled="{Binding isChangeable}"/>
         <ScrollViewer Grid.Row="1">
             <Image Margin="10" Source="{Binding ImageSource}" MaxHeight="500" MaxWidth="500" MinHeight="100"
-                   ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
+                   ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch" IsEnabled="{Binding isChangeable}">
                 <Image.ContextMenu>
-                    <ContextMenu IsEnabled="{Binding EnableImageChnge}">
-                        <MenuItem Header="Change image" Command="{Binding Command_ChangeImage}"/>
+                    <ContextMenu IsEnabled="{Binding isChangeable}">
+                        <MenuItem Header="Change image" Command="{Binding Command_ChangeImage}" IsEnabled="{Binding isChangeable}"/>
                     </ContextMenu>
                 </Image.ContextMenu>
             </Image>

@@ -23,7 +23,8 @@ namespace LearningCard.ViewModel
             }
         }
 
-        public QuestionTextViewModel(Model.QuestionTextModel qModel) : base(qModel)
+        public QuestionTextViewModel(Model.QuestionTextModel qModel, Boolean changeAble = true)
+            : base(qModel, changeAble)
         {
             this.QuestionModel = qModel;
         }
