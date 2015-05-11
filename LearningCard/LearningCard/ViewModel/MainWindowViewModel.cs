@@ -36,8 +36,9 @@ namespace LearningCard.ViewModel
         private void VM_ChangeMainWindow(ViewModel.MainControlChangeEventArgs _args)
         {
             this.mainContent = (UserControl)Activator.CreateInstance(_args.NewUserControl);
-            this.mainContentViewModel = (ViewModel.MainViewModelBase)Activator.CreateInstance(_args.NewViewModel);
+            this.mainContentViewModel = (ViewModel.MainViewModelBase)Activator.CreateInstance(_args.NewViewModel, _args.args);
             this.mainContent.DataContext = this.mainContentViewModel;
+            this.mainContentViewModel.ChangeMainWindowContent += new ViewModel.Event_mainControlChange(VM_ChangeMainWindow);
         }
     }
 }

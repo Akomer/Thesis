@@ -62,19 +62,10 @@ namespace LearningCard.ViewModel
         public DelegateCommand Command_CheckAnswer { get; set; }
         public DelegateCommand Command_SkipAnswer { get; set; }
 
-        public QnAViewModel()
+        public QnAViewModel(Model.QnAModel qModel)
         {
-            while (this.QnAModel == null)
-            {
-                System.Windows.Forms.OpenFileDialog loadDialog = new System.Windows.Forms.OpenFileDialog();
-                loadDialog.Filter = "Card Pack (*.lcp)|*.lcp|Any File (*.*)|*.*";
-                loadDialog.Title = "Load card pack";
-                if (loadDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    this.QnAModel = new Model.QnAModel(loadDialog.FileName);
-                }
-                
-            }
+            this.QnAModel = qModel;
+
             this.Command_CheckAnswer = new DelegateCommand(x => this.Execute_CheckAnswer());
             this.Command_SkipAnswer = new DelegateCommand(x => this.Execute_SkipAnswer());
             this.GenerateFullCard();

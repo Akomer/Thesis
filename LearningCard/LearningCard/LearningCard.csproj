@@ -60,12 +60,15 @@
     <Compile Include="Model\CardPack.cs" />
     <Compile Include="Model\CreateQnAModel.cs" />
     <Compile Include="Model\DataContracts.cs" />
+    <Compile Include="Model\Profile.cs" />
     <Compile Include="Model\QnAModel.cs" />
     <Compile Include="Model\QuestionItem.cs" />
     <Compile Include="Model\QuestionPictureModel.cs" />
     <Compile Include="Model\QuestionTextModel.cs" />
+    <Compile Include="Model\StatisticInfo.cs" />
     <Compile Include="ViewModel\AnswerTextViewModel.cs" />
     <Compile Include="ViewModel\AnswerViewModelBase.cs" />
+    <Compile Include="ViewModel\ChooseProfileAndPackViewModel.cs" />
     <Compile Include="ViewModel\CreateQnAViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
     <Compile Include="ViewModel\MainUserControlViewModel.cs" />

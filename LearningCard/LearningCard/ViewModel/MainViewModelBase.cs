@@ -12,11 +12,11 @@ namespace LearningCard.ViewModel
     {
         public event Event_mainControlChange ChangeMainWindowContent;
 
-        protected void OnChangeMainWindowContent(Type t_uc, Type t_vm)
+        protected void OnChangeMainWindowContent(Type t_uc, Type t_vm, object[] args = null)
         {
             if (this.ChangeMainWindowContent != null)
             {
-                this.ChangeMainWindowContent(new ViewModel.MainControlChangeEventArgs(t_uc, t_vm));
+                this.ChangeMainWindowContent(new ViewModel.MainControlChangeEventArgs(t_uc, t_vm, args));
             }
         }
     }

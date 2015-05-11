@@ -22,5 +22,15 @@ namespace LearningCard.Model
                 return o;
             return null;
         }
+
+        public void AddNewStatData(CardPack cards)
+        {
+            List<Int32> l = new List<int>();
+            foreach (var i in cards.CardList)
+            {
+                l.Add(5);
+            }
+            this.StatisticData.Add(cards.PackName, l);
+        }
     }
 }

@@ -7,9 +7,25 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="0" Grid.Column="0" Content="Creat Profile" Padding="5" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Command="{Binding Command_CreateProfile}"/>
+        <Button Grid.Row="0" Grid.Column="1" Content="Load Profile" Padding="5" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Command="{Binding Command_LoadProfile}"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="Active Profile:" Padding="5" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <Label Grid.Row="1" Grid.Column="1" Content="{Binding ActiveProfileName}" Padding="5" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <Button Grid.Row="2" Grid.Column="0" Content="Load CardPack" Padding="5" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Command="{Binding Command_LoadCardPack}"/>
+        <Label Grid.Row="2" Grid.Column="1" Content="{Binding ActiveCardPack}" Padding="5" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Start" Padding="5" Margin="10" 
+                VerticalAlignment="Center" HorizontalAlignment="Stretch" Command="{Binding Command_Start}"/>
     </Grid>
 </UserControl>

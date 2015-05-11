@@ -10,6 +10,7 @@ namespace LearningCard.Model
 {
     class QnAModel
     {
+        private Profile UserProfile;
         private CardPack CardPackItem;
         private List<Model.Card> CardPack
         {
@@ -68,6 +69,11 @@ namespace LearningCard.Model
         public void AnswerWasWrong()
         {
             SetupNewCard();
+        }
+
+        public String CardPackName()
+        {
+            return this.CardPackItem.PackName;
         }
     }
 }
