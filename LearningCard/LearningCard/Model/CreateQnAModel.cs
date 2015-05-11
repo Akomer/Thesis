@@ -10,10 +10,24 @@ namespace LearningCard.Model
 {
     class CreateQnAModel
     {
-        public List<Model.Card> CardPack;
+
+        private CardPack CardPackItem;
+        public List<Model.Card> CardPack
+        {
+            get
+            {
+                return this.CardPackItem.CardList;
+            }
+            set
+            {
+                this.CardPackItem.CardList = value;
+            }
+
+        }
 
         public CreateQnAModel()
         {
+            this.CardPackItem = new CardPack();
             this.CardPack = new List<Card>();
         }
 
@@ -24,10 +38,11 @@ namespace LearningCard.Model
 
         public void SaveCardPack(String fileName)
         {
+            this.CardPackItem.PackName = fileName.Split('\\').Last().Split('.')[0];
             using (FileStream saveFile = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write))
             {
-                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Model.Card>));
-                serializer.WriteObject(saveFile, this.CardPack);
+                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CardPack));
+                serializer.WriteObject(saveFile, this.CardPackItem);
             }
         }
 
@@ -35,9 +50,14 @@ namespace LearningCard.Model
         {
             using (FileStream loadFile = new FileStream(fileName, FileMode.Open, FileAccess.Read))
             {
-                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Model.Card>));
-                this.CardPack = (List<Model.Card>)serializer.ReadObject(loadFile);
+                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CardPack));
+                this.CardPackItem = (CardPack)serializer.ReadObject(loadFile);
             }
+        }
+
+        public void DeleteCard(Int32 index)
+        {
+            this.CardPack.RemoveAt(index);
         }
     }
 }

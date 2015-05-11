@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\AnswerTextModel.cs" />
     <Compile Include="Model\Card.cs" />
+    <Compile Include="Model\CardPack.cs" />
     <Compile Include="Model\CreateQnAModel.cs" />
     <Compile Include="Model\DataContracts.cs" />
     <Compile Include="Model\QnAModel.cs" />
@@ -78,6 +79,9 @@
     <Compile Include="ViewModel\MainControlChangeEventArgs.cs" />
     <Compile Include="View\AnswerTextUserControl.xaml.cs">
       <DependentUpon>AnswerTextUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChooseProfileAndPackUserControl.xaml.cs">
+      <DependentUpon>ChooseProfileAndPackUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CreateQnAView.xaml.cs">
       <DependentUpon>CreateQnAView.xaml</DependentUpon>
@@ -102,6 +106,10 @@
       <DependentUpon>QuestionTextUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="View\AnswerTextUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChooseProfileAndPackUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,9 +167,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\question_mark.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\kirito1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CardPacks\" />
+    <Folder Include="Profiles\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

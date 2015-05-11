@@ -122,6 +122,7 @@ namespace LearningCard.ViewModel
         public DelegateCommand Command_AddCard { get; set; }
         public DelegateCommand Command_SaveCardPack { get; set; }
         public DelegateCommand Command_LoadCardPack { get; set; }
+        public DelegateCommand Command_DeleteCard { get; set; }
         public String AddModifyButtonText 
         {
             get
@@ -154,6 +155,7 @@ namespace LearningCard.ViewModel
             this.Command_AddCard = new DelegateCommand(x => this.Execute_AddCard());
             this.Command_SaveCardPack = new DelegateCommand(x => this.Execute_SaceCardPack());
             this.Command_LoadCardPack = new DelegateCommand(x => this.Execute_LoadCardPack());
+            this.Command_DeleteCard = new DelegateCommand(x => this.Execute_DeleteCard());
 
             this._Card_SelectedIndex = -1;
             this.AddModifyButtonText = "Add Card";
@@ -252,7 +254,7 @@ namespace LearningCard.ViewModel
             {
                 UserControl v = new View.QuestionPictureUserControl();
                 ViewModel.QuestionPictureViewModel dc = new ViewModel.QuestionPictureViewModel(
-                    new Model.QuestionPictureModel(new Uri(@"/Images/kirito1.jpg", UriKind.Relative), "Title of picture Q." )
+                    new Model.QuestionPictureModel(new Uri(@"/Images/question_mark.png", UriKind.Relative), "Title of picture Q." )
                 );
                 dc.EnableImageChange = true;
                 v.DataContext = dc;
@@ -334,6 +336,15 @@ namespace LearningCard.ViewModel
                 this.QnAModel.LoadCardPack(loadDialog.FileName);
                 this.OnPropertyChanged("CardTitleList");
                 this.Card_SelectedIndex = -1;
+            }
+        }
+
+        private void Execute_DeleteCard()
+        {
+            if (this.Card_SelectedIndex < this.QnAModel.CardPack.Count && this.Card_SelectedIndex >= 0)
+            {
+                this.QnAModel.DeleteCard(this.Card_SelectedIndex);
+                this.OnPropertyChanged("CardTitleList");
             }
         }
 

@@ -10,7 +10,19 @@ namespace LearningCard.Model
 {
     class QnAModel
     {
-        private List<Model.Card> CardPack;
+        private CardPack CardPackItem;
+        private List<Model.Card> CardPack
+        {
+            get
+            {
+                return this.CardPackItem.CardList;
+            }
+            set
+            {
+                this.CardPackItem.CardList = value;
+            }
+
+        }
         public IAnswer UserAnswer;
         private Int32 ActiveCardIndex;
 
@@ -19,8 +31,8 @@ namespace LearningCard.Model
         {
             using (FileStream loadFile = new FileStream(fileName, FileMode.Open, FileAccess.Read))
             {
-                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Model.Card>));
-                this.CardPack = (List<Model.Card>)serializer.ReadObject(loadFile);
+                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CardPack));
+                this.CardPackItem = (CardPack)serializer.ReadObject(loadFile);
             }
             this.SetupNewCard();
         }
