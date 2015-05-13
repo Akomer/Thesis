@@ -7,7 +7,13 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <DockPanel LastChildFill="True">
         <Button Content="Start" Margin="10" Padding="5" DockPanel.Dock="Bottom" />
-        <ListView DockPanel.Dock="Right" />
+        <ListView DockPanel.Dock="Right" ItemsSource="{Binding ActiveUserProfileList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <StackPanel Orientation="Vertical" DockPanel.Dock="Right" />
         <StackPanel Orientation="Vertical">
             <Button Margin="10" Padding="5" Content="Load Card Pack"  HorizontalAlignment="Center"/>

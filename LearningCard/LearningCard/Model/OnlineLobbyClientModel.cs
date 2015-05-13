@@ -5,14 +5,24 @@ using System.Text;
 using System.Threading;
 using System.Net;
 using System.ServiceModel;
+using System.ServiceModel.Description;
 
 namespace LearningCard.Model
 {
     class OnlineLobbyClientModel
     {
         private OnlineLobbyServiceModel LobbyService;
+        private OnlineLearningCardService.OnlineLobbyServiceModelClient LobbyClient;
 
-        public String HostIP { get; set; }
+        public String HostIP 
+        {
+            get
+            {
+                return LobbyClient.GetPublicIP();
+            }
+            set
+            { }
+        }
         public Boolean isHost { get; set; }
 
         public OnlineLobbyClientModel(Boolean ishost)
@@ -23,19 +33,22 @@ namespace LearningCard.Model
                 Thread service = new Thread(this.StartLobbyService);
                 service.Start();
             }
-
-            
-        }
-
-
-        public void GetPublicIP()
-        {
+            this.LobbyClient = new OnlineLearningCardService.OnlineLobbyServiceModelClient();
             
         }
 
         private void StartLobbyService()
         {
-            this.LobbyService = new OnlineLobbyServiceModel();
+            Uri baseAddress = new Uri("http://localhost:8080/learningcard/");
+            ServiceHost lobbyHost = new ServiceHost(typeof(OnlineLobbyServiceModel), baseAddress);
+            {
+                ServiceMetadataBehavior smdb = new ServiceMetadataBehavior();
+                smdb.HttpGetEnabled = true;
+                smdb.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
+                lobbyHost.Description.Behaviors.Add(smdb);
+
+                lobbyHost.Open();
+            }
         }
     }
 }

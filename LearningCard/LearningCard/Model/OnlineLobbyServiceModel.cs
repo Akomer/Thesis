@@ -22,7 +22,7 @@ namespace LearningCard.Model
         String GetPublicIP();
     }
 
-    class OnlineLobbyServiceModel
+    class OnlineLobbyServiceModel : IOnlineLobbyServiceModel
     {
         private String _HostIP;
         private Uri baseAddress;
@@ -46,28 +46,14 @@ namespace LearningCard.Model
 
         public OnlineLobbyServiceModel()
         {
-            this.isHost = true;
-            if (!isHost)
-            {
-                return;
-            }
-            this.HostIP = this.GetPublicIP();
-            this.baseAddress = new Uri("http://localhost:8080/learningcard/");
-            ServiceHost lobbyHost = new ServiceHost(typeof(OnlineLobbyServiceModel), this.baseAddress);
-            {
-                ServiceMetadataBehavior smdb = new ServiceMetadataBehavior();
-                smdb.HttpGetEnabled = true;
-                smdb.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
-                lobbyHost.Description.Behaviors.Add(smdb);
 
-                lobbyHost.Open();
-            }
         }
 
         public Boolean JoinToLobby()
         {
             return true;
         }
+
 
         public String GetPublicIP()
         {
@@ -123,7 +109,7 @@ namespace LearningCard.Model
             return m.Groups[1].ToString();
         }
 
-        [OperationContract]
+
         public List<Profile> GetJoinedPlayers()
         {
             return this._JoinedPlayers;

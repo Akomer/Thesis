@@ -63,7 +63,6 @@
     <Compile Include="Model\DataContracts.cs" />
     <Compile Include="Model\MultiPlayerService.cs" />
     <Compile Include="Model\OnlineLobbyClientModel.cs" />
-    <Compile Include="Model\OnlineLobbyServiceClient.cs" />
     <Compile Include="Model\OnlineLobbyServiceModel.cs" />
     <Compile Include="Model\Profile.cs" />
     <Compile Include="Model\QnAModel.cs" />
@@ -71,6 +70,11 @@
     <Compile Include="Model\QuestionPictureModel.cs" />
     <Compile Include="Model\QuestionTextModel.cs" />
     <Compile Include="Model\StatisticInfo.cs" />
+    <Compile Include="Service References\OnlineLearningCardService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\AnswerTextViewModel.cs" />
     <Compile Include="ViewModel\AnswerViewModelBase.cs" />
     <Compile Include="ViewModel\ChooseProfileAndPackViewModel.cs" />
@@ -179,6 +183,13 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\OnlineLearningCardService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OnlineLearningCardService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OnlineLearningCardService\OnlineLobbyServiceModel.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -195,6 +206,24 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\OnlineLearningCardService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OnlineLearningCardService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OnlineLearningCardService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OnlineLearningCardService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OnlineLearningCardService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 
 namespace LearningCard.ViewModel
@@ -12,6 +13,7 @@ namespace LearningCard.ViewModel
     {
         private Model.OnlineLobbyClientModel LobbyClient;
 
+        public ObservableCollection<Model.Profile> ActiveUserProfileList { get; set; }
         public DelegateCommand Command_RefresIP { get; set; }
         public String HostIpAddres 
         {
@@ -43,12 +45,13 @@ namespace LearningCard.ViewModel
 
         private void Execute_RefresIP()
         {
-            this.LobbyClient.GetPublicIP();
+            //this.OnPropertyChanged("HostIpAddres");
         }
 
         private void RefreshView()
         {
             this.OnPropertyChanged("HostIpAddres");
+            //this.OnPropertyChanged("ActiveUserProfileList");
         }
     }
 }
