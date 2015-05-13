@@ -80,6 +80,7 @@
     <Compile Include="ViewModel\ChooseProfileAndPackViewModel.cs" />
     <Compile Include="ViewModel\CreateQnAViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
+    <Compile Include="ViewModel\JoinMultiplayerViewModel.cs" />
     <Compile Include="ViewModel\MainUserControlViewModel.cs" />
     <Compile Include="ViewModel\MainViewModelBase.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
@@ -98,6 +99,9 @@
     </Compile>
     <Compile Include="View\CreateQnAView.xaml.cs">
       <DependentUpon>CreateQnAView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\JoinMultiplayerUserControl.xaml.cs">
+      <DependentUpon>JoinMultiplayerUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainUserControl.xaml.cs">
       <DependentUpon>MainUserControl.xaml</DependentUpon>
@@ -130,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CreateQnAView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\JoinMultiplayerUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

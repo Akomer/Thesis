@@ -50,7 +50,7 @@ namespace LearningCard.Model
         public List<Profile> _JoinedPlayers { get; set; }
 
         public OnlineLobbyServiceModel()
-        {
+        {   
             this.ActiveUsers = new List<Profile>();
         }
 

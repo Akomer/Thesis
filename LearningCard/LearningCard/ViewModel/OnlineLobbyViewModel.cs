@@ -44,8 +44,12 @@ namespace LearningCard.ViewModel
         }
 
         public OnlineLobbyViewModel(Boolean isHost)
+            : this(isHost, "127.0.0.1")
+        { }
+
+        public OnlineLobbyViewModel(Boolean isHost, String hostip = "127.0.0.1")
         {
-            this.LobbyClient = new Model.OnlineLobbyClientModel(isHost);
+            this.LobbyClient = new Model.OnlineLobbyClientModel(isHost, hostip);
             this.Command_RefresIP = new DelegateCommand(x => this.Execute_RefresIP());
 
             this.RefreshView();
