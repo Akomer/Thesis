@@ -189,6 +189,15 @@
     <None Include="Service References\OnlineLearningCardService\item1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\OnlineLearningCardService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OnlineLearningCardService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OnlineLearningCardService\LearningCard.OnlineLearningCardService.Profile.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\OnlineLearningCardService\OnlineLobbyServiceModel.wsdl" />
   </ItemGroup>
   <ItemGroup>

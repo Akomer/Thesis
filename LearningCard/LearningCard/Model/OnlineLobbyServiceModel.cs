@@ -16,16 +16,21 @@ namespace LearningCard.Model
     internal interface IOnlineLobbyServiceModel
     {
         [OperationContract]
-        Boolean JoinToLobby();
+        Boolean JoinToLobby(Profile prof);
+
+        [OperationContract]
+        List<Profile> GetActiveUsers();
 
         [OperationContract]
         String GetPublicIP();
     }
 
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     class OnlineLobbyServiceModel : IOnlineLobbyServiceModel
     {
         private String _HostIP;
         private Uri baseAddress;
+        private List<Profile> ActiveUsers;
 
         public String HostIP
         {
@@ -46,11 +51,12 @@ namespace LearningCard.Model
 
         public OnlineLobbyServiceModel()
         {
-
+            this.ActiveUsers = new List<Profile>();
         }
 
-        public Boolean JoinToLobby()
+        public Boolean JoinToLobby(Model.Profile prof)
         {
+            this.ActiveUsers.Add(prof);
             return true;
         }
 
@@ -109,10 +115,10 @@ namespace LearningCard.Model
             return m.Groups[1].ToString();
         }
 
-
-        public List<Profile> GetJoinedPlayers()
+        public List<Profile> GetActiveUsers()
         {
-            return this._JoinedPlayers;
+            return this.ActiveUsers;
         }
+
     }
 }

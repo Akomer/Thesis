@@ -9,17 +9,86 @@
 //------------------------------------------------------------------------------
 
 namespace LearningCard.OnlineLearningCardService {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Profile", Namespace="http://schemas.datacontract.org/2004/07/LearningCard.Model")]
+    [System.SerializableAttribute()]
+    public partial class Profile : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.Dictionary<string, int[]> StatisticDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.Dictionary<string, int[]> StatisticData {
+            get {
+                return this.StatisticDataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatisticDataField, value) != true)) {
+                    this.StatisticDataField = value;
+                    this.RaisePropertyChanged("StatisticData");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="OnlineLearningCardService.IOnlineLobbyServiceModel")]
     public interface IOnlineLobbyServiceModel {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyServiceModel/JoinToLobby", ReplyAction="http://tempuri.org/IOnlineLobbyServiceModel/JoinToLobbyResponse")]
-        bool JoinToLobby();
+        bool JoinToLobby(LearningCard.OnlineLearningCardService.Profile prof);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyServiceModel/JoinToLobby", ReplyAction="http://tempuri.org/IOnlineLobbyServiceModel/JoinToLobbyResponse")]
-        System.Threading.Tasks.Task<bool> JoinToLobbyAsync();
+        System.Threading.Tasks.Task<bool> JoinToLobbyAsync(LearningCard.OnlineLearningCardService.Profile prof);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyServiceModel/GetActiveUsers", ReplyAction="http://tempuri.org/IOnlineLobbyServiceModel/GetActiveUsersResponse")]
+        LearningCard.OnlineLearningCardService.Profile[] GetActiveUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyServiceModel/GetActiveUsers", ReplyAction="http://tempuri.org/IOnlineLobbyServiceModel/GetActiveUsersResponse")]
+        System.Threading.Tasks.Task<LearningCard.OnlineLearningCardService.Profile[]> GetActiveUsersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyServiceModel/GetPublicIP", ReplyAction="http://tempuri.org/IOnlineLobbyServiceModel/GetPublicIPResponse")]
         string GetPublicIP();
@@ -55,12 +124,20 @@ namespace LearningCard.OnlineLearningCardService {
                 base(binding, remoteAddress) {
         }
         
-        public bool JoinToLobby() {
-            return base.Channel.JoinToLobby();
+        public bool JoinToLobby(LearningCard.OnlineLearningCardService.Profile prof) {
+            return base.Channel.JoinToLobby(prof);
         }
         
-        public System.Threading.Tasks.Task<bool> JoinToLobbyAsync() {
-            return base.Channel.JoinToLobbyAsync();
+        public System.Threading.Tasks.Task<bool> JoinToLobbyAsync(LearningCard.OnlineLearningCardService.Profile prof) {
+            return base.Channel.JoinToLobbyAsync(prof);
+        }
+        
+        public LearningCard.OnlineLearningCardService.Profile[] GetActiveUsers() {
+            return base.Channel.GetActiveUsers();
+        }
+        
+        public System.Threading.Tasks.Task<LearningCard.OnlineLearningCardService.Profile[]> GetActiveUsersAsync() {
+            return base.Channel.GetActiveUsersAsync();
         }
         
         public string GetPublicIP() {

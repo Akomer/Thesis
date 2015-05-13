@@ -34,7 +34,14 @@ namespace LearningCard.Model
                 service.Start();
             }
             this.LobbyClient = new OnlineLearningCardService.OnlineLobbyServiceModelClient();
+            OnlineLearningCardService.Profile p = new OnlineLearningCardService.Profile() { Name = "Guest", StatisticData = new Dictionary<string, int[]>() };
+            this.LobbyClient.JoinToLobby(p);
             
+        }
+
+        public OnlineLearningCardService.Profile[] GetActiveUsers()
+        {
+            return this.LobbyClient.GetActiveUsers();
         }
 
         private void StartLobbyService()

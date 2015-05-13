@@ -15,6 +15,12 @@ namespace LearningCard.Model
         [DataMember]
         private Dictionary<String, List<Int32> > StatisticData { get; set; }
 
+        public Profile(String name = "Guest")
+        {
+            this.Name = name;
+            this.StatisticData = new Dictionary<string, List<int>>();
+        }
+
         public List<Int32> GetStatInfo(String DeckName)
         {
             List<Int32> o;

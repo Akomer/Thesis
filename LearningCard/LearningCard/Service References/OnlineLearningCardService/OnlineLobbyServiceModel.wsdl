@@ -4,6 +4,8 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8080/learningcard/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8080/learningcard/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8080/learningcard/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LearningCard.Model" />
+      <xsd:import schemaLocation="http://localhost:8080/learningcard/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IOnlineLobbyServiceModel_JoinToLobby_InputMessage">
@@ -11,6 +13,12 @@
   </wsdl:message>
   <wsdl:message name="IOnlineLobbyServiceModel_JoinToLobby_OutputMessage">
     <wsdl:part name="parameters" element="tns:JoinToLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOnlineLobbyServiceModel_GetActiveUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveUsers" />
+  </wsdl:message>
+  <wsdl:message name="IOnlineLobbyServiceModel_GetActiveUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveUsersResponse" />
   </wsdl:message>
   <wsdl:message name="IOnlineLobbyServiceModel_GetPublicIP_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPublicIP" />
@@ -23,6 +31,10 @@
       <wsdl:input wsam:Action="http://tempuri.org/IOnlineLobbyServiceModel/JoinToLobby" message="tns:IOnlineLobbyServiceModel_JoinToLobby_InputMessage" />
       <wsdl:output wsam:Action="http://tempuri.org/IOnlineLobbyServiceModel/JoinToLobbyResponse" message="tns:IOnlineLobbyServiceModel_JoinToLobby_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetActiveUsers">
+      <wsdl:input wsam:Action="http://tempuri.org/IOnlineLobbyServiceModel/GetActiveUsers" message="tns:IOnlineLobbyServiceModel_GetActiveUsers_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IOnlineLobbyServiceModel/GetActiveUsersResponse" message="tns:IOnlineLobbyServiceModel_GetActiveUsers_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetPublicIP">
       <wsdl:input wsam:Action="http://tempuri.org/IOnlineLobbyServiceModel/GetPublicIP" message="tns:IOnlineLobbyServiceModel_GetPublicIP_InputMessage" />
       <wsdl:output wsam:Action="http://tempuri.org/IOnlineLobbyServiceModel/GetPublicIPResponse" message="tns:IOnlineLobbyServiceModel_GetPublicIP_OutputMessage" />
@@ -32,6 +44,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="JoinToLobby">
       <soap:operation soapAction="http://tempuri.org/IOnlineLobbyServiceModel/JoinToLobby" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveUsers">
+      <soap:operation soapAction="http://tempuri.org/IOnlineLobbyServiceModel/GetActiveUsers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

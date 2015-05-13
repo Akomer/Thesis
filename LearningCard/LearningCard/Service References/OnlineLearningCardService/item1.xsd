@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8080/learningcard/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LearningCard.Model" />
   <xs:element name="JoinToLobby">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/LearningCard.Model" minOccurs="0" name="prof" nillable="true" type="q1:Profile" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="JoinToLobbyResponse">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="JoinToLobbyResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActiveUsers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActiveUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/LearningCard.Model" minOccurs="0" name="GetActiveUsersResult" nillable="true" type="q2:ArrayOfProfile" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

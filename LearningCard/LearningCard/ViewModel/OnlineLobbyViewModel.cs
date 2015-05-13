@@ -13,7 +13,15 @@ namespace LearningCard.ViewModel
     {
         private Model.OnlineLobbyClientModel LobbyClient;
 
-        public ObservableCollection<Model.Profile> ActiveUserProfileList { get; set; }
+        public ObservableCollection<OnlineLearningCardService.Profile> ActiveUserProfileList 
+        {
+            get
+            {
+                return new ObservableCollection<OnlineLearningCardService.Profile>(this.LobbyClient.GetActiveUsers());
+            }
+            set
+            { }
+        }
         public DelegateCommand Command_RefresIP { get; set; }
         public String HostIpAddres 
         {
