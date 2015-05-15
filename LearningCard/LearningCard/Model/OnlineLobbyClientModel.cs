@@ -13,6 +13,7 @@ namespace LearningCard.Model
     {
         private OnlineLobbyServiceModel LobbyService;
         private OnlineLearningCardService.OnlineLobbyServiceModelClient LobbyClient;
+        private Int32 serverStatus;
 
         public String HostIP 
         {
@@ -38,7 +39,18 @@ namespace LearningCard.Model
                 new System.ServiceModel.EndpointAddress(@"http://" + hostip + @":8080/learningcard/"));
             //this.LobbyClient = new OnlineLearningCardService.OnlineLobbyServiceModelClient();
             OnlineLearningCardService.Profile p = new Profile().GetServiceProfile();
-            this.LobbyClient.JoinToLobby(p);
+            try
+            {
+                this.LobbyClient.JoinToLobby(p);
+            }
+            catch (EndpointNotFoundException e)
+            {
+                {
+                    System.Windows.Forms.MessageBox.Show("Could not connect to the server.", "Connection Error",
+                        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    throw new InvalidOperationException();
+                }
+            }
             
         }
 
@@ -59,8 +71,17 @@ namespace LearningCard.Model
                 lobbyHost.Description.Behaviors.Add(smdb);
                 lobbyHost.OpenTimeout = new System.TimeSpan(1, 0, 0);
                 lobbyHost.AddDefaultEndpoints();
-
-                lobbyHost.Open();
+                try
+                {
+                    lobbyHost.Open();
+                }
+                catch (AddressAccessDeniedException e)
+                {
+                    System.Windows.Forms.MessageBox.Show("Can not start server, if you are not adminstrator\nTry to start the program in administrator mode.", "Admin mode",
+                    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    this.serverStatus = 1;
+                    return;
+                }
             }
         }
     }

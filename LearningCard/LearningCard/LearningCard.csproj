@@ -59,9 +59,11 @@
     <Compile Include="Model\AnswerTextModel.cs" />
     <Compile Include="Model\Card.cs" />
     <Compile Include="Model\CardPack.cs" />
+    <Compile Include="Model\CreateProfileModel.cs" />
     <Compile Include="Model\GlobalLanguage.cs" />
     <Compile Include="Model\CreateQnAModel.cs" />
     <Compile Include="Model\DataContracts.cs" />
+    <Compile Include="Model\GlobalProfile.cs" />
     <Compile Include="Model\MultiPlayerService.cs" />
     <Compile Include="Model\OnlineLobbyClientModel.cs" />
     <Compile Include="Model\OnlineLobbyServiceModel.cs" />
@@ -80,9 +82,11 @@
     <Compile Include="ViewModel\AnswerTextViewModel.cs" />
     <Compile Include="ViewModel\AnswerViewModelBase.cs" />
     <Compile Include="ViewModel\ChooseProfileAndPackViewModel.cs" />
+    <Compile Include="ViewModel\CreateProfileViewModel.cs" />
     <Compile Include="ViewModel\CreateQnAViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
     <Compile Include="ViewModel\JoinMultiplayerViewModel.cs" />
+    <Compile Include="ViewModel\LoadProfileDiagViewModel.cs" />
     <Compile Include="ViewModel\MainUserControlViewModel.cs" />
     <Compile Include="ViewModel\MainViewModelBase.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
@@ -99,11 +103,17 @@
     <Compile Include="View\ChooseProfileAndPackUserControl.xaml.cs">
       <DependentUpon>ChooseProfileAndPackUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CreateProfileUserControl.xaml.cs">
+      <DependentUpon>CreateProfileUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CreateQnAView.xaml.cs">
       <DependentUpon>CreateQnAView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\JoinMultiplayerUserControl.xaml.cs">
       <DependentUpon>JoinMultiplayerUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoadProfileDialog.xaml.cs">
+      <DependentUpon>LoadProfileDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainUserControl.xaml.cs">
       <DependentUpon>MainUserControl.xaml</DependentUpon>
@@ -135,11 +145,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\CreateProfileUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CreateQnAView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\JoinMultiplayerUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoadProfileDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -201,9 +219,6 @@
     <None Include="Service References\OnlineLearningCardService\item1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\OnlineLearningCardService\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\OnlineLearningCardService\item3.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -245,6 +260,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\error1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

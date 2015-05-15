@@ -6,6 +6,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" MinHeight="300"/>
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -29,12 +30,16 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="{Binding ActiveLanguage[Profile]}">
-                <MenuItem Header="{Binding ActiveLanguage[ProfileNew]}" Command="{Binding NewProfileCommand}"/>
-                <MenuItem Header="{Binding ActiveLanguage[ProfileLoad]}"/>
+                <MenuItem Header="{Binding ActiveLanguage[ProfileNew]}" Command="{Binding Command_NewProfile}"/>
+                <MenuItem Header="{Binding ActiveLanguage[ProfileLoad]}" Command="{Binding Command_LoadActiveProfile}"/>
             </MenuItem>
             <MenuItem Header="{Binding ActiveLanguage[Help]}"/>
         </Menu>
-        <UserControl Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding mainContent}"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Height="Auto" HorizontalAlignment="Left">
+            <Label Content="Active Profile:" />
+            <Label Content="{Binding ActiveProfile.Name}"/>
+        </StackPanel>
+        <UserControl Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding mainContent}"/>
         <StatusBar Grid.Row="4" HorizontalAlignment="Stretch" Height="25" VerticalAlignment="Bottom" />
     </Grid>
 </Window>

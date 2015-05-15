@@ -43,16 +43,40 @@ namespace LearningCard.ViewModel
             }
         }
 
+        public OnlineLobbyViewModel()
+            : this(true, "127.0.0.1") {}
+
         public OnlineLobbyViewModel(Boolean isHost)
             : this(isHost, "127.0.0.1")
         { }
 
         public OnlineLobbyViewModel(Boolean isHost, String hostip = "127.0.0.1")
         {
-            this.LobbyClient = new Model.OnlineLobbyClientModel(isHost, hostip);
-            this.Command_RefresIP = new DelegateCommand(x => this.Execute_RefresIP());
+            try
+            {
+                this.LobbyClient = new Model.OnlineLobbyClientModel(isHost, hostip);
+            }
+            catch (InvalidOperationException e)
+            {
+                this.LobbyClient = null;
+            }
 
-            this.RefreshView();
+            if (this.LobbyClient == null)
+            {
+                //throw new NotImplementedException();
+                return;
+            }
+            else
+            {
+                this.Command_RefresIP = new DelegateCommand(x => this.Execute_RefresIP());
+
+                this.RefreshView();
+            }
+        }
+
+        public override bool IsReady()
+        {
+            return this.LobbyClient != null;
         }
 
         private void Execute_RefresIP()

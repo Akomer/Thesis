@@ -16,7 +16,6 @@ namespace LearningCard.OnlineLearningCardService
         public Profile()
         {
             this.Name = "Guest";
-            this.StatisticData = new Dictionary<string, int[]>();
         }
 
     }

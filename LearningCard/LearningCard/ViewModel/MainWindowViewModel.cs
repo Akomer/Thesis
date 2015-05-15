@@ -14,6 +14,9 @@ namespace LearningCard.ViewModel
         private ViewModel.MainViewModelBase mainContentViewModel;
 
         public DelegateCommand Command_ChangeLanguage { get; set; }
+        public DelegateCommand Command_NewProfile { get; set; }
+        public DelegateCommand Command_LoadActiveProfile { get; set; }  
+        
         public ObservableCollection<String> LanguageList
         {
             get
@@ -21,6 +24,18 @@ namespace LearningCard.ViewModel
                 return new ObservableCollection<String>(Model.GlobalLanguage.Instance.LanguageList());
             }
             set { }
+        }
+        public Model.Profile ActiveProfile
+        {
+            get
+            {
+                return Model.GlobalProfile.Instance.ActiveProfile;
+            }
+            set
+            {
+                Model.GlobalProfile.Instance.ActiveProfile = value;
+                this.OnPropertyChanged("ActiveProfile");
+            }
         }
 
         public UserControl mainContent
@@ -40,15 +55,26 @@ namespace LearningCard.ViewModel
             this.mainContentViewModel = new ViewModel.MainUserControlViewModel();
             this.mainContent.DataContext = this.mainContentViewModel;
             this.Command_ChangeLanguage = new DelegateCommand(x => this.Execute_ChangeLanguage((int)x));
+            this.Command_NewProfile = new DelegateCommand(x => this.VM_ChangeMainWindow(
+                new ViewModel.MainControlChangeEventArgs(typeof(View.CreateProfileUserControl), typeof(ViewModel.CreateProfileViewModel))));
             // this.mainContent.DataContext = new ViewModel.QnAViewModel();
+            this.Command_LoadActiveProfile = new DelegateCommand(x => this.Execut_LoadActiveProfile());
 
             this.mainContentViewModel.ChangeMainWindowContent += new ViewModel.Event_mainControlChange(VM_ChangeMainWindow);
         }
 
         private void VM_ChangeMainWindow(ViewModel.MainControlChangeEventArgs _args)
         {
-            this.mainContent = (UserControl)Activator.CreateInstance(_args.NewUserControl);
-            this.mainContentViewModel = (ViewModel.MainViewModelBase)Activator.CreateInstance(_args.NewViewModel, _args.args);
+            ViewModel.MainViewModelBase newViewModelBase;
+            newViewModelBase = (ViewModel.MainViewModelBase)Activator.CreateInstance(_args.NewViewModel, _args.args);
+            // newViewModelBase = (ViewModel.MainViewModelBase)Activator.CreateInstance(_args.NewViewModel);
+            if (!newViewModelBase.IsReady())
+            {
+                return;
+            }
+            UserControl newUserControl = (UserControl)Activator.CreateInstance(_args.NewUserControl);
+            this.mainContent = newUserControl;
+            this.mainContentViewModel = newViewModelBase;
             this.mainContent.DataContext = this.mainContentViewModel;
             this.mainContentViewModel.ChangeMainWindowContent += new ViewModel.Event_mainControlChange(VM_ChangeMainWindow);
         }
@@ -58,6 +84,18 @@ namespace LearningCard.ViewModel
             Model.GlobalLanguage.Instance.SetLanguage("hun");
             this.RefreshLanguage();
             this.mainContentViewModel.RefreshLanguage();
+        }
+
+        private void Execut_LoadActiveProfile()
+        {
+            View.LoadProfileDialog newDialog = new View.LoadProfileDialog();
+            LoadProfileDiagViewModel diagVM = new LoadProfileDiagViewModel(newDialog);
+            newDialog.DataContext = diagVM;
+
+            if (newDialog.ShowDialog() == true && diagVM.ProfilList_SelectedIndex >= 0)
+            {
+                this.ActiveProfile = Model.Profile.LoadProfileFromFile(diagVM.ProfileList[diagVM.ProfilList_SelectedIndex]);
+            }
         }
     }
 }

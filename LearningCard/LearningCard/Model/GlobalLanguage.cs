@@ -41,6 +41,11 @@ namespace LearningCard.Model
             ReadJson();
         }
 
+        public String GetLanguageFile()
+        {
+            return ActiveFile;
+        }
+
         private void ReadJson()
         {
             String path = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName;

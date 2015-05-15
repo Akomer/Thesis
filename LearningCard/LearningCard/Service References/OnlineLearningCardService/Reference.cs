@@ -25,9 +25,6 @@ namespace LearningCard.OnlineLearningCardService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.Dictionary<string, int[]> StatisticDataField;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -47,19 +44,6 @@ namespace LearningCard.OnlineLearningCardService {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.Dictionary<string, int[]> StatisticData {
-            get {
-                return this.StatisticDataField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StatisticDataField, value) != true)) {
-                    this.StatisticDataField = value;
-                    this.RaisePropertyChanged("StatisticData");
                 }
             }
         }

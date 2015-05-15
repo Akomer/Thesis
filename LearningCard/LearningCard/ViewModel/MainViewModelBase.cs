@@ -19,5 +19,10 @@ namespace LearningCard.ViewModel
                 this.ChangeMainWindowContent(new ViewModel.MainControlChangeEventArgs(t_uc, t_vm, args));
             }
         }
+
+        public virtual  Boolean IsReady()
+        {
+            return true;
+        }
     }
 }
