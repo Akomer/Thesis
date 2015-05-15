@@ -59,11 +59,13 @@
     <Compile Include="Model\AnswerTextModel.cs" />
     <Compile Include="Model\Card.cs" />
     <Compile Include="Model\CardPack.cs" />
+    <Compile Include="Model\GlobalLanguage.cs" />
     <Compile Include="Model\CreateQnAModel.cs" />
     <Compile Include="Model\DataContracts.cs" />
     <Compile Include="Model\MultiPlayerService.cs" />
     <Compile Include="Model\OnlineLobbyClientModel.cs" />
     <Compile Include="Model\OnlineLobbyServiceModel.cs" />
+    <Compile Include="Model\PartialClientClasses.cs" />
     <Compile Include="Model\Profile.cs" />
     <Compile Include="Model\QnAModel.cs" />
     <Compile Include="Model\QuestionItem.cs" />
@@ -186,6 +188,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Language\eng.lng" />
+    <None Include="Language\hun.lng" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

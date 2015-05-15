@@ -37,7 +37,7 @@ namespace LearningCard.Model
             this.LobbyClient = new OnlineLearningCardService.OnlineLobbyServiceModelClient(new System.ServiceModel.BasicHttpBinding(),
                 new System.ServiceModel.EndpointAddress(@"http://" + hostip + @":8080/learningcard/"));
             //this.LobbyClient = new OnlineLearningCardService.OnlineLobbyServiceModelClient();
-            OnlineLearningCardService.Profile p = new OnlineLearningCardService.Profile() { Name = "Guest", StatisticData = new Dictionary<string, int[]>() };
+            OnlineLearningCardService.Profile p = new Profile().GetServiceProfile();
             this.LobbyClient.JoinToLobby(p);
             
         }

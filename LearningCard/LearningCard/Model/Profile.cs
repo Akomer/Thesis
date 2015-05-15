@@ -38,5 +38,10 @@ namespace LearningCard.Model
             }
             this.StatisticData.Add(cards.PackName, l);
         }
+
+        public OnlineLearningCardService.Profile GetServiceProfile()
+        {
+            return new OnlineLearningCardService.Profile() { Name = this.Name };
+        }
     }
 }

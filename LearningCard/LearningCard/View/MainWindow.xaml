@@ -9,7 +9,31 @@
             <RowDefinition Height="*" MinHeight="300"/>
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0" HorizontalAlignment="Stretch" Height="25" VerticalAlignment="Top"/>
+        <Menu Grid.Row="0" IsMainMenu="True" MinHeight="20">
+            <MenuItem Header="{Binding ActiveLanguage[File]}">
+                <MenuItem Header="{Binding ActiveLanguage[FileExit]}" />
+            </MenuItem>
+            <MenuItem Header="{Binding ActiveLanguage[Settings]}">
+                <MenuItem Header="{Binding ActiveLanguage[SettingsLang]}" ItemsSource="{Binding LanguageList}" 
+                          AlternationCount="{Binding LanguageListCount}">
+                    <MenuItem.ItemContainerStyle>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="Header" Value="{Binding}" />
+                            <Setter Property="Command" Value="{Binding DataContext.Command_ChangeLanguage, 
+                                RelativeSource={RelativeSource Mode=FindAncestor,      
+                                AncestorType={x:Type MenuItem}} }" />
+                            <Setter Property="CommandParameter" Value="{Binding Path=AlternationIndex, 
+                                RelativeSource={RelativeSource Self}}" />
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="{Binding ActiveLanguage[Profile]}">
+                <MenuItem Header="{Binding ActiveLanguage[ProfileNew]}" Command="{Binding NewProfileCommand}"/>
+                <MenuItem Header="{Binding ActiveLanguage[ProfileLoad]}"/>
+            </MenuItem>
+            <MenuItem Header="{Binding ActiveLanguage[Help]}"/>
+        </Menu>
         <UserControl Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding mainContent}"/>
         <StatusBar Grid.Row="4" HorizontalAlignment="Stretch" Height="25" VerticalAlignment="Bottom" />
     </Grid>

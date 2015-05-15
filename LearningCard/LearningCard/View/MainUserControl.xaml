@@ -6,9 +6,9 @@
              mc:Ignorable="d" 
              MinHeight="300" MinWidth="300">
     <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Padding="5" Content="Start New Quiz" Command="{Binding ClickCommand_StartNewQnA}"/>
-        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Padding="5" Content="Start Online Game" Command="{Binding ClickCommand_StartMultiplayer}"/>
-        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Padding="5" Content="Join Online Quiz" Command="{Binding ClickCommand_JoinMultiplayer}"/>
-        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Padding="5" Content="Create New Quiz" Command="{Binding ClickCommand_CreateNewQnA}"/>
+        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Padding="5" Content="{Binding ActiveLanguage[StartNewQuiz]}" Command="{Binding ClickCommand_StartNewQnA}"/>
+        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Padding="5" Content="{Binding ActiveLanguage[StartOnlineGame]}" Command="{Binding ClickCommand_StartMultiplayer}"/>
+        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Padding="5" Content="{Binding ActiveLanguage[JoinOnlineQuiz]}" Command="{Binding ClickCommand_JoinMultiplayer}"/>
+        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Padding="5" Content="{Binding ActiveLanguage[CreateNewQuiz]}" Command="{Binding ClickCommand_CreateNewQnA}"/>
     </StackPanel>
 </UserControl>

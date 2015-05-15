@@ -1,0 +1,26 @@
+{
+	"type" : "Language",
+	"LanguageName" : "English",
+	"NotFindInDict" : "Not Find in ",
+
+	"File" : "File",
+	"FileExit" : "Exit",
+	"Settings" : "Settings",
+	"SettingsLang" : "Language",
+	"Profile" : "Profile",
+	"ProfileNew": "New Profile",
+	"ProfileLoad" : "Load Profile",
+	"Help" : "Help",
+	
+	"StartNewQuiz" : "Start New Quiz",
+	"StartOnlineGame" : "Start Online Game",
+	"JoinOnlineQuiz" : "Join Online Quiz",
+	"CreateNewQuiz" : "Create New Quiz",
+
+	"CreateProfile" : "Create Profile",
+	"LoadProfile" : "Load Profile",
+	"ActivePrifle" : "Active Profile",
+	"LoadCardPack" : "Load Card Pack",
+	"None" : "None"
+
+}

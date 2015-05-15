@@ -43,5 +43,11 @@ namespace LearningCard.ViewModel
         {
             this.OnChangeMainWindowContent(typeof(View.JoinMultiplayerUserControl), typeof(ViewModel.JoinMultiplayerViewModel));
         }
+
+        public override void RefreshLanguage()
+        {
+            base.RefreshLanguage();
+            this.OnPropertyChanged("ActiveLanguage");
+        }
     }
 }

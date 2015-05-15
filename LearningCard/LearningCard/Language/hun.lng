@@ -1,0 +1,26 @@
+{
+	"type" : "Language",
+	"LanguageName" : "Magyar",
+	"NotFindInDict" : "Nem talalhato ebben: ",
+
+	"File" : "Fájl",
+	"FileExit" : "Kilépés",
+	"Settings" : "Beállítások",
+	"SettingsLang" : "Nyelv",
+	"Profile" : "Profil",
+	"ProfileNew": "Új Profil",
+	"ProfileLoad" : "Profil Betöltése",
+	"Help" : "Segítség",
+
+	"StartNewQuiz" : "Start Uj Kviz",
+	"StartOnlineGame" : "Start Online Jatek",
+	"JoinOnlineQuiz" : "Csatlakozas Online Kvizhez",
+	"CreateNewQuiz" : "Uj Kviz keszitese",
+
+	"CreateProfile" : "Profil keszitese",
+	"LoadProfile" : "Profil betoltese",
+	"ActivePrifle" : "Betoltott Profil",
+	"LoadCardPack" : "Kartya Pakli betoltese",
+	"None" : "Semmi"
+
+}
