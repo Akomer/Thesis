@@ -317,12 +317,12 @@ namespace LearningCard.ViewModel
 
         private void Execute_SaceCardPack()
         {
-            System.Windows.Forms.SaveFileDialog saveDialog = new System.Windows.Forms.SaveFileDialog();
-            saveDialog.Filter = "Card Pack (*.lcp)|*.lcp|Any File (*.*)|*.*";
-            saveDialog.Title = "Save new card pack";
-            if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //System.Windows.Forms.SaveFileDialog saveDialog = new System.Windows.Forms.SaveFileDialog();
+            //saveDialog.Filter = "Card Pack (*.lcp)|*.lcp|Any File (*.*)|*.*";
+            //saveDialog.Title = "Save new card pack";
+            //if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                this.QnAModel.SaveCardPack(saveDialog.FileName);
+                this.QnAModel.SaveCardPack("a");
             }
         }
 

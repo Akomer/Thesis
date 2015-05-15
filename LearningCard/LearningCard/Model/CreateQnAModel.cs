@@ -38,12 +38,14 @@ namespace LearningCard.Model
 
         public void SaveCardPack(String fileName)
         {
-            this.CardPackItem.PackName = fileName.Split('\\').Last().Split('.')[0];
-            using (FileStream saveFile = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write))
-            {
-                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CardPack));
-                serializer.WriteObject(saveFile, this.CardPackItem);
-            }
+            // this.CardPackItem.PackName = fileName.Split('\\').Last().Split('.')[0];
+            // using (FileStream saveFile = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write))
+            // {
+            //     DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CardPack));
+            //     serializer.WriteObject(saveFile, this.CardPackItem);
+            // }
+            this.CardPackItem.PackName = "TestPack";
+            Model.CardPack.SaveCardPackToFile(this.CardPackItem);
         }
 
         public void LoadCardPack(String fileName)

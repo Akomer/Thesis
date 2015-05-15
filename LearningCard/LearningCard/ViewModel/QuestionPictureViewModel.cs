@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using System.Windows.Forms;
+using System.IO;
 
 namespace LearningCard.ViewModel
 {
@@ -16,12 +17,14 @@ namespace LearningCard.ViewModel
         {
             get
             {
-                BitmapImage img_src = new BitmapImage();
-                img_src.BeginInit();
-                // img_src.UriSource = new Uri("C:\\Users\\Speeder\\Pictures\\kirito1.jpg");
-                img_src.UriSource = this.QuestionModel.ImageSRC;
-                img_src.EndInit();
-                return img_src;
+                try
+                {
+                    return new BitmapImage(this.QuestionModel.GetImagFullPath());
+                }
+                catch (FileNotFoundException)
+                {
+                    return new BitmapImage(new Uri(@"/Images/error1.jpg", UriKind.Relative));
+                }
             }
             set { }
         }

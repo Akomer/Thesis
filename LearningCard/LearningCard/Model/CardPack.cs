@@ -55,20 +55,15 @@ namespace LearningCard.Model
             return tmpDeck;
         }
 
-        static void SaveCardPackToFile(CardPack deck)
+        static public void SaveCardPackToFile(CardPack deck)
         {
             String BasePath = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName;
-            String ImagePath = BasePath + "\\CardPacks\\" + deck.PackName + "_IMG";
+            String ImagePath = BasePath + "\\CardPacks\\" + deck.PackName + "_IMG\\";
             String FilePath = BasePath + "\\CardPacks\\" + deck.PackName + ".lcp"; ;
 
             if (!System.IO.Directory.Exists(ImagePath))
             {
                 System.IO.Directory.CreateDirectory(ImagePath);
-            }
-
-            foreach (String item in System.IO.Directory.GetFiles(ImagePath))
-            {
-                System.IO.File.Delete(item);
             }
 
             HashSet<String> imgSet = new HashSet<String>();
@@ -81,16 +76,35 @@ namespace LearningCard.Model
                     {
                         String BaseImgName = System.IO.Path.GetFileNameWithoutExtension(q.ImageSRC.ToString());
                         String ImgExtension = System.IO.Path.GetExtension(q.ImageSRC.ToString());
-                        String imgName = BaseImgName+ImgExtension;
+                        String imgName = BaseImgName + ImgExtension;
                         while (imgSet.Contains(imgName))
                         {
                             Int32 i = 0;
                             imgName = BaseImgName + String.Format("_{0}.{1}", i, ImgExtension);
                             i += 1;
                         }
-                        System.IO.File.Copy(q.ImageSRC.ToString(), ImagePath + imgName);
+                        System.IO.File.Copy(q.ImageSRC.AbsolutePath, ImagePath + imgName, true);
                         imgSet.Add(imgName);
                         q.ImageSRC = new Uri("\\CardPacks\\" + deck.PackName + "_IMG\\" + imgName, UriKind.Relative);
+                    }
+                    else
+                    {
+                        imgSet.Add(System.IO.Path.GetFileName(q.ImageSRC.ToString()));
+                    }
+                }
+            }
+
+            foreach (String item in System.IO.Directory.GetFiles(ImagePath))
+            {
+                if (!imgSet.Contains(System.IO.Path.GetFileName(item)))
+                {
+                    try
+                    {
+                        System.IO.File.Delete(item);
+                    }
+                    catch (IOException)
+                    {
+                        continue;
                     }
                 }
             }
