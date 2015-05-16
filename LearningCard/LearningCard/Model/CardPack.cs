@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.IO;
 using System.Runtime.Serialization.Json;
+using System.IO.Compression;
 
 namespace LearningCard.Model
 {
@@ -17,7 +18,7 @@ namespace LearningCard.Model
         [DataMember]
         public List<Card> CardList { get; set; }
 
-        static List<CardPack> CardPackList()
+        static public List<CardPack> CardPackList()
         {
             List<CardPack> deckList = new List<CardPack>();
             deckList = new List<CardPack>();
@@ -25,8 +26,8 @@ namespace LearningCard.Model
             path += "\\CardPacks\\";
             foreach (String file in Directory.GetFiles(path, "*.lcp"))
             {
-
-                //deckList.Add();
+                String deckName = Path.GetFileNameWithoutExtension(file);
+                deckList.Add(LoadCardPackFromFile(deckName));
             }
             return deckList;
         }
@@ -109,11 +110,49 @@ namespace LearningCard.Model
                 }
             }
 
-            using (FileStream saveFile = new FileStream(FilePath, FileMode.OpenOrCreate, FileAccess.Write))
+            using (FileStream saveFile = new FileStream(FilePath, FileMode.Create, FileAccess.Write))
             {
                 DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CardPack));
                 serializer.WriteObject(saveFile, deck);
             }
+        }
+
+        static public void ExportCardPack(String PackName, String destFile)
+        {
+            String BasePath = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName;
+            BasePath += "\\CardPacks";
+            try
+            {
+                File.Copy(BasePath + String.Format("\\{0}.lcp", PackName),
+                          BasePath + String.Format("\\{0}_IMG\\{0}.lcp", PackName));
+            }
+            catch (IOException)
+            {
+                File.Delete(BasePath + String.Format("\\{0}_IMG\\{0}.lcp", PackName));
+                File.Copy(BasePath + String.Format("\\{0}.lcp", PackName),
+                    BasePath + String.Format("\\{0}_IMG\\{0}.lcp", PackName));
+            }
+
+            ZipFile.CreateFromDirectory(BasePath + String.Format("\\{0}_IMG", PackName), destFile);
+
+            File.Delete(BasePath + String.Format("\\{0}_IMG\\{0}.lcp", PackName));
+        }
+
+        static public void ImportCardPack(String sourceFile)
+        {
+            String BasePath = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName;
+            String importDir = BasePath + "\\tmp\\import";
+            Directory.CreateDirectory(importDir);
+            ZipFile.ExtractToDirectory(sourceFile, importDir);
+
+            String cardPack = Directory.GetFiles(importDir, "*.lcp")[0];
+            String cardPackName = Path.GetFileNameWithoutExtension(cardPack);
+
+            foreach (String file in Directory.GetFiles(importDir))
+            {
+                File.Delete(file);
+            }
+            Directory.Delete(importDir);
         }
     }
 }

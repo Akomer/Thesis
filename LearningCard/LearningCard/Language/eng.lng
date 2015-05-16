@@ -10,6 +10,9 @@
 	"Profile" : "Profile",
 	"ProfileNew": "New Profile",
 	"ProfileLoad" : "Load Profile",
+	"CardPacks" : "Card Packs",
+	"ExportCardPack" : "Export Card Pack",
+	"ImportCardPack" : "Import Card Pack",
 	"Help" : "Help",
 	
 	"StartNewQuiz" : "Start New Quiz",

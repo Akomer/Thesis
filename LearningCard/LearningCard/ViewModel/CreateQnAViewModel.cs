@@ -153,7 +153,7 @@ namespace LearningCard.ViewModel
             this.GenerateNewCardParts();
 
             this.Command_AddCard = new DelegateCommand(x => this.Execute_AddCard());
-            this.Command_SaveCardPack = new DelegateCommand(x => this.Execute_SaceCardPack());
+            this.Command_SaveCardPack = new DelegateCommand(x => this.Execute_SaveCardPack());
             this.Command_LoadCardPack = new DelegateCommand(x => this.Execute_LoadCardPack());
             this.Command_DeleteCard = new DelegateCommand(x => this.Execute_DeleteCard());
 
@@ -315,7 +315,7 @@ namespace LearningCard.ViewModel
             
         }
 
-        private void Execute_SaceCardPack()
+        private void Execute_SaveCardPack()
         {
             //System.Windows.Forms.SaveFileDialog saveDialog = new System.Windows.Forms.SaveFileDialog();
             //saveDialog.Filter = "Card Pack (*.lcp)|*.lcp|Any File (*.*)|*.*";

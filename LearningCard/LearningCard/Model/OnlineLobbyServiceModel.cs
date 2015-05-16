@@ -9,6 +9,7 @@ using System.Runtime.Serialization.Json;
 using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Timers;
 
 namespace LearningCard.Model
 {
@@ -31,6 +32,7 @@ namespace LearningCard.Model
         private String _HostIP;
         private Uri baseAddress;
         private List<Profile> ActiveUsers;
+        private Timer HeartBeatChecker;
 
         public String HostIP
         {
@@ -52,6 +54,8 @@ namespace LearningCard.Model
         public OnlineLobbyServiceModel()
         {   
             this.ActiveUsers = new List<Profile>();
+            this.HeartBeatChecker = new Timer(3000);
+
         }
 
         public Boolean JoinToLobby(Model.Profile prof)
@@ -75,6 +79,11 @@ namespace LearningCard.Model
                 return "127.0.0.1";
             }
             return ip;
+        }
+
+        private void CheckClientListForHeartBeat()
+        {
+
         }
 
         private String GetPublicIPFromDynDNS()

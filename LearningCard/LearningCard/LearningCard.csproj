@@ -36,6 +36,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
@@ -86,6 +88,7 @@
     <Compile Include="ViewModel\CreateQnAViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
     <Compile Include="ViewModel\JoinMultiplayerViewModel.cs" />
+    <Compile Include="ViewModel\LoadCardPackDiagViewModel.cs" />
     <Compile Include="ViewModel\LoadProfileDiagViewModel.cs" />
     <Compile Include="ViewModel\MainUserControlViewModel.cs" />
     <Compile Include="ViewModel\MainViewModelBase.cs" />
@@ -111,6 +114,9 @@
     </Compile>
     <Compile Include="View\JoinMultiplayerUserControl.xaml.cs">
       <DependentUpon>JoinMultiplayerUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoadCardPackDialog.xaml.cs">
+      <DependentUpon>LoadCardPackDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoadProfileDialog.xaml.cs">
       <DependentUpon>LoadProfileDialog.xaml</DependentUpon>
@@ -154,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\JoinMultiplayerUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoadCardPackDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

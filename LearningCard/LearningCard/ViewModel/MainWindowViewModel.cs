@@ -16,6 +16,8 @@ namespace LearningCard.ViewModel
         public DelegateCommand Command_ChangeLanguage { get; set; }
         public DelegateCommand Command_NewProfile { get; set; }
         public DelegateCommand Command_LoadActiveProfile { get; set; }  
+        public DelegateCommand Command_ExportCardPack { get; set; }  
+        public DelegateCommand Command_ImportCardPack { get; set; }  
         
         public ObservableCollection<String> LanguageList
         {
@@ -57,8 +59,9 @@ namespace LearningCard.ViewModel
             this.Command_ChangeLanguage = new DelegateCommand(x => this.Execute_ChangeLanguage((int)x));
             this.Command_NewProfile = new DelegateCommand(x => this.VM_ChangeMainWindow(
                 new ViewModel.MainControlChangeEventArgs(typeof(View.CreateProfileUserControl), typeof(ViewModel.CreateProfileViewModel))));
-            // this.mainContent.DataContext = new ViewModel.QnAViewModel();
             this.Command_LoadActiveProfile = new DelegateCommand(x => this.Execut_LoadActiveProfile());
+            this.Command_ExportCardPack = new DelegateCommand(x => this.Execute_ExportCardPack());
+            this.Command_ImportCardPack = new DelegateCommand(x => this.Execute_ImportCardPack());
 
             this.mainContentViewModel.ChangeMainWindowContent += new ViewModel.Event_mainControlChange(VM_ChangeMainWindow);
         }
@@ -97,5 +100,38 @@ namespace LearningCard.ViewModel
                 this.ActiveProfile = Model.Profile.LoadProfileFromFile(diagVM.ProfileList[diagVM.ProfilList_SelectedIndex]);
             }
         }
+
+        private void Execute_ExportCardPack()
+        {
+            View.LoadCardPackDialog newDialog = new View.LoadCardPackDialog();
+            LoadCardPackDiagViewModel diagVM = new LoadCardPackDiagViewModel(newDialog);
+            newDialog.DataContext = diagVM;
+
+            String SelectedCardPack;
+            if (newDialog.ShowDialog() == true)
+            {
+                SelectedCardPack = diagVM.GetSelectedItem();
+
+                System.Windows.Forms.SaveFileDialog saveDialog = new System.Windows.Forms.SaveFileDialog();
+                saveDialog.Filter = "Card Pack Zip(*.lcpz)|*.lcpz|Any File (*.*)|*.*";
+                saveDialog.Title = "export card pack";
+                if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    Model.CardPack.ExportCardPack(SelectedCardPack, saveDialog.FileName);
+                }
+            }
+        }
+        
+        private void Execute_ImportCardPack()
+        {
+            System.Windows.Forms.OpenFileDialog loadDialog = new System.Windows.Forms.OpenFileDialog();
+            loadDialog.Filter = "Card Pack Zip (*.lcpz)|*.lcpz|Any File (*.*)|*.*";
+            loadDialog.Title = "Import card pack zip";
+            if (loadDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Model.CardPack.ImportCardPack(loadDialog.FileName);
+            }
+        }
+
     }
 }

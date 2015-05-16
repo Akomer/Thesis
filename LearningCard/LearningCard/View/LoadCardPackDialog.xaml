@@ -1,0 +1,13 @@
+﻿<Window x:Class="LearningCard.View.LoadCardPackDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LoadCardPackDialog" Height="300" Width="300">
+    <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Padding="3" Content="Select Card Pack" Command="{Binding Command_DialogLoad}"/>
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Padding="3" Content="Cancel"  Command="{Binding Command_DialogCancel}"/>
+        </StackPanel>
+        <ListView HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" ItemsSource="{Binding CardPackList}" Padding="10" 
+                  SelectedIndex="{Binding CardPackList_SelectedIndex}"/>
+    </DockPanel>
+</Window>
