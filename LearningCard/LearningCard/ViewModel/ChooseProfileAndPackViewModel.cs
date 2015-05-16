@@ -62,20 +62,14 @@ namespace LearningCard.ViewModel
         }
         private void Execute_LoadCardPack()
         {
-            System.Windows.Forms.OpenFileDialog loadDialog = new System.Windows.Forms.OpenFileDialog();
-            loadDialog.Filter = "Card Pack (*.lcp)|*.lcp|Any File (*.*)|*.*";
-            loadDialog.Title = "Load card pack";
-            if (loadDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            View.LoadCardPackDialog newDialog = new View.LoadCardPackDialog();
+            LoadCardPackDiagViewModel diagVM = new LoadCardPackDiagViewModel(newDialog);
+            newDialog.DataContext = diagVM;
+
+            if (newDialog.ShowDialog() == true)
             {
-                try
                 {
-                    this.QnAModel = new Model.QnAModel(loadDialog.FileName);
-                }
-                catch (System.Runtime.Serialization.SerializationException e)
-                {
-                    System.Windows.Forms.MessageBox.Show("Invalid Card Pack file", "Invalid CardPack",
-                        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-                    return;
+                    this.QnAModel = new Model.QnAModel(diagVM.GetSelectedItem());
                 }
             }
             this.OnPropertyChanged("ActiveCardPack");

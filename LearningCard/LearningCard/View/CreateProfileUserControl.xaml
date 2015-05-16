@@ -7,25 +7,25 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" LastChildFill="True">
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label VerticalAlignment="Center" Content="User Name:"/>
+            <Label VerticalAlignment="Center" Content="{Binding ActiveLanguage[UserName]}"/>
             <TextBox Margin="5" Padding="3" MinWidth="120" VerticalAlignment="Center" Text="{Binding UserName}"/>
         </StackPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label VerticalAlignment="Center" Content="Language:" />
+            <Label VerticalAlignment="Center" Content="{Binding ActiveLanguage[Language]}" />
             <ListBox VerticalAlignment="Center" MinWidth="50" ItemsSource="{Binding LanguageList}" MaxHeight="50"/>
         </StackPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label VerticalAlignment="Center" Content="Color Scheme" />
+            <Label VerticalAlignment="Center" Content="{Binding ActiveLanguage[ColorScheme]}" />
             <ListBox VerticalAlignment="Center" MinWidth="50"/>
         </StackPanel>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button VerticalAlignment="Center" Margin="5" Padding="3" Content="Save Profile" Command="{Binding Command_SaveProfile}"/>
-            <Button VerticalAlignment="Center" Margin="5" Padding="3" Content="Load Profile" Command="{Binding Command_LoadProfile}"/>
+            <Button VerticalAlignment="Center" Margin="5" Padding="3" Content="{Binding ActiveLanguage[SaveProfile]}" Command="{Binding Command_SaveProfile}"/>
+            <Button VerticalAlignment="Center" Margin="5" Padding="3" Content="{Binding ActiveLanguage[LoadProfile]}" Command="{Binding Command_LoadProfile}"/>
         </StackPanel>
         <Image VerticalAlignment="Bottom" MinHeight="100" MinWidth="100" MaxWidth="150" MaxHeight="150" Source="{Binding ProfilePicture}">
             <Image.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Change Profile Picture" Command="{Binding Command_ChangeProfilePicture}" />
+                    <MenuItem Header="{Binding ActiveLanguage[ChangeProfilePicture]}" Command="{Binding Command_ChangeProfilePicture}" />
                 </ContextMenu>
             </Image.ContextMenu>
         </Image>

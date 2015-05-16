@@ -9,6 +9,7 @@ namespace LearningCard.Model
 {
     [DataContract]
     [KnownType(typeof(AnswerLotofTextModel))]
+    [KnownType(typeof(AnswerExactTextModel))]
     abstract class IAnswer
     {
         public abstract Type GetAnswerType();

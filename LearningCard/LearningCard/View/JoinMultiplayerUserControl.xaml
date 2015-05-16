@@ -6,8 +6,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Host IP address" Margin="5"/>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding ActiveLanguage[HostIPaddress]}" Margin="5"/>
         <TextBox MinWidth="150" HorizontalAlignment="Center" Padding="5" Margin="5" Text="{Binding HostIPAddress}"/>
-        <Button HorizontalAlignment="Center" Padding="5" Margin="5" Content="Join to Server" Command="{Binding Command_JoinToServer}" />
+        <Button HorizontalAlignment="Center" Padding="5" Margin="5" Content="{Binding ActiveLanguage[JointoServer]}" 
+                Command="{Binding Command_JoinToServer}" />
     </StackPanel>
 </UserControl>

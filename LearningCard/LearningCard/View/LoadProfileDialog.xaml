@@ -4,8 +4,8 @@
         Title="LoadProfileDialog" Height="300" Width="300">
     <DockPanel LastChildFill="True">
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Padding="3" Content="Load Profile" Command="{Binding Command_DialogLoad}"/>
-            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Padding="3" Content="Cancel"  Command="{Binding Command_DialogCancel}"/>
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Padding="3" Content="{Binding ActiveLanguage[LoadProfile]}" Command="{Binding Command_DialogLoad}"/>
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Padding="3" Content="{Binding ActiveLanguage[Cancel]}"  Command="{Binding Command_DialogCancel}"/>
         </StackPanel>
         <ListView HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" ItemsSource="{Binding ProfileList}" Padding="10" 
                   SelectedIndex="{Binding ProfilList_SelectedIndex}"/>

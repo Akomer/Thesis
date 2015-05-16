@@ -35,6 +35,19 @@ namespace LearningCard.ViewModel
 
             }
         }
+        private String _LastAnswer;
+        public String LastAnswer
+        {
+            get
+            {
+                return this._LastAnswer;
+            }
+            set
+            {
+                this._LastAnswer = value;
+                this.OnPropertyChanged("LastAnswer");
+            }
+        }
         public UserControl QuestionPanel
         {
             get
@@ -68,6 +81,7 @@ namespace LearningCard.ViewModel
 
             this.Command_CheckAnswer = new DelegateCommand(x => this.Execute_CheckAnswer());
             this.Command_SkipAnswer = new DelegateCommand(x => this.Execute_SkipAnswer());
+            this.LastAnswer = "None";
             this.GenerateFullCard();
         }
 
@@ -112,6 +126,14 @@ namespace LearningCard.ViewModel
                 v.DataContext = dc;
                 return v;
             }
+            if (this.ActualCard.Answer.GetAnswerType() == typeof(Model.AnswerExactTextModel))
+            {
+                UserControl v = new View.AnswerTextUserControl();
+                ViewModel.AnswerExactTextViewModel dc = new ViewModel.AnswerExactTextViewModel(
+                    (Model.AnswerExactTextModel)this.QnAModel.UserAnswer);
+                v.DataContext = dc;
+                return v;
+            }
             return null;
         }
 
@@ -119,9 +141,9 @@ namespace LearningCard.ViewModel
         {
             if (this.QnAModel.CheckAnswer())
             {
-                System.Windows.Forms.MessageBox.Show("Right answer\nCongrat", "Right Answer",
-                    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.None);
-                this.QnAModel.AnswerWasRight();
+                // System.Windows.Forms.MessageBox.Show("Right answer\nCongrat", "Right Answer",
+                //     System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.None);
+                this.RightAnswer();
             }
             else if (this.QnAModel.UserAnswer.GetAnswerType() == typeof(Model.AnswerLotofTextModel))
             {
@@ -131,16 +153,16 @@ namespace LearningCard.ViewModel
                     System.Windows.Forms.MessageBoxButtons.YesNo,
                     System.Windows.Forms.MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    this.QnAModel.AnswerWasRight();
+                    this.RightAnswer();
                 }
                 else
                 {
-                    this.QnAModel.AnswerWasWrong();
+                    this.WrongAnser();
                 }
             }
             else
             {
-                this.QnAModel.AnswerWasWrong();
+                this.WrongAnser();
             }
             this.GenerateFullCard();
         }
@@ -149,6 +171,18 @@ namespace LearningCard.ViewModel
         {
             this.QnAModel.AnswerWasWrong();
             this.GenerateFullCard();
+        }
+
+        private void WrongAnser()
+        {
+            this.LastAnswer = "Wrong";
+            this.QnAModel.AnswerWasWrong();
+        }
+
+        private void RightAnswer()
+        {
+            this.LastAnswer = "Right";
+            this.QnAModel.AnswerWasRight();
         }
     }
 }

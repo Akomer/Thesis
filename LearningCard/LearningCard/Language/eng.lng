@@ -14,7 +14,8 @@
 	"ExportCardPack" : "Export Card Pack",
 	"ImportCardPack" : "Import Card Pack",
 	"Help" : "Help",
-	
+	"ActiveProfileName" : "Active Profile:",
+
 	"StartNewQuiz" : "Start New Quiz",
 	"StartOnlineGame" : "Start Online Game",
 	"JoinOnlineQuiz" : "Join Online Quiz",
@@ -24,6 +25,25 @@
 	"LoadProfile" : "Load Profile",
 	"ActivePrifle" : "Active Profile",
 	"LoadCardPack" : "Load Card Pack",
-	"None" : "None"
+	"None" : "None",
+
+	"Start" : "Start",
+	"UserName" : "User Name:",
+	"Language" : "Language:",
+	"ColorScheme" : "Color Scheme",
+	"SaveProfile" : "Save Profile",
+	"ChangeProfilePicture" : "Change Profile Picture",
+
+	"CardTitle" : "Card Title",
+	"DeleteCard" : "Delete Card",
+	"SaveCardPack" : "Save Card Pack",
+
+	"HostIPaddress" : "Host IP address",
+	"JointoServer" : "Join to Server",
+
+	"SelectCardPack" : "Select Card Pack",
+	"Cancel" : "Cancel",
 
 }
+
+{Binding ActiveLanguage[CardPacks]}

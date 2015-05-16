@@ -40,7 +40,7 @@
             <MenuItem Header="{Binding ActiveLanguage[Help]}"/>
         </Menu>
         <StackPanel Grid.Row="1" Orientation="Horizontal" Height="Auto" HorizontalAlignment="Left">
-            <Label Content="Active Profile:" />
+            <Label Content="{Binding ActiveLanguage[ActiveProfileName]}" />
             <Label Content="{Binding ActiveProfile.Name}"/>
         </StackPanel>
         <UserControl Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding mainContent}"/>

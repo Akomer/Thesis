@@ -36,6 +36,12 @@ namespace LearningCard.Model
             this.SetupNewCard();
         }
 
+        public QnAModel(CardPack cp)
+        {
+            this.CardPackItem = cp;
+            this.SetupNewCard();
+        }
+
         public void SetupNewCard()
         {
             this.ActiveCardIndex = this.GenerateNextCardIndex();
