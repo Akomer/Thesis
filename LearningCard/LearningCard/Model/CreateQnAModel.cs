@@ -11,7 +11,7 @@ namespace LearningCard.Model
     class CreateQnAModel
     {
 
-        private CardPack CardPackItem;
+        public CardPack CardPackItem;
         public List<Model.Card> CardPack
         {
             get

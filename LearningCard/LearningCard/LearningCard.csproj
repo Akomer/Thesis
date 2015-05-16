@@ -58,7 +58,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\AnswerTextModel.cs" />
+    <Compile Include="Model\AnswerExactTextModel.cs" />
+    <Compile Include="Model\AnswerLotofTextModel.cs" />
     <Compile Include="Model\Card.cs" />
     <Compile Include="Model\CardPack.cs" />
     <Compile Include="Model\CreateProfileModel.cs" />
@@ -81,7 +82,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\AnswerTextViewModel.cs" />
+    <Compile Include="ViewModel\AnswerExactTextViewModel.cs" />
+    <Compile Include="ViewModel\AnswerLotofTextViewModel.cs" />
     <Compile Include="ViewModel\AnswerViewModelBase.cs" />
     <Compile Include="ViewModel\ChooseProfileAndPackViewModel.cs" />
     <Compile Include="ViewModel\CreateProfileViewModel.cs" />

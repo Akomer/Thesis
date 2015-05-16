@@ -107,7 +107,7 @@ namespace LearningCard.ViewModel
             LoadCardPackDiagViewModel diagVM = new LoadCardPackDiagViewModel(newDialog);
             newDialog.DataContext = diagVM;
 
-            String SelectedCardPack;
+            Model.CardPack SelectedCardPack;
             if (newDialog.ShowDialog() == true)
             {
                 SelectedCardPack = diagVM.GetSelectedItem();
@@ -117,7 +117,7 @@ namespace LearningCard.ViewModel
                 saveDialog.Title = "export card pack";
                 if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    Model.CardPack.ExportCardPack(SelectedCardPack, saveDialog.FileName);
+                    Model.CardPack.ExportCardPack(SelectedCardPack.PackName, saveDialog.FileName);
                 }
             }
         }

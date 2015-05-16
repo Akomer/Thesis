@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace LearningCard.Model
 {
     [DataContract]
-    [KnownType(typeof(AnswerTextModel))]
+    [KnownType(typeof(AnswerLotofTextModel))]
     abstract class IAnswer
     {
         public abstract Type GetAnswerType();

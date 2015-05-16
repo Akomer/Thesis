@@ -15,9 +15,9 @@ namespace LearningCard.ViewModel
             get
             {
                 ObservableCollection<String> obc = new ObservableCollection<string>();
-                foreach (Model.CardPack item in Model.CardPack.CardPackList())
+                foreach (Tuple<Model.CardPack, String> item in Model.CardPack.CardPackList())
                 {
-                    obc.Add(item.PackName);
+                    obc.Add(String.Format("{0} ({1})",item.Item1.PackName, item.Item2));
                 }
                 return obc;
             }
@@ -65,13 +65,13 @@ namespace LearningCard.ViewModel
             dialog.DialogResult = false;
         }
 
-        public String GetSelectedItem()
+        public Model.CardPack GetSelectedItem()
         {
             if (CardPackList_SelectedIndex == -1)
             {
                 return null;
             }
-            return this.CardPackList[this.CardPackList_SelectedIndex];
+            return Model.CardPack.CardPackList()[this.CardPackList_SelectedIndex].Item1;
         }
 
     }

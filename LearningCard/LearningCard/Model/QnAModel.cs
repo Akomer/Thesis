@@ -11,8 +11,7 @@ namespace LearningCard.Model
     class QnAModel
     {
         private Profile UserProfile;
-        private CardPack CardPackItem;
-        private List<Model.Card> CardPack
+        public List<Model.Card> CardPack
         {
             get
             {
@@ -22,11 +21,10 @@ namespace LearningCard.Model
             {
                 this.CardPackItem.CardList = value;
             }
-
         }
         public IAnswer UserAnswer;
         private Int32 ActiveCardIndex;
-
+        public CardPack CardPackItem;
 
         public QnAModel(String fileName)
         {

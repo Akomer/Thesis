@@ -104,11 +104,11 @@ namespace LearningCard.ViewModel
 
         private UserControl AnswerViewGenerator()
         {
-            if (this.ActualCard.Answer.GetAnswerType() == typeof(Model.AnswerTextModel))
+            if (this.ActualCard.Answer.GetAnswerType() == typeof(Model.AnswerLotofTextModel))
             {
                 UserControl v = new View.AnswerTextUserControl();
-                ViewModel.AnswerTextViewModel dc = new ViewModel.AnswerTextViewModel( 
-                    (Model.AnswerTextModel)this.QnAModel.UserAnswer );
+                ViewModel.AnswerLotofTextViewModel dc = new ViewModel.AnswerLotofTextViewModel( 
+                    (Model.AnswerLotofTextModel)this.QnAModel.UserAnswer );
                 v.DataContext = dc;
                 return v;
             }
@@ -123,9 +123,9 @@ namespace LearningCard.ViewModel
                     System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.None);
                 this.QnAModel.AnswerWasRight();
             }
-            else if (this.QnAModel.UserAnswer.GetAnswerType() == typeof(Model.AnswerTextModel))
+            else if (this.QnAModel.UserAnswer.GetAnswerType() == typeof(Model.AnswerLotofTextModel))
             {
-                Model.AnswerTextModel rightAnswerModel = (Model.AnswerTextModel)this.QnAModel.GetCard().Answer;
+                Model.AnswerLotofTextModel rightAnswerModel = (Model.AnswerLotofTextModel)this.QnAModel.GetCard().Answer;
                 String rightAnswer = rightAnswerModel.Text;
                 if (System.Windows.Forms.MessageBox.Show("Is your answer right?\n" + rightAnswer, "Check your answer",
                     System.Windows.Forms.MessageBoxButtons.YesNo,

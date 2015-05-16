@@ -18,16 +18,22 @@ namespace LearningCard.Model
         [DataMember]
         public List<Card> CardList { get; set; }
 
-        static public List<CardPack> CardPackList()
+        static public List<Tuple<CardPack, String>> CardPackList()
         {
-            List<CardPack> deckList = new List<CardPack>();
-            deckList = new List<CardPack>();
+            List<Tuple<CardPack, String>> deckList = new List<Tuple<CardPack, String>>();
             String path = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName;
             path += "\\CardPacks\\";
             foreach (String file in Directory.GetFiles(path, "*.lcp"))
             {
                 String deckName = Path.GetFileNameWithoutExtension(file);
-                deckList.Add(LoadCardPackFromFile(deckName));
+                try
+                {
+                    deckList.Add(new Tuple<CardPack, String>(LoadCardPackFromFile(deckName), Path.GetFileName(file)));
+                }
+                catch (SerializationException)
+                {
+                    continue;
+                }
             }
             return deckList;
         }
@@ -48,7 +54,6 @@ namespace LearningCard.Model
             using (FileStream fStream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
                 DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CardPack));
-                //try
                 {
                     tmpDeck = (CardPack)serializer.ReadObject(fStream);
                 }
@@ -143,16 +148,48 @@ namespace LearningCard.Model
             String BasePath = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName;
             String importDir = BasePath + "\\tmp\\import";
             Directory.CreateDirectory(importDir);
-            ZipFile.ExtractToDirectory(sourceFile, importDir);
+            try
+            {
+                ZipFile.ExtractToDirectory(sourceFile, importDir);
+            }
+            catch (IOException)
+            {
+                Directory.Delete(importDir, true);
+                ZipFile.ExtractToDirectory(sourceFile, importDir);
+            }
 
             String cardPack = Directory.GetFiles(importDir, "*.lcp")[0];
             String cardPackName = Path.GetFileNameWithoutExtension(cardPack);
 
-            foreach (String file in Directory.GetFiles(importDir))
+            String DeckPath = BasePath + "\\CardPacks";
+            HashSet<String> localDeckNames = new HashSet<string>();
+
+            foreach (String file in Directory.GetFiles(DeckPath))
             {
-                File.Delete(file);
+                localDeckNames.Add(Path.GetFileNameWithoutExtension(file));
             }
-            Directory.Delete(importDir);
+            String newCardPackName = cardPackName;
+            Int32 i = 0;
+            while (localDeckNames.Contains(newCardPackName))
+            {
+                newCardPackName = cardPackName + String.Format("_{0}", i);
+                i += 1;
+            }
+
+            String newImportedDeckPath = DeckPath + "\\" + newCardPackName + "_IMG";
+            try
+            {
+                Directory.Move(importDir, newImportedDeckPath);
+            }
+            catch
+            {
+                Directory.Delete(newImportedDeckPath, true);
+                Directory.Move(importDir, newImportedDeckPath);
+            }
+            String a = newImportedDeckPath + String.Format("\\{0}.lcp", cardPackName);
+            String b = DeckPath + String.Format("\\{0}.lcp", newCardPackName);
+            File.Move(a, b);
+
         }
     }
 }

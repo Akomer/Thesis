@@ -19,6 +19,8 @@ namespace LearningCard.ViewModel
         private UserControl _AnswerPanel;
         private String _AddModifyButtonText;
         private Model.CreateQnAModel QnAModel { get; set; }
+        private List<Tuple<String, Type>> _QuestionTypeList;
+        private List<Tuple<String, Type>> _AnswerTypeList;
 
         public String CardTitle 
         { 
@@ -32,8 +34,32 @@ namespace LearningCard.ViewModel
                 this.OnPropertyChanged("CardTitle");
             }
         }
-        public ObservableCollection<String> QuestionTypeList { get; set; }
-        public ObservableCollection<String> AnswerTypeList { get; set; }
+        public ObservableCollection<String> QuestionTypeList 
+        {
+            get
+            {
+                ObservableCollection<String> obc = new ObservableCollection<string>();
+                foreach (Tuple<String, Type> item in _QuestionTypeList)
+                {
+                    obc.Add(item.Item1);
+                }
+                return obc;
+            }
+            set{}
+        }
+        public ObservableCollection<String> AnswerTypeList
+        {
+            get
+            {
+                ObservableCollection<String> obc = new ObservableCollection<string>();
+                foreach (Tuple<String, Type> item in _AnswerTypeList)
+                {
+                    obc.Add(item.Item1);
+                }
+                return obc;
+            }
+            set { }
+        }
         public ObservableCollection<Model.Card> CardTitleList 
         {
             get
@@ -139,16 +165,7 @@ namespace LearningCard.ViewModel
         public CreateQnAViewModel()
         {
             this.QnAModel = new Model.CreateQnAModel();
-
-            this.QuestionTypeList = new ObservableCollection<String>();
-            this.QuestionTypeList.Add("Simple Text");
-            this.QuestionTypeList.Add("Picture and text");
-            this.OnPropertyChanged("QuestionTypeList");
-
-            this.AnswerTypeList = new ObservableCollection<String>();
-            this.AnswerTypeList.Add("Simple text");
-            this.AnswerTypeList.Add("Chocies");
-            this.OnPropertyChanged("AnswerTypeList");
+            this.InitiateTypeLists();
 
             this.GenerateNewCardParts();
 
@@ -230,8 +247,8 @@ namespace LearningCard.ViewModel
                 if (this.QnAModel.CardPack[this.Card_SelectedIndex].Answer.GetType().Name == "AnswerTextModel")
                 {
                     aView = new View.AnswerTextUserControl();
-                    ViewModel.AnswerTextViewModel dc = new ViewModel.AnswerTextViewModel(
-                        (Model.AnswerTextModel)this.QnAModel.CardPack[this.Card_SelectedIndex].Answer);
+                    ViewModel.AnswerLotofTextViewModel dc = new ViewModel.AnswerLotofTextViewModel(
+                        (Model.AnswerLotofTextModel)this.QnAModel.CardPack[this.Card_SelectedIndex].Answer);
                     aView.DataContext = dc;
                 }
                 this.AnswerPanel = aView;
@@ -241,7 +258,7 @@ namespace LearningCard.ViewModel
 
         private UserControl QuestionViewGenerator(Int32 t)
         {
-            if (t == 0)
+            if (this._QuestionTypeList[t].Item2 == typeof(Model.QuestionTextModel))
             {
                 UserControl v = new View.QuestionTextUserControl();
                 ViewModel.QuestionTextViewModel dc = new ViewModel.QuestionTextViewModel(
@@ -250,7 +267,7 @@ namespace LearningCard.ViewModel
                 v.DataContext = dc;
                 return v;
             }
-            if (t == 1)
+            if (this._QuestionTypeList[t].Item2 == typeof(Model.QuestionPictureModel))
             {
                 UserControl v = new View.QuestionPictureUserControl();
                 ViewModel.QuestionPictureViewModel dc = new ViewModel.QuestionPictureViewModel(
@@ -265,11 +282,20 @@ namespace LearningCard.ViewModel
 
         private UserControl AnswerViewGenerator(Int32 t)
         {
-            if (t == 0)
+            if (this._AnswerTypeList[t].Item2 == typeof(Model.AnswerLotofTextModel))
             {
                 UserControl v = new View.AnswerTextUserControl();
-                ViewModel.AnswerTextViewModel dc = new ViewModel.AnswerTextViewModel(
-                    new Model.AnswerTextModel("New Answer - text")
+                ViewModel.AnswerLotofTextViewModel dc = new ViewModel.AnswerLotofTextViewModel(
+                    new Model.AnswerLotofTextModel()
+                );
+                v.DataContext = dc;
+                return v;
+            }
+            if (this._AnswerTypeList[t].Item2 == typeof(Model.AnswerExactTextModel))
+            {
+                UserControl v = new View.AnswerTextUserControl();
+                ViewModel.AnswerExactTextViewModel dc = new ViewModel.AnswerExactTextViewModel(
+                    new Model.AnswerExactTextModel()
                 );
                 v.DataContext = dc;
                 return v;
@@ -317,10 +343,10 @@ namespace LearningCard.ViewModel
 
         private void Execute_SaveCardPack()
         {
-            //System.Windows.Forms.SaveFileDialog saveDialog = new System.Windows.Forms.SaveFileDialog();
-            //saveDialog.Filter = "Card Pack (*.lcp)|*.lcp|Any File (*.*)|*.*";
-            //saveDialog.Title = "Save new card pack";
-            //if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            // System.Windows.Forms.SaveFileDialog saveDialog = new System.Windows.Forms.SaveFileDialog();
+            // saveDialog.Filter = "Card Pack (*.lcp)|*.lcp|Any File (*.*)|*.*";
+            // saveDialog.Title = "Save new card pack";
+            // if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 this.QnAModel.SaveCardPack("a");
             }
@@ -328,14 +354,15 @@ namespace LearningCard.ViewModel
 
         private void Execute_LoadCardPack()
         {
-            System.Windows.Forms.OpenFileDialog loadDialog = new System.Windows.Forms.OpenFileDialog();
-            loadDialog.Filter = "Card Pack (*.lcp)|*.lcp|Any File (*.*)|*.*";
-            loadDialog.Title = "Load card pack";
-            if (loadDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            View.LoadCardPackDialog newDialog = new View.LoadCardPackDialog();
+            LoadCardPackDiagViewModel diagVM = new LoadCardPackDiagViewModel(newDialog);
+            newDialog.DataContext = diagVM;
+
+            if (newDialog.ShowDialog() == true)
             {
-                this.QnAModel.LoadCardPack(loadDialog.FileName);
-                this.OnPropertyChanged("CardTitleList");
+                this.QnAModel.CardPackItem = diagVM.GetSelectedItem();
                 this.Card_SelectedIndex = -1;
+                this.OnPropertyChanged("CardTitleList");
             }
         }
 
@@ -375,6 +402,28 @@ namespace LearningCard.ViewModel
         private Boolean IsNewCard()
         {
             return this.Card_SelectedIndex == this.QnAModel.CardPack.Count;
+        }
+
+        private void InitiateTypeLists()
+        {
+            this.InitiateQuestionTypeList();
+            this.InitiateAnswerTypeList();
+        }
+
+        private void InitiateQuestionTypeList()
+        {
+            this._QuestionTypeList = new List<Tuple<string, Type>>();
+            this._QuestionTypeList.Add(new Tuple<string, Type>("Simple Text", typeof(Model.QuestionTextModel)));
+            this._QuestionTypeList.Add(new Tuple<string, Type>("Picture and text", typeof(Model.QuestionPictureModel)));
+            this.OnPropertyChanged("QuestionTypeList");
+        }
+
+        private void InitiateAnswerTypeList()
+        {
+            this._AnswerTypeList = new List<Tuple<string, Type>>();
+            this._AnswerTypeList.Add(new Tuple<string, Type>("Exact Text", typeof(Model.AnswerExactTextModel)));
+            this._AnswerTypeList.Add(new Tuple<string, Type>("Lot of Text", typeof(Model.AnswerLotofTextModel)));
+            this.OnPropertyChanged("AnswerTypeList");
         }
     }
 }

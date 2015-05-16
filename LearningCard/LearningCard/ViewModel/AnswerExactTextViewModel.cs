@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LearningCard.ViewModel
 {
-    class AnswerTextViewModel : AnswerViewModelBase
+    class AnswerExactTextViewModel : AnswerViewModelBase
     {
         public String AnswerText
         {
@@ -21,9 +21,10 @@ namespace LearningCard.ViewModel
             }
         }
 
-        private Model.AnswerTextModel AnswerModel;
+        private Model.AnswerExactTextModel AnswerModel;
 
-        public AnswerTextViewModel(Model.AnswerTextModel aModel) : base(aModel)
+        public AnswerExactTextViewModel(Model.AnswerExactTextModel aModel)
+            : base(aModel)
         {
             this.AnswerModel = aModel;
         }
