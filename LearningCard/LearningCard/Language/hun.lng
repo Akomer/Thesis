@@ -46,11 +46,17 @@
 
 	"Activecardpack:" : "Kiválasztott Palki:",	
 	"Nothing" : "Semmi",
-	"RefreshIP" : "IP-c????m friss????tése",
+	"RefreshIP" : "IP-cím frissítése",
 
 	"YourLastanswerwas:" : "Az Utolsó Válaszod:",
 	"CheckAnswer" : "Válasz ellenőrzése",
 	"Skip" : "Passz",
 
-	"Changeimage" :"Kép Változtatása"
+	"Changeimage" :"Kép Változtatása",
+
+	"OK" : "OK",
+	"CardPackName" : "Kártya Pakli neve"
+
+	"SaveError" : "Mentési hiba",
+	"CouldNotSaveCardPack" : "Nem sikerült a mentés"
 }

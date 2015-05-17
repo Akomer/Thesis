@@ -1,0 +1,1 @@
+{"CardList":[{"Answer":{"__type":"AnswerExactTextModel:#LearningCard.Model","Text":"a"},"Question":{"__type":"QuestionTextModel:#LearningCard.Model","Text":"a"},"Title":"a"},{"Answer":{"__type":"AnswerLotofTextModel:#LearningCard.Model","Text":"sdasda"},"Question":{"__type":"QuestionTextModel:#LearningCard.Model","Text":"sadaasd"},"Title":"asdasd"}],"PackName":"TestPack"}

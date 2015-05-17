@@ -7,44 +7,43 @@ using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Text.RegularExpressions;
 
+
 namespace LearningCard.Model
 {
-    class GlobalLanguage
+    class GlobalColorTheme
     {
-        private static GlobalLanguage instance;
-        private Dictionary<String, String> langDict;
-        private List<String> langList;
+        private static GlobalColorTheme instance;
+        private Dictionary<String, String> colorDict;
+        private List<String> colorList;
         private static String ActiveFile;
-        private Dictionary<String, String> fileToLang;
 
-        static private Int32 NumberOfKeysInLanguageDict = 48;
+        static private Int32 NumberOfKeysInColorDict = 44;
 
-        private GlobalLanguage(String fname) 
+        private GlobalColorTheme(String fname) 
         {
-            langDict = new Dictionary<string, string>();
+            colorDict = new Dictionary<string, string>();
             ActiveFile = fname;
             ReadJson();
         }
 
-        public static GlobalLanguage Instance
+        public static GlobalColorTheme Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new GlobalLanguage("eng.lng");
+                    instance = new GlobalColorTheme("light");
                 }
                 return instance;
             }
         }
 
-        public void SetLanguage(String lang)
+        public void SetColor(String lang)
         {
-            ActiveFile = this.fileToLang[lang];
             ReadJson();
         }
 
-        public String GetLanguageFile()
+        public String GetColorFile()
         {
             return ActiveFile;
         }
@@ -52,27 +51,26 @@ namespace LearningCard.Model
         private void ReadJson()
         {
             String path = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName;
-            path += "\\Language\\" + ActiveFile;
-            //path += @"/Language/" + ActiveFile;
+            path += "\\ColorThemes\\" + ActiveFile;
             StreamReader reader = new StreamReader(path);
             String languge = reader.ReadToEnd();
             reader.Close();
-            langDict = reParseJson(languge);
+            colorDict = reParseJson(languge);
         }
 
         public String Get(String key)
         {
             String o;
-            if ( ! langDict.TryGetValue(key, out o))
+            if ( ! colorDict.TryGetValue(key, out o))
             {
-                o = langDict["NotFindInDict"] + ActiveFile;
+                o = colorDict["NotFindInDict"] + ActiveFile;
             }
             return o;
         }
 
         public Dictionary<String, String> GetDict()
         {
-            return langDict;
+            return colorDict;
         }
 
         private Dictionary<String, String> reParseJson(String a)
@@ -87,30 +85,17 @@ namespace LearningCard.Model
             return d;
         }
 
-        private String FindLanguageName(String fileName)
+        public List<String> ColorList()
         {
-            try
+            if (this.colorList == null)
             {
-                return this.reParseJson(System.IO.File.ReadAllText(fileName))["LanguageName"];
-            }
-            catch (KeyNotFoundException)
-            {
-                return "";
-            }
-        }
-
-        public List<String> LanguageList()
-        {
-            if (this.langList == null)
-            {
-                this.fileToLang = new Dictionary<string, string>();
-                this.langList = new List<string>();
+                this.colorList = new List<string>();
                 String path = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName;
-                path += "\\Language\\";
+                path += "\\ColorThemes\\";
                 foreach (String file in Directory.GetFiles(path))
                 {
                     Dictionary<String, String> dLang = this.reParseJson(System.IO.File.ReadAllText(file));
-                    if (dLang.Count == GlobalLanguage.NumberOfKeysInLanguageDict)
+                    if (dLang.Count == GlobalColorTheme.NumberOfKeysInColorDict)
                     {
                         String lngName;
                         try
@@ -123,20 +108,15 @@ namespace LearningCard.Model
                         }
                         if (lngName != "")
                         {
-                            try
                             {
-                                this.fileToLang.Add(lngName, Path.GetFileName(file));
+                                //this.fileToLang.Add(lngName, Path.GetFileName(file));
                             }
-                            catch (ArgumentException)
-                            {
-                                continue;
-                            }
-                            this.langList.Add(lngName);
+                            this.colorList.Add(lngName);
                         }
                     }
                 }
             }
-            return this.langList;
+            return this.colorList;
         }
     }
 }

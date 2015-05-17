@@ -52,12 +52,5 @@
 	"CheckAnswer" : "Check Answer",
 	"Skip" : "Skip",
 
-	"Changeimage" : "Change image",
-
-	"OK" : "OK",
-	"CardPackName" : "Card Pack Name",
-
-	"SaveError" : "Save Error",
-	"CouldNotSaveCardPack" : "Could not save card pack"
-
+	"Changeimage" : "Change image"
 }

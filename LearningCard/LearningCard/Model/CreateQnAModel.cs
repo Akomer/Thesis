@@ -44,7 +44,7 @@ namespace LearningCard.Model
             //     DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CardPack));
             //     serializer.WriteObject(saveFile, this.CardPackItem);
             // }
-            this.CardPackItem.PackName = "TestPack";
+            this.CardPackItem.PackName = fileName;
             Model.CardPack.SaveCardPackToFile(this.CardPackItem);
         }
 

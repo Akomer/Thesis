@@ -60,9 +60,11 @@
     </ApplicationDefinition>
     <Compile Include="Model\AnswerExactTextModel.cs" />
     <Compile Include="Model\AnswerLotofTextModel.cs" />
+    <Compile Include="Model\AnswerTippMixModel.cs" />
     <Compile Include="Model\Card.cs" />
     <Compile Include="Model\CardPack.cs" />
     <Compile Include="Model\CreateProfileModel.cs" />
+    <Compile Include="Model\GlobalColorTheme.cs" />
     <Compile Include="Model\GlobalLanguage.cs" />
     <Compile Include="Model\CreateQnAModel.cs" />
     <Compile Include="Model\DataContracts.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Model\QuestionPictureModel.cs" />
     <Compile Include="Model\QuestionTextModel.cs" />
     <Compile Include="Model\StatisticInfo.cs" />
+    <Compile Include="Model\TippMix.cs" />
     <Compile Include="Service References\OnlineLearningCardService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,11 +87,13 @@
     </Compile>
     <Compile Include="ViewModel\AnswerExactTextViewModel.cs" />
     <Compile Include="ViewModel\AnswerLotofTextViewModel.cs" />
+    <Compile Include="ViewModel\AnswerTippMixViewModel.cs" />
     <Compile Include="ViewModel\AnswerViewModelBase.cs" />
     <Compile Include="ViewModel\ChooseProfileAndPackViewModel.cs" />
     <Compile Include="ViewModel\CreateProfileViewModel.cs" />
     <Compile Include="ViewModel\CreateQnAViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
+    <Compile Include="ViewModel\InputTextDiagViewModel.cs" />
     <Compile Include="ViewModel\JoinMultiplayerViewModel.cs" />
     <Compile Include="ViewModel\LoadCardPackDiagViewModel.cs" />
     <Compile Include="ViewModel\LoadProfileDiagViewModel.cs" />
@@ -107,6 +112,9 @@
     </Compile>
     <Compile Include="View\ChooseProfileAndPackUserControl.xaml.cs">
       <DependentUpon>ChooseProfileAndPackUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CreateAnswerTippMixUserControl.xaml.cs">
+      <DependentUpon>CreateAnswerTippMixUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CreateProfileUserControl.xaml.cs">
       <DependentUpon>CreateProfileUserControl.xaml</DependentUpon>
@@ -145,11 +153,18 @@
     <Compile Include="View\QuestionTextUserControl.xaml.cs">
       <DependentUpon>QuestionTextUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\SimpleTextInputDialog.xaml.cs">
+      <DependentUpon>SimpleTextInputDialog.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\AnswerTextUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ChooseProfileAndPackUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CreateAnswerTippMixUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -194,6 +209,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\QuestionTextUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SimpleTextInputDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

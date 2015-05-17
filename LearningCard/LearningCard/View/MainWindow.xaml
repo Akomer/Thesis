@@ -12,6 +12,10 @@
         </Grid.RowDefinitions>
         <Menu Grid.Row="0" IsMainMenu="True" MinHeight="20">
             <MenuItem Header="{Binding ActiveLanguage[File]}">
+                <MenuItem Header="{Binding ActiveLanguage[StartNewQuiz]}" Command="{Binding ClickCommand_StartNewQnA}"/>
+                <MenuItem Header="{Binding ActiveLanguage[StartOnlineGame]}" Command="{Binding ClickCommand_StartMultiplayer}"/>
+                <MenuItem Header="{Binding ActiveLanguage[JoinOnlineQuiz]}" Command="{Binding ClickCommand_JoinMultiplayer}"/>
+                <MenuItem Header="{Binding ActiveLanguage[CreateNewQuiz]}" Command="{Binding ClickCommand_CreateNewQnA}"/>
                 <MenuItem Header="{Binding ActiveLanguage[FileExit]}" />
             </MenuItem>
             <MenuItem Header="{Binding ActiveLanguage[Settings]}">

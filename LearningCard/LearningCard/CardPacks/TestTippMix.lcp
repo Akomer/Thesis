@@ -1,0 +1,1 @@
+{"CardList":[{"Answer":{"__type":"AnswerTippMixModel:#LearningCard.Model","TippMixList":[{"IsChecked":true,"TippText":"Igen"},{"IsChecked":false,"TippText":"Nem"},{"IsChecked":true,"TippText":"Talan"},{"IsChecked":false,"TippText":"Alma elment vadaszni"}]},"Question":{"__type":"QuestionTextModel:#LearningCard.Model","Text":"Beta??"},"Title":"1"}],"PackName":"TestTippMix"}

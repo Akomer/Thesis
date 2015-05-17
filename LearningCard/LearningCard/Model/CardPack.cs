@@ -69,7 +69,17 @@ namespace LearningCard.Model
 
             if (!System.IO.Directory.Exists(ImagePath))
             {
-                System.IO.Directory.CreateDirectory(ImagePath);
+                try
+                {
+                    System.IO.Directory.CreateDirectory(ImagePath);
+                }
+                catch (ArgumentException)
+                {
+                    System.Windows.Forms.MessageBox.Show(GlobalLanguage.Instance.GetDict()["CouldNotSaveCardPack"],
+                        GlobalLanguage.Instance.GetDict()["SaveError"],
+                        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    return;
+                }
             }
 
             HashSet<String> imgSet = new HashSet<String>();
