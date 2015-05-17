@@ -1,13 +1,11 @@
 {
 	"type" : "Language",
-	"LanguageName" : "English",
+	"LanguageName" : "English2",
 	"NotFindInDict" : "Not Find in ",
 
 	"File" : "File",
-	"FileExit" : "Exit",
-	"Settings" : "Settings",
-	"SettingsLang" : "Language",
-	"Profile" : "Profile",
+	"FileExit" : "Exang
+	Profile" : "Profile",
 	"ProfileNew": "New Profile",
 	"ProfileLoad" : "Load Profile",
 	"CardPacks" : "Card Packs",
@@ -54,3 +52,5 @@
 
 	"Changeimage" : "Change image"
 }
+
+{Binding ActiveLanguage[CardPacks]}

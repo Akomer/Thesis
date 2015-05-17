@@ -10,7 +10,11 @@
 	"Profile" : "Profil",
 	"ProfileNew": "Új Profil",
 	"ProfileLoad" : "Profil Betöltése",
+	"CardPacks" : "Kártya Paklik",
+	"ExportCardPack" : "Pakli Exportálás",
+	"ImportCardPack" : "Pakli Importálás",
 	"Help" : "Segítség",
+	"ActiveProfileName" : "Betöltött Profil:",
 
 	"StartNewQuiz" : "Start Uj Kviz",
 	"StartOnlineGame" : "Start Online Jatek",
@@ -21,6 +25,32 @@
 	"LoadProfile" : "Profil betoltese",
 	"ActivePrifle" : "Betoltott Profil",
 	"LoadCardPack" : "Kartya Pakli betoltese",
-	"None" : "Semmi"
+	"None" : "Semmi",
 
+	"Start" : "Start",
+	"UserName" : "Felhasználónév", 
+	"Language" : "Nyelv :",
+	"ColorScheme" : "Sz??????nséma",
+	"SaveProfile" : "Profil Mentése",
+	"ChangeProfilePicture" : "Profilkép Változtatása",
+
+	"CardTitle" : "Kártyanév",
+	"DeleteCard" : "Kártya Törlése",
+	"SaveCardPack" : "Pakli Mentése",
+
+	"HostIPaddress" : "Szerver IP-c????me",
+	"JointoServer" : "Csatlakozás a Szerverhez",
+
+	"SelectCardPack" : "Pakli Választása",
+	"Cancel" : "Mégsem",
+
+	"Activecardpack:" : "Kiválasztott Palki:",	
+	"Nothing" : "Semmi",
+	"RefreshIP" : "IP-c????m friss????tése",
+
+	"YourLastanswerwas:" : "Az Utolsó Válaszod:",
+	"CheckAnswer" : "Válasz ellenőrzése",
+	"Skip" : "Passz",
+
+	"Changeimage" :"Kép Változtatása"
 }

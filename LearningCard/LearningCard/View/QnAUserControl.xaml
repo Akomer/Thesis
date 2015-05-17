@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5">
             <Label Margin="5" Content="{Binding CardTitle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Label Margin="5,5,0,5" Content="Your Last answer was:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Margin="5,5,0,5" Content="{Binding ActiveLanguage[YourLastanswerwas]}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <Label Margin="0,5,5,5" Content="{Binding LastAnswer}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </StackPanel>
         <UserControl Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding QuestionPanel}"/>
@@ -26,8 +26,10 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Check Answer" Command="{Binding Command_CheckAnswer}"/>
-            <Button Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Skip" Command="{Binding Command_SkipAnswer}"/>
+            <Button Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding ActiveLanguage[CheckAnswer]}"
+                    Command="{Binding Command_CheckAnswer}"/>
+            <Button Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding ActiveLanguage[Skip]}"
+                    Command="{Binding Command_SkipAnswer}"/>
         </Grid>
     </Grid>
 </UserControl>

@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <DockPanel LastChildFill="True">
-        <Button Content="Start" Margin="10" Padding="5" DockPanel.Dock="Bottom" />
+        <Button Content="{Binding ActiveLanguage[Start]}" Margin="10" Padding="5" DockPanel.Dock="Bottom" />
         <ListView DockPanel.Dock="Right" ItemsSource="{Binding ActiveUserProfileList}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -16,15 +16,15 @@
         </ListView>
         <StackPanel Orientation="Vertical" DockPanel.Dock="Right" />
         <StackPanel Orientation="Vertical">
-            <Button Margin="10" Padding="5" Content="Load Card Pack"  HorizontalAlignment="Center"/>
+            <Button Margin="10" Padding="5" Content="{Binding ActiveLanguage[LoadCardPack]}"  HorizontalAlignment="Center"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label Content="Active card pack:" />
-                <Label Content="Nothing" />
+                <Label Content="{Binding ActiveLanguage[Activecardpack]}" />
+                <Label Content="{Binding ActiveLanguage[Nothing]}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label Content="Host IP address:" VerticalAlignment="Center"/>
+                <Label Content="{Binding ActiveLanguage[HostIPaddress]}" VerticalAlignment="Center"/>
                 <TextBox Text="{Binding HostIpAddres}" VerticalAlignment="Center" Padding="5" IsReadOnly="True"/>
-                <Button Content="Refresh IP" Margin="5" Padding="2" Command="{Binding Command_RefresIP}" />
+                <Button Content="{Binding ActiveLanguage[RefreshIP]}" Margin="5" Padding="2" Command="{Binding Command_RefresIP}" />
             </StackPanel>
         </StackPanel>
     </DockPanel>

@@ -12,18 +12,31 @@ namespace LearningCard.ViewModel
     {
         private UserControl _mainContent;
         private ViewModel.MainViewModelBase mainContentViewModel;
+        private ObservableCollection<String> _LanguageList;
 
         public DelegateCommand Command_ChangeLanguage { get; set; }
         public DelegateCommand Command_NewProfile { get; set; }
         public DelegateCommand Command_LoadActiveProfile { get; set; }  
         public DelegateCommand Command_ExportCardPack { get; set; }  
-        public DelegateCommand Command_ImportCardPack { get; set; }  
-        
+        public DelegateCommand Command_ImportCardPack { get; set; }
+        public Int32 LanguageListCount
+        {
+            get
+            {
+                return this.LanguageList.Count;
+            }
+            set { }
+        }
+
         public ObservableCollection<String> LanguageList
         {
             get
             {
-                return new ObservableCollection<String>(Model.GlobalLanguage.Instance.LanguageList());
+                if (this._LanguageList == null)
+                {
+                    this._LanguageList = new ObservableCollection<String>(Model.GlobalLanguage.Instance.LanguageList());
+                }
+                return this._LanguageList;
             }
             set { }
         }
@@ -84,7 +97,8 @@ namespace LearningCard.ViewModel
 
         private void Execute_ChangeLanguage(Int32 index)
         {
-            Model.GlobalLanguage.Instance.SetLanguage("hun");
+
+            Model.GlobalLanguage.Instance.SetLanguage(this.LanguageList[index]);
             this.RefreshLanguage();
             this.mainContentViewModel.RefreshLanguage();
         }

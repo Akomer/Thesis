@@ -15,6 +15,9 @@ namespace LearningCard.Model
         private Dictionary<String, String> langDict;
         private List<String> langList;
         private static String ActiveFile;
+        private Dictionary<String, String> fileToLang;
+
+        static private Int32 NumberOfKeysInLanguageDict = 44;
 
         private GlobalLanguage(String fname) 
         {
@@ -29,7 +32,7 @@ namespace LearningCard.Model
             {
                 if (instance == null)
                 {
-                    instance = new GlobalLanguage("eng");
+                    instance = new GlobalLanguage("eng.lng");
                 }
                 return instance;
             }
@@ -37,7 +40,7 @@ namespace LearningCard.Model
 
         public void SetLanguage(String lang)
         {
-            ActiveFile = lang;
+            ActiveFile = this.fileToLang[lang];
             ReadJson();
         }
 
@@ -49,8 +52,8 @@ namespace LearningCard.Model
         private void ReadJson()
         {
             String path = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName;
-            //path += "\\Language\\";
-            path += @"/Language/" + ActiveFile + @".lng";
+            path += "\\Language\\" + ActiveFile;
+            //path += @"/Language/" + ActiveFile;
             StreamReader reader = new StreamReader(path);
             String languge = reader.ReadToEnd();
             reader.Close();
@@ -62,7 +65,7 @@ namespace LearningCard.Model
             String o;
             if ( ! langDict.TryGetValue(key, out o))
             {
-                o = langDict["NotFindInDict"] + ActiveFile + ".lng";
+                o = langDict["NotFindInDict"] + ActiveFile;
             }
             return o;
         }
@@ -75,7 +78,7 @@ namespace LearningCard.Model
         private Dictionary<String, String> reParseJson(String a)
         {
             Dictionary<String, String> d = new Dictionary<string, string>();
-            Regex reg = new Regex("\"([^\"]+)\"\\s*:\\s*\"([^\"]+)\",");
+            Regex reg = new Regex("\"([^\"]+)\"\\s*:\\s*\"([^\"]+)\",?");
             MatchCollection m = reg.Matches(a);
             foreach (Match item in m)
             {
@@ -86,19 +89,51 @@ namespace LearningCard.Model
 
         private String FindLanguageName(String fileName)
         {
-            return this.reParseJson(System.IO.File.ReadAllText(fileName))["LanguageName"];
+            try
+            {
+                return this.reParseJson(System.IO.File.ReadAllText(fileName))["LanguageName"];
+            }
+            catch (KeyNotFoundException)
+            {
+                return "";
+            }
         }
 
         public List<String> LanguageList()
         {
             if (this.langList == null)
             {
+                this.fileToLang = new Dictionary<string, string>();
                 this.langList = new List<string>();
                 String path = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName;
                 path += "\\Language\\";
                 foreach (String file in Directory.GetFiles(path))
                 {
-                    this.langList.Add(this.FindLanguageName(file));                  
+                    Dictionary<String, String> dLang = this.reParseJson(System.IO.File.ReadAllText(file));
+                    if (dLang.Count == GlobalLanguage.NumberOfKeysInLanguageDict)
+                    {
+                        String lngName;
+                        try
+                        {
+                            lngName = dLang["LanguageName"];
+                        }
+                        catch (KeyNotFoundException)
+                        {
+                            lngName = "";
+                        }
+                        if (lngName != "")
+                        {
+                            try
+                            {
+                                this.fileToLang.Add(lngName, Path.GetFileName(file));
+                            }
+                            catch (ArgumentException)
+                            {
+                                continue;
+                            }
+                            this.langList.Add(lngName);
+                        }
+                    }
                 }
             }
             return this.langList;

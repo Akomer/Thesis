@@ -17,7 +17,7 @@
                    ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch" IsEnabled="{Binding isChangeable}">
                 <Image.ContextMenu>
                     <ContextMenu IsEnabled="{Binding isChangeable}">
-                        <MenuItem Header="Change image" Command="{Binding Command_ChangeImage}" IsEnabled="{Binding isChangeable}"/>
+                        <MenuItem Header="{Binding ActiveLanguage[Changeimage]}" Command="{Binding Command_ChangeImage}" IsEnabled="{Binding isChangeable}"/>
                     </ContextMenu>
                 </Image.ContextMenu>
             </Image>
