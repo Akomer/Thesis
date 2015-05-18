@@ -8,7 +8,7 @@ using System.ServiceModel;
 
 namespace LearningCard.ViewModel
 {
-    class JoinMultiplayerViewModel : MainWindowViewModel
+    class JoinMultiplayerViewModel : MainViewModelBase
     {
         public DelegateCommand Command_JoinToServer { get; set; }
         public String HostIPAddress { get; set; }

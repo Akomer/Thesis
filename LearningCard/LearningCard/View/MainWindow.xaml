@@ -12,11 +12,11 @@
         </Grid.RowDefinitions>
         <Menu Grid.Row="0" IsMainMenu="True" MinHeight="20">
             <MenuItem Header="{Binding ActiveLanguage[File]}">
-                <MenuItem Header="{Binding ActiveLanguage[StartNewQuiz]}" Command="{Binding ClickCommand_StartNewQnA}"/>
-                <MenuItem Header="{Binding ActiveLanguage[StartOnlineGame]}" Command="{Binding ClickCommand_StartMultiplayer}"/>
-                <MenuItem Header="{Binding ActiveLanguage[JoinOnlineQuiz]}" Command="{Binding ClickCommand_JoinMultiplayer}"/>
-                <MenuItem Header="{Binding ActiveLanguage[CreateNewQuiz]}" Command="{Binding ClickCommand_CreateNewQnA}"/>
-                <MenuItem Header="{Binding ActiveLanguage[FileExit]}" />
+                <MenuItem Header="{Binding ActiveLanguage[StartNewQuiz]}" Command="{Binding Command_StartNewQnA}"/>
+                <MenuItem Header="{Binding ActiveLanguage[StartOnlineGame]}" Command="{Binding Command_StartMultiplayer}"/>
+                <MenuItem Header="{Binding ActiveLanguage[JoinOnlineQuiz]}" Command="{Binding Command_JoinMultiplayer}"/>
+                <MenuItem Header="{Binding ActiveLanguage[CreateNewQuiz]}" Command="{Binding Command_CreateNewQnA}"/>
+                <MenuItem Header="{Binding ActiveLanguage[FileExit]}" Command="{Binding Command_Exit}"/>
             </MenuItem>
             <MenuItem Header="{Binding ActiveLanguage[Settings]}">
                 <MenuItem Header="{Binding ActiveLanguage[SettingsLang]}" ItemsSource="{Binding LanguageList}" 

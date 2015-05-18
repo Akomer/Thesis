@@ -28,7 +28,7 @@ namespace LearningCard.Model
             }
         }
 
-        public Uri GetImagFullPath()
+        public Uri GetImageFullPath()
         {
             if (this.ImageSRC.IsAbsoluteUri)
                 return this.ImageSRC;

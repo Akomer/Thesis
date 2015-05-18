@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LearningCard.ViewModel
 {
-    class QuestionViewModelBase : ViewModelBase
+    class QuestionViewModelBase : MainViewModelBase
     {
         protected Model.IQuestion QuestionModel;
         public Boolean isChangeable { get; set; }

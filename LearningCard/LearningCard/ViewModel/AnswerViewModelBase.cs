@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LearningCard.ViewModel
 {
-    class AnswerViewModelBase : ViewModelBase
+    class AnswerViewModelBase : MainViewModelBase
     {
         protected Model.IAnswer AnswerModel;
 

@@ -82,7 +82,14 @@ namespace LearningCard.Model
             MatchCollection m = reg.Matches(a);
             foreach (Match item in m)
             {
-                d.Add(item.Groups[1].ToString(), item.Groups[2].ToString());
+                try
+                {
+                    d.Add(item.Groups[1].ToString(), item.Groups[2].ToString());
+                }
+                catch(ArgumentException)
+                {
+                    continue;
+                }
             }
             return d;
         }

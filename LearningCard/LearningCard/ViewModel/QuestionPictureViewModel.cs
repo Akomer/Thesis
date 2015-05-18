@@ -19,7 +19,7 @@ namespace LearningCard.ViewModel
             {
                 try
                 {
-                    return new BitmapImage(this.QuestionModel.GetImagFullPath());
+                    return new BitmapImage(this.QuestionModel.GetImageFullPath());
                 }
                 catch (Exception)
                 {

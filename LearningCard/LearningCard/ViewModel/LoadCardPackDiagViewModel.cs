@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace LearningCard.ViewModel
 {
-    class LoadCardPackDiagViewModel : MainWindowViewModel
+    class LoadCardPackDiagViewModel : MainViewModelBase
     {
         private Int32 _CardPackList_SelectedIndex;
         public ObservableCollection<String> CardPackList

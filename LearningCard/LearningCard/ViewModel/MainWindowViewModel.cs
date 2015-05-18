@@ -14,10 +14,14 @@ namespace LearningCard.ViewModel
         private ViewModel.MainViewModelBase mainContentViewModel;
         private ObservableCollection<String> _LanguageList;
 
+        public DelegateCommand Command_StartNewQnA { get; private set; }
+        public DelegateCommand Command_CreateNewQnA { get; private set; }
+        public DelegateCommand Command_StartMultiplayer { get; private set; }
+        public DelegateCommand Command_JoinMultiplayer { get; private set; }
         public DelegateCommand Command_ChangeLanguage { get; set; }
         public DelegateCommand Command_NewProfile { get; set; }
-        public DelegateCommand Command_LoadActiveProfile { get; set; }  
-        public DelegateCommand Command_ExportCardPack { get; set; }  
+        public DelegateCommand Command_LoadActiveProfile { get; set; }
+        public DelegateCommand Command_ExportCardPack { get; set; }
         public DelegateCommand Command_ImportCardPack { get; set; }
         public Int32 LanguageListCount
         {
@@ -75,6 +79,10 @@ namespace LearningCard.ViewModel
             this.Command_LoadActiveProfile = new DelegateCommand(x => this.Execut_LoadActiveProfile());
             this.Command_ExportCardPack = new DelegateCommand(x => this.Execute_ExportCardPack());
             this.Command_ImportCardPack = new DelegateCommand(x => this.Execute_ImportCardPack());
+            this.Command_StartNewQnA = new DelegateCommand(x => this.Execute_StartNewQnA());
+            this.Command_CreateNewQnA = new DelegateCommand(x => this.Execute_CreateNewQnA());
+            this.Command_StartMultiplayer = new DelegateCommand(x => this.Execute_StartMultiplayer());
+            this.Command_JoinMultiplayer = new DelegateCommand(x => this.Execute_JoinMultiplayer());
 
             this.mainContentViewModel.ChangeMainWindowContent += new ViewModel.Event_mainControlChange(VM_ChangeMainWindow);
         }
@@ -135,7 +143,7 @@ namespace LearningCard.ViewModel
                 }
             }
         }
-        
+
         private void Execute_ImportCardPack()
         {
             System.Windows.Forms.OpenFileDialog loadDialog = new System.Windows.Forms.OpenFileDialog();
@@ -147,5 +155,33 @@ namespace LearningCard.ViewModel
             }
         }
 
+        private void Execute_StartNewQnA()
+        {
+            this.VM_ChangeMainWindow(new ViewModel.MainControlChangeEventArgs (
+                typeof(View.ChooseProfileAndPackUserControl),
+                typeof(ViewModel.ChooseProfileAndPackViewModel)));
+        }
+
+        private void Execute_CreateNewQnA()
+        {
+            this.VM_ChangeMainWindow(new ViewModel.MainControlChangeEventArgs (
+                typeof(View.CreateQuest), 
+                typeof(ViewModel.CreateQnAViewModel)));
+        }
+
+        private void Execute_StartMultiplayer()
+        {
+            this.VM_ChangeMainWindow(new ViewModel.MainControlChangeEventArgs (
+                typeof(View.OnlineLobbyUserControl), 
+                typeof(ViewModel.OnlineLobbyViewModel),
+                new object[] { true }));
+        }
+
+        private void Execute_JoinMultiplayer()
+        {
+            this.VM_ChangeMainWindow(new ViewModel.MainControlChangeEventArgs (
+                typeof(View.JoinMultiplayerUserControl), 
+                typeof(ViewModel.JoinMultiplayerViewModel)));
+        }
     }
 }

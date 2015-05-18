@@ -68,5 +68,7 @@
 	"NewAnswerLotofText" : "New Answer - Lot of Text",
 	"NewAnswerTippMixNewTipp" : "New Tipp",
 
-	"YourAnswerComesHere" : "Your answer comes here"
+	"YourAnswerComesHere" : "Your answer comes here",
+
+	"InvalidDataException" : "Invalid Data"
 }

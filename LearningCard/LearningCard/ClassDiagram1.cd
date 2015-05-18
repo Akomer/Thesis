@@ -1,0 +1,514 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LearningCard.App" Collapsed="true">
+    <Position X="37.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ICAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.AnswerExactTextModel">
+    <Position X="4.75" Y="11" Width="1.5" />
+    <InheritanceLine Type="LearningCard.Model.IAnswer" FixedFromPoint="true">
+      <Path>
+        <Point X="7.25" Y="10.546" />
+        <Point X="7.25" Y="10.76" />
+        <Point X="5.5" Y="10.76" />
+        <Point X="5.5" Y="11" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAACAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Model\AnswerExactTextModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.AnswerLotofTextModel">
+    <Position X="6.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAACAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Model\AnswerLotofTextModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.AnswerTippMixModel">
+    <Position X="8.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgYAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\AnswerTippMixModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.Card" Collapsed="true">
+    <Position X="39.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAEAAAAAgAAAAA=</HashCode>
+      <FileName>Model\Card.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.CardPack" Collapsed="true">
+    <Position X="41.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAABBgAAAAAIAAAAAAAAAAEAAAAAAAEAA=</HashCode>
+      <FileName>Model\CardPack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.CreateProfileModel" Collapsed="true">
+    <Position X="46.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAABAAAAAAAAAAAQAAAAAAACA=</HashCode>
+      <FileName>Model\CreateProfileModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.CreateQnAModel" Collapsed="true">
+    <Position X="37.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAIAAAAAAABEAEAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Model\CreateQnAModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.GlobalLanguage" Collapsed="true">
+    <Position X="47.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAACAQAAAEBAAAACIAAIAIBAAQAAQAAAAAABAgA=</HashCode>
+      <FileName>Model\GlobalLanguage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.GlobalProfile">
+    <Position X="45.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAACAAQAAAAAAAAAA=</HashCode>
+      <FileName>Model\GlobalProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.IAnswer">
+    <Position X="6.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\IAnswer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.IQuestion">
+    <Position X="13.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model\IQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.MultiPlayerService" Collapsed="true">
+    <Position X="46.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\MultiPlayerService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.OnlineLobbyClientModel" Collapsed="true">
+    <Position X="36" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAAAAAAAAAAAAIAFAABAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Model\OnlineLobbyClientModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.OnlineLobbyServiceModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="37.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACCAAAACAAAAAAAABAFAABAAAABADgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\OnlineLobbyServiceModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LearningCard.Model.Profile" Collapsed="true">
+    <Position X="44.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CACAAAAAAEQAAAAAAAEAAAQAAAAACAAABAEAIBAAAAA=</HashCode>
+      <FileName>Model\Profile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.QnAModel" Collapsed="true">
+    <Position X="36" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQBAAAAAAAAIAACAADAYBAQIQCAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Model\QnAModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.QuestionPictureModel">
+    <Position X="12.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAIAAAAAAAAAAAAAAAQAAACAAAAgA=</HashCode>
+      <FileName>Model\QuestionPictureModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.QuestionTextModel">
+    <Position X="14.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAgA=</HashCode>
+      <FileName>Model\QuestionTextModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.StatisticInfo" Collapsed="true">
+    <Position X="37.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Model\StatisticInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Model.TippMix">
+    <Position X="40.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\TippMix.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.OnlineLearningCardService.PartialClientClasses" Collapsed="true">
+    <Position X="43" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PartialClientClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.OnlineLearningCardService.Profile" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="46.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAACAAAAgAAAAAEAAAQAgAAAAAAEAAEIAAIBAEA=</HashCode>
+      <FileName>Model\PartialClientClasses.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LearningCard.OnlineLearningCardService.OnlineLobbyServiceModelClient" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="39.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADAAAgACAAAAAAAAAABAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\OnlineLearningCardService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LearningCard.Properties.Resources" Collapsed="true">
+    <Position X="44.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.Properties.Settings" Collapsed="true">
+    <Position X="46.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.View.AnswerTextUserControl" Collapsed="true">
+    <Position X="36" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\AnswerTextUserControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.View.ChooseProfileAndPackUserControl" Collapsed="true">
+    <Position X="43" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\ChooseProfileAndPackUserControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.View.CreateAnswerTippMixUserControl" Collapsed="true">
+    <Position X="44.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\CreateAnswerTippMixUserControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.View.CreateProfileUserControl" Collapsed="true">
+    <Position X="36" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\CreateProfileUserControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.View.CreateQuest" Collapsed="true">
+    <Position X="39.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>View\CreateQnAView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.View.JoinMultiplayerUserControl" Collapsed="true">
+    <Position X="36" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\JoinMultiplayerUserControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.View.LoadCardPackDialog" Collapsed="true">
+    <Position X="37.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\LoadCardPackDialog.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.View.LoadProfileDialog" Collapsed="true">
+    <Position X="39.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\LoadProfileDialog.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.View.MainUserControl" Collapsed="true">
+    <Position X="43" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\MainUserControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.View.MainWindow" Collapsed="true">
+    <Position X="44.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.View.OnlineLobbyUserControl" Collapsed="true">
+    <Position X="41.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\OnlineLobbyUserControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.View.QnAUserControl" Collapsed="true">
+    <Position X="37.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\QnAUserControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.View.QuestionPictureUserControl" Collapsed="true">
+    <Position X="41.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\QuestionPictureUserControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.View.QuestionTextUserControl" Collapsed="true">
+    <Position X="43" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\QuestionTextUserControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.View.SimpleTextInputDialog" Collapsed="true">
+    <Position X="36" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\SimpleTextInputDialog.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.View.UseAnswerTippMixUserControl" Collapsed="true">
+    <Position X="41.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UseAnswerTippMixUserControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.AnswerExactTextViewModel" Collapsed="true">
+    <Position X="24.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAABAAAAA=</HashCode>
+      <FileName>ViewModel\AnswerExactTextViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.AnswerLotofTextViewModel" Collapsed="true">
+    <Position X="26" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAABAAAAA=</HashCode>
+      <FileName>ViewModel\AnswerLotofTextViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.AnswerTippMixViewModel" Collapsed="true">
+    <Position X="27.75" Y="5.75" Width="1.5" />
+    <InheritanceLine Type="LearningCard.ViewModel.AnswerViewModelBase" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="26.75" Y="5.377" />
+        <Point X="26.75" Y="5.558" />
+        <Point X="28.5" Y="5.558" />
+        <Point X="28.5" Y="5.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAgAAAABAABA=</HashCode>
+      <FileName>ViewModel\AnswerTippMixViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.AnswerViewModelBase">
+    <Position X="25.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>ViewModel\AnswerViewModelBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.ChooseProfileAndPackViewModel" Collapsed="true">
+    <Position X="17.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAIAAABgAAAAAIAAAAAAJAAAAgAAAAAIgAAAAAAAAk=</HashCode>
+      <FileName>ViewModel\ChooseProfileAndPackViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.CreateProfileViewModel" Collapsed="true">
+    <Position X="22.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAQAAAIIAAAAAABAAANQAAAEAAAAg=</HashCode>
+      <FileName>ViewModel\CreateProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.CreateQnAViewModel" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>CIAAAAAFgAARSSpCBABCABKCkECAAgABFkANhIAAQBA=</HashCode>
+      <FileName>ViewModel\CreateQnAViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.DelegateCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="41.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQEACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\DelegateCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LearningCard.ViewModel.InputTextDiagViewModel" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAICAQAAACAACAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\InputTextDiagViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.JoinMultiplayerViewModel" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAIAAAAAAAAAABAAAA=</HashCode>
+      <FileName>ViewModel\JoinMultiplayerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.LoadCardPackDiagViewModel" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAICAAAAACAAAAAAAAAAgAAAAAAAEAEAAAAQAAAAA=</HashCode>
+      <FileName>ViewModel\LoadCardPackDiagViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.LoadProfileDiagViewModel" Collapsed="true">
+    <Position X="15.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAICAAACACAAAAAAAAAAgAAQAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\LoadProfileDiagViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.MainControlChangeEventArgs" Collapsed="true">
+    <Position X="41.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAAAAAIEAAAAAAAAAAAAAAAAAAAAAgAAAAAQA=</HashCode>
+      <FileName>ViewModel\MainControlChangeEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.MainUserControlViewModel" Collapsed="true">
+    <Position X="20" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAgAAAAQAAAAAAAAAAAAAAACAAEAAAAgABAA=</HashCode>
+      <FileName>ViewModel\MainUserControlViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.MainViewModelBase" Collapsed="true">
+    <Position X="16.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAgAAAAA=</HashCode>
+      <FileName>ViewModel\MainViewModelBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.MainWindowViewModel" Collapsed="true">
+    <Position X="5.25" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>gAQhMICQCCAAIIQAAAAIIAASAAAAADCAAAAEAAgEAEA=</HashCode>
+      <FileName>ViewModel\MainWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.OnlineLobbyViewModel" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAABABEAAAAAAAAAAAAAAACAIAGAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\OnlineLobbyViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.QnAViewModel" Collapsed="true">
+    <Position X="13.25" Y="4.5" Width="1.5" />
+    <InheritanceLine Type="LearningCard.ViewModel.MainViewModelBase" FixedFromPoint="true">
+      <Path>
+        <Point X="17.5" Y="1.191" />
+        <Point X="17.5" Y="1.566" />
+        <Point X="14" Y="1.566" />
+        <Point X="14" Y="4.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAACAgBEBwEICAAAQAAAABAAQECAEAAAEAQIAAEAABA=</HashCode>
+      <FileName>ViewModel\QnAViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.QuestionPictureViewModel" Collapsed="true">
+    <Position X="30" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIgAEAAAAAAgAIAAAAAAAABAAAAAA=</HashCode>
+      <FileName>ViewModel\QuestionPictureViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.QuestionTextViewModel" Collapsed="true">
+    <Position X="32" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\QuestionTextViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.QuestionViewModelBase">
+    <Position X="31" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAIAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\QuestionViewModelBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LearningCard.ViewModel.ViewModelBase" Collapsed="true">
+    <Position X="14.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAIAAAAAAAgAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="LearningCard.Model.IMultiplayerService" Collapsed="true">
+    <Position X="36" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\MultiPlayerService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="LearningCard.Model.IOnlineLobbyServiceModel" Collapsed="true">
+    <Position X="37.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAACAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\OnlineLobbyServiceModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="LearningCard.OnlineLearningCardService.IOnlineLobbyServiceModel" Collapsed="true">
+    <Position X="0.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADAAAgACAAAAAAAAAABAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\OnlineLearningCardService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="LearningCard.OnlineLearningCardService.IOnlineLobbyServiceModelChannel" Collapsed="true">
+    <Position X="0.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\OnlineLearningCardService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Delegate Name="LearningCard.ViewModel.Event_mainControlChange" Collapsed="true">
+    <Position X="36" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\MainViewModelBase.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

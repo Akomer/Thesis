@@ -23,7 +23,16 @@ namespace LearningCard.OnlineLearningCardService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Uri ImageSourceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LanguageFileField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.Dictionary<string, int[]> StatisticDataField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -36,6 +45,32 @@ namespace LearningCard.OnlineLearningCardService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Uri ImageSource {
+            get {
+                return this.ImageSourceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImageSourceField, value) != true)) {
+                    this.ImageSourceField = value;
+                    this.RaisePropertyChanged("ImageSource");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LanguageFile {
+            get {
+                return this.LanguageFileField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LanguageFileField, value) != true)) {
+                    this.LanguageFileField = value;
+                    this.RaisePropertyChanged("LanguageFile");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Name {
             get {
                 return this.NameField;
@@ -44,6 +79,19 @@ namespace LearningCard.OnlineLearningCardService {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.Dictionary<string, int[]> StatisticData {
+            get {
+                return this.StatisticDataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatisticDataField, value) != true)) {
+                    this.StatisticDataField = value;
+                    this.RaisePropertyChanged("StatisticData");
                 }
             }
         }

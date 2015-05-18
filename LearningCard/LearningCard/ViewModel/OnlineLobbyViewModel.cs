@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace LearningCard.ViewModel
 {
-    class OnlineLobbyViewModel : MainWindowViewModel
+    class OnlineLobbyViewModel : MainViewModelBase
     {
         private Model.OnlineLobbyClientModel LobbyClient;
 
