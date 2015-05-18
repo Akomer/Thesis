@@ -63,8 +63,7 @@ namespace LearningCard.Model
             this.ActiveUsers.Add(prof);
             return true;
         }
-
-
+        
         public String GetPublicIP()
         {
             String ip = this.GetPublicIPFromWhatIsMyIP();
