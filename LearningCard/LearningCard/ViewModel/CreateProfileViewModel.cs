@@ -64,7 +64,14 @@ namespace LearningCard.ViewModel
             dialog.Title = "Select an image file";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                this.ProfilePicture = new BitmapImage(new Uri(dialog.FileName));
+                try
+                {
+                    this.ProfilePicture = new BitmapImage(new Uri(dialog.FileName));
+                }
+                catch (Exception)
+                {
+                    this.ProfilePicture = new BitmapImage(new Uri(@"/Images/error1.jpg", UriKind.Relative));
+                }
             }
         }
 

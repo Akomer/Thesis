@@ -36,9 +36,13 @@ namespace LearningCard.Model
             return new Uri(BasePath + this.ImageSRC);
         }
 
-        public QuestionPictureModel(Uri imgeSrc, String txt)
+        public QuestionPictureModel(Uri imgeSrc, String txt = "")
         {
             this.ImageSRC = imgeSrc;
+            if (txt == "")
+            {
+                txt = GlobalLanguage.Instance.GetDict()["NewQuestionPictureTitle"];
+            }
             this.Text = txt;
         }
 

@@ -31,9 +31,12 @@ namespace LearningCard.Model
             profilePath += @"\\Profiles\\" + this.UserName + @".prof";
             if (File.Exists(profilePath))
             {
-                System.Windows.Forms.MessageBox.Show("Profile already exsits", "Profile exsits",
-                    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-                return;
+                if (System.Windows.Forms.MessageBox.Show("Profile already exsits\nDo you want overwrite it?", "Profile exsits",
+                    System.Windows.Forms.MessageBoxButtons.YesNo,
+                    System.Windows.Forms.MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.No)
+                {
+                    return;
+                }
             }
             Profile tmpProfile = new Profile(this.UserName);
             tmpProfile.ProfilePicture = this.ProfilPicture;

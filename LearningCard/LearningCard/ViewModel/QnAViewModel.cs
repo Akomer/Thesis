@@ -24,6 +24,22 @@ namespace LearningCard.ViewModel
 
         private Model.QnAModel QnAModel { get; set; }
 
+        public Boolean IsCheckReady
+        {
+            get
+            {
+                return this.QnAModel.QuizPhase == Model.QnAModel.AnswerPhase.CkeckAnswer;
+            }
+            set { }
+        }
+        public Boolean IsNextReady
+        {
+            get
+            {
+                return this.QnAModel.QuizPhase == Model.QnAModel.AnswerPhase.ShowAnser;
+            }
+            set { }
+        }
         public String CardTitle
         {
             get
@@ -74,6 +90,7 @@ namespace LearningCard.ViewModel
         }
         public DelegateCommand Command_CheckAnswer { get; set; }
         public DelegateCommand Command_SkipAnswer { get; set; }
+        public DelegateCommand Command_NextCard { get; set; }
 
         public QnAViewModel(Model.QnAModel qModel)
         {
@@ -81,6 +98,7 @@ namespace LearningCard.ViewModel
 
             this.Command_CheckAnswer = new DelegateCommand(x => this.Execute_CheckAnswer());
             this.Command_SkipAnswer = new DelegateCommand(x => this.Execute_SkipAnswer());
+            this.Command_NextCard = new DelegateCommand(x => this.Execute_NextCard());
             this.LastAnswer = "None";
             this.GenerateFullCard();
         }
@@ -134,6 +152,14 @@ namespace LearningCard.ViewModel
                 v.DataContext = dc;
                 return v;
             }
+            if (this.ActualCard.Answer.GetAnswerType() == typeof(Model.AnswerTippMixModel))
+            {
+                UserControl v = new View.UseAnswerTippMixUserControl();
+                ViewModel.AnswerTippMixViewModel dc = new ViewModel.AnswerTippMixViewModel(
+                    (Model.AnswerTippMixModel)this.QnAModel.UserAnswer);
+                v.DataContext = dc;
+                return v;
+            }
             return null;
         }
 
@@ -167,22 +193,39 @@ namespace LearningCard.ViewModel
             this.GenerateFullCard();
         }
 
+        private void Execute_NextCard()
+        {
+            this.QnAModel.SetupNewCard();
+            this.RefreshButtonState();
+            this.GenerateFullCard();
+        }
+
         private void Execute_SkipAnswer()
         {
-            this.QnAModel.AnswerWasWrong();
+            this.LastAnswer = "Wrong";
+            this.QnAModel.AnswerWasSkipped();
             this.GenerateFullCard();
+            this.RefreshButtonState();
         }
 
         private void WrongAnser()
         {
             this.LastAnswer = "Wrong";
             this.QnAModel.AnswerWasWrong();
+            this.GenerateFullCard();
+            this.RefreshButtonState();
         }
 
         private void RightAnswer()
         {
             this.LastAnswer = "Right";
             this.QnAModel.AnswerWasRight();
+        }
+
+        private void RefreshButtonState()
+        {
+            this.OnPropertyChanged("IsCheckReady");
+            this.OnPropertyChanged("IsNextReady");
         }
     }
 }

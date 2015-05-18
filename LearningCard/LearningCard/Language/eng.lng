@@ -48,9 +48,10 @@
 	"Nothing" : "Nothing",
 	"RefreshIP" : "Refresh IP",
 
-	"YourLastanswerwas:" : "Your Last answer was:",
+	"YourLastanswerwas" : "Your Last answer was:",
 	"CheckAnswer" : "Check Answer",
 	"Skip" : "Skip",
+	"Next" : "Next",
 
 	"Changeimage" : "Change image",
 
@@ -58,6 +59,14 @@
 	"CardPackName" : "Card Pack Name",
 
 	"SaveError" : "Save Error",
-	"CouldNotSaveCardPack" : "Could not save card pack"
+	"CouldNotSaveCardPack" : "Could not save card pack",
 
+	"NewQuestionSimpleText" : "New Question - Simple Text",
+	"NewQuestionPictureTitle" : "Title/Question for picture",
+
+	"NewAnswerExactText" : "New Answer - Exact Text",
+	"NewAnswerLotofText" : "New Answer - Lot of Text",
+	"NewAnswerTippMixNewTipp" : "New Tipp",
+
+	"YourAnswerComesHere" : "Your answer comes here"
 }

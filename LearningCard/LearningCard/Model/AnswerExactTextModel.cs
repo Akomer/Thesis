@@ -13,8 +13,12 @@ namespace LearningCard.Model
         [DataMember]
         public String Text { get; set; }
 
-        public AnswerExactTextModel(String txt = "New Answer - Exact text")
+        public AnswerExactTextModel(String txt = "")
         {
+            if (txt == "")
+            {
+                txt = GlobalLanguage.Instance.GetDict()["NewAnswerExactText"];
+            }
             this.Text = txt;
         }
 

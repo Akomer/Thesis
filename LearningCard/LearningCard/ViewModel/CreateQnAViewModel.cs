@@ -267,7 +267,7 @@ namespace LearningCard.ViewModel
             {
                 if (model == null)
                 {
-                    model = new Model.QuestionTextModel("New Question - text");
+                    model = new Model.QuestionTextModel();
                 }
                 UserControl v = new View.QuestionTextUserControl();
                 ViewModel.QuestionTextViewModel dc = new ViewModel.QuestionTextViewModel(
@@ -280,7 +280,7 @@ namespace LearningCard.ViewModel
             {
                 if (model == null)
                 {
-                    model = new Model.QuestionPictureModel(new Uri(@"/Images/question_mark.png", UriKind.Relative), "Title of picture Q.");
+                    model = new Model.QuestionPictureModel(new Uri(@"/Images/question_mark.png", UriKind.Relative));
                 }
                 UserControl v = new View.QuestionPictureUserControl();
                 ViewModel.QuestionPictureViewModel dc = new ViewModel.QuestionPictureViewModel(

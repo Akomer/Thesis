@@ -13,9 +13,13 @@ namespace LearningCard.Model
         [DataMember]
         public List<TippMix> TippMixList { get; set; }
 
-        public AnswerTippMixModel()
+        public AnswerTippMixModel(Int32 TippCount = 0)
         {
             this.TippMixList = new List<TippMix>();
+            for (int i = 0; i < TippCount; ++i)
+            {
+                this.TippMixList.Add(new TippMix() { IsChecked = false, TippText = "Tipp Text" });
+            }
         }
 
         public override Type GetAnswerType()
@@ -34,8 +38,12 @@ namespace LearningCard.Model
             return true;
         }
 
-        public void AddTipp(String txt = "New Tipp")
+        public void AddTipp(String txt = "")
         {
+            if (txt == "")
+            {
+                txt = GlobalLanguage.Instance.GetDict()["NewAnswerTippMixNewTipp"];
+            }
             this.TippMixList.Add(new TippMix() { IsChecked = false, TippText = txt});
         }
     }

@@ -1,0 +1,1 @@
+{"CardList":[{"Answer":{"__type":"AnswerExactTextModel:#LearningCard.Model","Text":"New Answer - Exact Text"},"Question":{"__type":"QuestionTextModel:#LearningCard.Model","Text":"New Question - Simple Text"},"Title":"asd"}],"PackName":"TestTippMix"}

@@ -81,7 +81,7 @@ namespace LearningCard.Model
             String profilePath = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName;
             profilePath += @"\\Profiles\\" + tmpProfile.Name + @".prof";
 
-            using (FileStream fStream = new FileStream(profilePath, FileMode.CreateNew, FileAccess.Write))
+            using (FileStream fStream = new FileStream(profilePath, FileMode.Create, FileAccess.Write))
             {
                 DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Profile));
                 serializer.WriteObject(fStream, tmpProfile);

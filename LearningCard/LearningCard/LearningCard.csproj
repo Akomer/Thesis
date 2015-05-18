@@ -156,6 +156,9 @@
     <Compile Include="View\SimpleTextInputDialog.xaml.cs">
       <DependentUpon>SimpleTextInputDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UseAnswerTippMixUserControl.xaml.cs">
+      <DependentUpon>UseAnswerTippMixUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\AnswerTextUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -213,6 +216,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SimpleTextInputDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UseAnswerTippMixUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

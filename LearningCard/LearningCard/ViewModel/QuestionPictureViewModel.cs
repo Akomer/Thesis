@@ -21,7 +21,7 @@ namespace LearningCard.ViewModel
                 {
                     return new BitmapImage(this.QuestionModel.GetImagFullPath());
                 }
-                catch (FileNotFoundException)
+                catch (Exception)
                 {
                     return new BitmapImage(new Uri(@"/Images/error1.jpg", UriKind.Relative));
                 }

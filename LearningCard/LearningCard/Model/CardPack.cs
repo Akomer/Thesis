@@ -64,8 +64,23 @@ namespace LearningCard.Model
         static public void SaveCardPackToFile(CardPack deck)
         {
             String BasePath = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName;
-            String ImagePath = BasePath + "\\CardPacks\\" + deck.PackName + "_IMG\\";
-            String FilePath = BasePath + "\\CardPacks\\" + deck.PackName + ".lcp"; ;
+
+            HashSet<String> localDeckNames = new HashSet<string>();
+            String DeckPath = BasePath + "\\CardPacks";
+            foreach (String file in Directory.GetFiles(DeckPath, "*.lcp"))
+            {
+                localDeckNames.Add(Path.GetFileNameWithoutExtension(file));
+            }
+            String newCardPackName = deck.PackName;
+            Int32 i = 0;
+            while (localDeckNames.Contains(newCardPackName))
+            {
+                newCardPackName = deck.PackName + String.Format("_{0}", i);
+                i += 1;
+            }
+
+            String ImagePath = BasePath + "\\CardPacks\\" + newCardPackName + "_IMG\\";
+            String FilePath = BasePath + "\\CardPacks\\" + newCardPackName + ".lcp"; ;
 
             if (!System.IO.Directory.Exists(ImagePath))
             {
@@ -93,15 +108,15 @@ namespace LearningCard.Model
                         String BaseImgName = System.IO.Path.GetFileNameWithoutExtension(q.ImageSRC.ToString());
                         String ImgExtension = System.IO.Path.GetExtension(q.ImageSRC.ToString());
                         String imgName = BaseImgName + ImgExtension;
+                        i = 0;
                         while (imgSet.Contains(imgName))
                         {
-                            Int32 i = 0;
                             imgName = BaseImgName + String.Format("_{0}.{1}", i, ImgExtension);
                             i += 1;
                         }
                         System.IO.File.Copy(q.ImageSRC.AbsolutePath, ImagePath + imgName, true);
                         imgSet.Add(imgName);
-                        q.ImageSRC = new Uri("\\CardPacks\\" + deck.PackName + "_IMG\\" + imgName, UriKind.Relative);
+                        q.ImageSRC = new Uri("\\CardPacks\\" + newCardPackName + "_IMG\\" + imgName, UriKind.Relative);
                     }
                     else
                     {
@@ -166,6 +181,13 @@ namespace LearningCard.Model
             {
                 Directory.Delete(importDir, true);
                 ZipFile.ExtractToDirectory(sourceFile, importDir);
+            }
+            catch (InvalidDataException)
+            {
+                System.Windows.Forms.MessageBox.Show(GlobalLanguage.Instance.GetDict()["InvalidDataException"],
+                        GlobalLanguage.Instance.GetDict()["InvalidDataException"], System.Windows.Forms.MessageBoxButtons.OK, 
+                        System.Windows.Forms.MessageBoxIcon.Exclamation);
+                return;
             }
 
             String cardPack = Directory.GetFiles(importDir, "*.lcp")[0];

@@ -48,9 +48,10 @@
 	"Nothing" : "Semmi",
 	"RefreshIP" : "IP-cím frissítése",
 
-	"YourLastanswerwas:" : "Az Utolsó Válaszod:",
+	"YourLastanswerwas" : "Az Utolsó Válaszod:",
 	"CheckAnswer" : "Válasz ellenőrzése",
 	"Skip" : "Passz",
+	"Next" : "Következő",
 
 	"Changeimage" :"Kép Változtatása",
 
@@ -59,4 +60,15 @@
 
 	"SaveError" : "Mentési hiba",
 	"CouldNotSaveCardPack" : "Nem sikerült a mentés"
+
+	"NewQuestionSimpleText" : "Új kérdés - Egyszerű szöveg",
+	"NewQuestionPictureTitle" : "Cím/kérdés a képhez",
+
+	"NewAnswerExactText" : "Új válasz - Pontos szöveg",
+	"NewAnswerLotofText" : "Új válasz - Sok szöveg",
+	"NewAnswerTippMixNewTipp" : "Új tipp",
+
+	"YourAnswerComesHere" : "Ide válaszolj",
+
+	"InvalidDataException" : "Érvénytelen adat"
 }
