@@ -13,6 +13,6 @@ namespace LearningCard.Model
         [DataMember]
         public String CardPackName { get; set; }
         [DataMember]
-        public Int32[] StatInfo { get; set; }
+        public List<Int32> StatInfo { get; set; }
     }
 }

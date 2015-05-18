@@ -16,7 +16,7 @@ namespace LearningCard.Model
         [DataMember]
         public String Name { get; set; }
         [DataMember]
-        private Dictionary<String, List<Int32> > StatisticData { get; set; }
+        private Dictionary<String, StatisticInfo> StatisticData { get; set; }
         [DataMember]
         public Uri ImageSource { get; set; }
         [DataMember]

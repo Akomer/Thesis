@@ -17,12 +17,25 @@ namespace LearningCard.Model
         private static String ActiveFile;
         private Dictionary<String, String> fileToLang;
 
-        static private Int32 NumberOfKeysInLanguageDict = 55;
+        static private Int32 NumberOfKeysInLanguageDict = 56;
 
-        private GlobalLanguage(String fname) 
+        private GlobalLanguage() 
         {
             langDict = new Dictionary<string, string>();
-            ActiveFile = fname;
+            LanguageList();
+            try
+            {
+                ActiveFile = this.fileToLang[LanguageList()[0]];
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                if (this.fileToLang.Count() == 0)
+                {
+                    System.Windows.Forms.MessageBox.Show("Could not find any proper language file", "Missing Language File",
+                        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    return;
+                }
+            }
             ReadJson();
         }
 
@@ -32,7 +45,7 @@ namespace LearningCard.Model
             {
                 if (instance == null)
                 {
-                    instance = new GlobalLanguage("eng.lng");
+                    instance = new GlobalLanguage();
                 }
                 return instance;
             }

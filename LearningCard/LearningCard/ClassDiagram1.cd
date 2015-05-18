@@ -37,14 +37,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LearningCard.Model.Card" Collapsed="true">
-    <Position X="39.5" Y="0.5" Width="1.5" />
+    <Position X="39.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAEAAAAAgAAAAA=</HashCode>
       <FileName>Model\Card.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LearningCard.Model.CardPack" Collapsed="true">
-    <Position X="41.25" Y="0.5" Width="1.5" />
+  <Class Name="LearningCard.Model.CardPack">
+    <Position X="42.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQAAAAAAAAABBgAAAAAIAAAAAAAAAAEAAAAAAAEAA=</HashCode>
       <FileName>Model\CardPack.cs</FileName>
@@ -114,8 +114,8 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="LearningCard.Model.Profile" Collapsed="true">
-    <Position X="44.75" Y="3.5" Width="1.5" />
+  <Class Name="LearningCard.Model.Profile">
+    <Position X="48" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CACAAAAAAEQAAAAAAAEAAAQAAAAACAAABAEAIBAAAAA=</HashCode>
       <FileName>Model\Profile.cs</FileName>
@@ -220,7 +220,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LearningCard.View.CreateQuest" Collapsed="true">
-    <Position X="39.5" Y="1.5" Width="1.5" />
+    <Position X="39.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
       <FileName>View\CreateQnAView.xaml.cs</FileName>
