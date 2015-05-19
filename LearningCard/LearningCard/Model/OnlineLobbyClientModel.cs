@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LearningCardClasses;
+using System.ServiceModel;
 
 namespace LearningCard.Model
 {
@@ -30,8 +31,46 @@ namespace LearningCard.Model
 
         public OnlineLobbyClientModel(Boolean isHost) 
         {
-            this.RegisterClient();
             this.Host = isHost;
+            if (isHost)
+            {
+                ServiceHost host = new ServiceHost(typeof(LearningCardService.LearningCardService),
+                    new Uri[] { new Uri("net.tcp://localhost:8080/LearningCardService/Service1/") });
+                foreach (var item in host.Description.Behaviors)
+                {
+                    if (item.GetType() == typeof(System.ServiceModel.Description.ServiceMetadataBehavior))
+                    {
+                        ((System.ServiceModel.Description.ServiceMetadataBehavior)item).HttpGetEnabled = false;
+                        ((System.ServiceModel.Description.ServiceMetadataBehavior)item).HttpsGetEnabled = false;
+                    }
+                }
+                try
+                {
+                    System.Threading.Thread tr = new System.Threading.Thread(x => this.StartHost(host));
+                    tr.Start();
+                }
+                catch (AddressAlreadyInUseException)
+                {
+                    System.Windows.Forms.MessageBox.Show(Model.GlobalLanguage.Instance.GetDict()["ServerIsAlreadyRunning"],
+                        Model.GlobalLanguage.Instance.GetDict()["None"],
+                        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                }
+            }
+            this.RegisterClient();
+        }
+
+        private void StartHost(ServiceHost host)
+        {
+            try
+            {
+                host.Open();
+            }
+            catch (AddressAlreadyInUseException)
+            {
+                System.Windows.Forms.MessageBox.Show(Model.GlobalLanguage.Instance.GetDict()["ServerIsAlreadyRunning"],
+                    Model.GlobalLanguage.Instance.GetDict()["None"],
+                    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+            }
         }
 
         public List<String> GetActivePlayers()

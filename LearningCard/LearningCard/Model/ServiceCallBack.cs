@@ -61,27 +61,6 @@ namespace LearningCard.Model
             this._client = new OnlineLearningCardService.LearningCardServiceClient(context);
             try
             {
-                ServiceHost host = new ServiceHost(typeof(LearningCardService.LearningCardService),
-                    new Uri[] { new Uri("net.tcp://localhost:8080/LearningCardService/Service1/") });
-                foreach (var item in host.Description.Behaviors)
-                {
-                    if (item.GetType() == typeof(System.ServiceModel.Description.ServiceMetadataBehavior))
-                    {
-                        ((System.ServiceModel.Description.ServiceMetadataBehavior)item).HttpGetEnabled = false;
-                        ((System.ServiceModel.Description.ServiceMetadataBehavior)item).HttpsGetEnabled = false;
-                    }
-                }
-                try
-                {
-                    System.Threading.Thread tr = new System.Threading.Thread(x => this.StartHost(host));
-                    tr.Start();
-                }
-                catch (AddressAlreadyInUseException)
-                {
-                    System.Windows.Forms.MessageBox.Show(Model.GlobalLanguage.Instance.GetDict()["ServerIsAlreadyRunning"],
-                        Model.GlobalLanguage.Instance.GetDict()["None"],
-                        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-                }
                 this._client.RegisterClient(GlobalProfile.Instance.ActiveProfile.Name);
             }
             catch (EndpointNotFoundException)

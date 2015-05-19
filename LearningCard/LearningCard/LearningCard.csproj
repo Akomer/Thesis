@@ -293,6 +293,10 @@
       <Project>{6db31e05-4067-4774-a1b6-5c73d0ceff24}</Project>
       <Name>LearningCardClasses</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LearningCardService\LearningCardService.csproj">
+      <Project>{15b3e0d2-6217-493a-a690-158c497f5318}</Project>
+      <Name>LearningCardService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

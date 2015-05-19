@@ -1,1 +1,0 @@
-{"CardList":[{"Answer":{"__type":"AnswerTippMixModel:#LearningCard.Model","TippMixList":[{"IsChecked":false,"TippText":"New Tipp"},{"IsChecked":false,"TippText":"New Tipp"}]},"Question":{"__type":"QuestionTextModel:#LearningCard.Model","Text":"New Question - Simple Text"},"Title":"asd"}],"PackName":"TippM"}
