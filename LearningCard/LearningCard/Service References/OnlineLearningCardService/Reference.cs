@@ -15,24 +15,18 @@ namespace LearningCard.OnlineLearningCardService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Profile", Namespace="http://schemas.datacontract.org/2004/07/LearningCard.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EventDataType", Namespace="http://schemas.datacontract.org/2004/07/LearningCard.Model")]
     [System.SerializableAttribute()]
-    public partial class Profile : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class EventDataType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Uri ImageSourceField;
+        private string ClientNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LanguageFileField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.Dictionary<string, int[]> StatisticDataField;
+        private string EventMessageField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -45,53 +39,27 @@ namespace LearningCard.OnlineLearningCardService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Uri ImageSource {
+        public string ClientName {
             get {
-                return this.ImageSourceField;
+                return this.ClientNameField;
             }
             set {
-                if ((object.ReferenceEquals(this.ImageSourceField, value) != true)) {
-                    this.ImageSourceField = value;
-                    this.RaisePropertyChanged("ImageSource");
+                if ((object.ReferenceEquals(this.ClientNameField, value) != true)) {
+                    this.ClientNameField = value;
+                    this.RaisePropertyChanged("ClientName");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LanguageFile {
+        public string EventMessage {
             get {
-                return this.LanguageFileField;
+                return this.EventMessageField;
             }
             set {
-                if ((object.ReferenceEquals(this.LanguageFileField, value) != true)) {
-                    this.LanguageFileField = value;
-                    this.RaisePropertyChanged("LanguageFile");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.Dictionary<string, int[]> StatisticData {
-            get {
-                return this.StatisticDataField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StatisticDataField, value) != true)) {
-                    this.StatisticDataField = value;
-                    this.RaisePropertyChanged("StatisticData");
+                if ((object.ReferenceEquals(this.EventMessageField, value) != true)) {
+                    this.EventMessageField = value;
+                    this.RaisePropertyChanged("EventMessage");
                 }
             }
         }
@@ -107,68 +75,90 @@ namespace LearningCard.OnlineLearningCardService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="OnlineLearningCardService.IOnlineLobbyServiceModel")]
-    public interface IOnlineLobbyServiceModel {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="OnlineLearningCardService.IOnlineLobbyService", CallbackContract=typeof(LearningCard.OnlineLearningCardService.IOnlineLobbyServiceCallback))]
+    public interface IOnlineLobbyService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyServiceModel/JoinToLobby", ReplyAction="http://tempuri.org/IOnlineLobbyServiceModel/JoinToLobbyResponse")]
-        bool JoinToLobby(LearningCard.OnlineLearningCardService.Profile prof);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyService/JoinToLobby", ReplyAction="http://tempuri.org/IOnlineLobbyService/JoinToLobbyResponse")]
+        void JoinToLobby(string name);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyServiceModel/JoinToLobby", ReplyAction="http://tempuri.org/IOnlineLobbyServiceModel/JoinToLobbyResponse")]
-        System.Threading.Tasks.Task<bool> JoinToLobbyAsync(LearningCard.OnlineLearningCardService.Profile prof);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyService/JoinToLobby", ReplyAction="http://tempuri.org/IOnlineLobbyService/JoinToLobbyResponse")]
+        System.Threading.Tasks.Task JoinToLobbyAsync(string name);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyServiceModel/GetActiveUsers", ReplyAction="http://tempuri.org/IOnlineLobbyServiceModel/GetActiveUsersResponse")]
-        LearningCard.OnlineLearningCardService.Profile[] GetActiveUsers();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IOnlineLobbyService/NotifyServer")]
+        void NotifyServer(LearningCard.OnlineLearningCardService.EventDataType eventData);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyServiceModel/GetActiveUsers", ReplyAction="http://tempuri.org/IOnlineLobbyServiceModel/GetActiveUsersResponse")]
-        System.Threading.Tasks.Task<LearningCard.OnlineLearningCardService.Profile[]> GetActiveUsersAsync();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IOnlineLobbyService/NotifyServer")]
+        System.Threading.Tasks.Task NotifyServerAsync(LearningCard.OnlineLearningCardService.EventDataType eventData);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyServiceModel/GetPublicIP", ReplyAction="http://tempuri.org/IOnlineLobbyServiceModel/GetPublicIPResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyService/GetActiveUsers", ReplyAction="http://tempuri.org/IOnlineLobbyService/GetActiveUsersResponse")]
+        string[] GetActiveUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyService/GetActiveUsers", ReplyAction="http://tempuri.org/IOnlineLobbyService/GetActiveUsersResponse")]
+        System.Threading.Tasks.Task<string[]> GetActiveUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyService/GetPublicIP", ReplyAction="http://tempuri.org/IOnlineLobbyService/GetPublicIPResponse")]
         string GetPublicIP();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyServiceModel/GetPublicIP", ReplyAction="http://tempuri.org/IOnlineLobbyServiceModel/GetPublicIPResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyService/GetPublicIP", ReplyAction="http://tempuri.org/IOnlineLobbyService/GetPublicIPResponse")]
         System.Threading.Tasks.Task<string> GetPublicIPAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IOnlineLobbyServiceModelChannel : LearningCard.OnlineLearningCardService.IOnlineLobbyServiceModel, System.ServiceModel.IClientChannel {
+    public interface IOnlineLobbyServiceCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IOnlineLobbyService/BroadcastToClient")]
+        void BroadcastToClient(LearningCard.OnlineLearningCardService.EventDataType eventData);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IOnlineLobbyServiceChannel : LearningCard.OnlineLearningCardService.IOnlineLobbyService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class OnlineLobbyServiceModelClient : System.ServiceModel.ClientBase<LearningCard.OnlineLearningCardService.IOnlineLobbyServiceModel>, LearningCard.OnlineLearningCardService.IOnlineLobbyServiceModel {
+    public partial class OnlineLobbyServiceClient : System.ServiceModel.DuplexClientBase<LearningCard.OnlineLearningCardService.IOnlineLobbyService>, LearningCard.OnlineLearningCardService.IOnlineLobbyService {
         
-        public OnlineLobbyServiceModelClient() {
+        public OnlineLobbyServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public OnlineLobbyServiceModelClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public OnlineLobbyServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public OnlineLobbyServiceModelClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public OnlineLobbyServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public OnlineLobbyServiceModelClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public OnlineLobbyServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public OnlineLobbyServiceModelClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public OnlineLobbyServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
-        public bool JoinToLobby(LearningCard.OnlineLearningCardService.Profile prof) {
-            return base.Channel.JoinToLobby(prof);
+        public void JoinToLobby(string name) {
+            base.Channel.JoinToLobby(name);
         }
         
-        public System.Threading.Tasks.Task<bool> JoinToLobbyAsync(LearningCard.OnlineLearningCardService.Profile prof) {
-            return base.Channel.JoinToLobbyAsync(prof);
+        public System.Threading.Tasks.Task JoinToLobbyAsync(string name) {
+            return base.Channel.JoinToLobbyAsync(name);
         }
         
-        public LearningCard.OnlineLearningCardService.Profile[] GetActiveUsers() {
+        public void NotifyServer(LearningCard.OnlineLearningCardService.EventDataType eventData) {
+            base.Channel.NotifyServer(eventData);
+        }
+        
+        public System.Threading.Tasks.Task NotifyServerAsync(LearningCard.OnlineLearningCardService.EventDataType eventData) {
+            return base.Channel.NotifyServerAsync(eventData);
+        }
+        
+        public string[] GetActiveUsers() {
             return base.Channel.GetActiveUsers();
         }
         
-        public System.Threading.Tasks.Task<LearningCard.OnlineLearningCardService.Profile[]> GetActiveUsersAsync() {
+        public System.Threading.Tasks.Task<string[]> GetActiveUsersAsync() {
             return base.Channel.GetActiveUsersAsync();
         }
         

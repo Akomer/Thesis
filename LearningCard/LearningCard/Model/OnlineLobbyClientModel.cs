@@ -9,17 +9,71 @@ using System.ServiceModel.Description;
 
 namespace LearningCard.Model
 {
-    class OnlineLobbyClientModel
+    class OnlineLobbyClientModel : OnlineLearningCardService.IOnlineLobbyServiceCallback
     {
         private OnlineLobbyServiceModel LobbyService;
-        private OnlineLearningCardService.OnlineLobbyServiceModelClient LobbyClient;
+        private System.Threading.SynchronizationContext syncContext =
+            System.ComponentModel.AsyncOperationManager.SynchronizationContext;
+
+        private EventHandler _broadcastorCallBackHandler;
+        public void SetHandler(EventHandler handler)
+        {
+            this._broadcastorCallBackHandler = handler;
+        }
+
+        public void BroadcastToClient(OnlineLearningCardService.EventDataType eventData)
+        {
+            syncContext.Post(new System.Threading.SendOrPostCallback(this.OnBroadcast), eventData);
+        }
+        private void OnBroadcast(object eventData)
+        {
+            this._broadcastorCallBackHandler.Invoke(eventData, null);
+        }
+
+        private delegate void HandleBroadcastCallback(object sender, EventArgs e);
+        public void HandleBroadcast(object sender, EventArgs e)
+        {
+            try
+            {
+                var eventData = (OnlineLearningCardService.EventDataType)sender;
+                if (eventData.EventMessage == "NewMember")
+                {
+                    this.OnNewPlayerJoined();
+                }
+                    //eventData.EventMessage, eventData.ClientName);
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void JoinToLobby()
+        {
+            if (this._client != null)
+            {
+                this._client.Abort();
+                this._client = null;
+            }
+
+            //OnlineLobbyClientModel lobbyClient = new OnlineLobbyClientModel(false);
+            this.SetHandler(this.HandleBroadcast);
+
+            System.ServiceModel.InstanceContext context = new InstanceContext(this);
+            this._client = new OnlineLearningCardService.OnlineLobbyServiceClient(context);
+            this._client.JoinToLobby("Client G Name");
+            this._client.NotifyServer(new OnlineLearningCardService.EventDataType() { ClientName = "Client G Name", EventMessage = "NewMember" });
+        }
+
+        private OnlineLearningCardService.OnlineLobbyServiceClient _client;
+
         private Int32 serverStatus;
 
         public String HostIP 
         {
             get
             {
-                return LobbyClient.GetPublicIP();
+//                return LobbyClient.GetPublicIP();
+                return "as";
             }
             set
             { }
@@ -34,14 +88,9 @@ namespace LearningCard.Model
                 Thread service = new Thread(this.StartLobbyService);
                 service.Start();
             }
-            //this.LobbyClient = new OnlineLearningCardService.OnlineLobbyServiceModelClient(@"http://" + "86.59.238.248" + @":8080/learningcard/");
-            this.LobbyClient = new OnlineLearningCardService.OnlineLobbyServiceModelClient(new System.ServiceModel.BasicHttpBinding(),
-                new System.ServiceModel.EndpointAddress(@"http://" + hostip + @":8080/learningcard/"));
-            //this.LobbyClient = new OnlineLearningCardService.OnlineLobbyServiceModelClient();
-            OnlineLearningCardService.Profile p = new Profile().GetServiceProfile();
             try
             {
-                this.LobbyClient.JoinToLobby(p);
+                this.JoinToLobby();
             }
             catch (EndpointNotFoundException e)
             {
@@ -54,23 +103,18 @@ namespace LearningCard.Model
             
         }
 
-        public OnlineLearningCardService.Profile[] GetActiveUsers()
+        public string[] GetActiveUsers()
         {
-            return this.LobbyClient.GetActiveUsers();
+            var a = this._client.GetActiveUsers();
+            return a;
         }
 
         private void StartLobbyService()
         {
-            Uri baseAddress = new Uri("http://localhost:8080/learningcard/");
-            //Uri baseAddress = new Uri("http://86.59.238.248:8080/learningcard/");
-            ServiceHost lobbyHost = new ServiceHost(typeof(OnlineLobbyServiceModel), baseAddress);
+            Uri baseAddress = new Uri("net.tcp://localhost:8080/learningcard/");
+            ServiceHost lobbyHost = new ServiceHost(typeof(Model.OnlineLobbyServiceModel), baseAddress);
             {
-                ServiceMetadataBehavior smdb = new ServiceMetadataBehavior();
-                smdb.HttpGetEnabled = true;
-                smdb.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
-                lobbyHost.Description.Behaviors.Add(smdb);
                 lobbyHost.OpenTimeout = new System.TimeSpan(1, 0, 0);
-                lobbyHost.AddDefaultEndpoints();
                 try
                 {
                     lobbyHost.Open();
@@ -82,6 +126,16 @@ namespace LearningCard.Model
                     this.serverStatus = 1;
                     return;
                 }
+            }
+        }
+
+        public event EventHandler NewPlayerJoined;
+
+        private void OnNewPlayerJoined()
+        {
+            if (this.NewPlayerJoined != null)
+            {
+                this.NewPlayerJoined(this, new EventArgs());
             }
         }
     }

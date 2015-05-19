@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLUseCaseDiagram1">
+  <useCaseModelRootMoniker Id="2cb3b7c1-ac33-4e96-948f-1616ccd4db3c" />
+  <nestedChildShapes>
+    <actorShape Id="a66d85ea-1fb0-4b18-b7c3-7b3b5a2c0b05" absoluteBounds="1.375, 3.125, 0.625, 0.875" isReference="false" heightOffset="0">
+      <actorMoniker Id="2ca7ee6e-3030-43b5-84dd-5c2cdc8865b8" LastKnownName="Actor1" />
+      <relativeChildShapes />
+    </actorShape>
+    <useCaseShape Id="6d9950a6-8ce6-4d55-8fae-75b1e0283577" absoluteBounds="2.375, 2.375, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="b33ea940-ddc7-45d1-b975-45e6a85587d7" LastKnownName="Start Quiz" />
+      <relativeChildShapes />
+    </useCaseShape>
+  </nestedChildShapes>
+</useCaseDiagram>

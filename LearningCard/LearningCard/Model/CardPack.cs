@@ -38,7 +38,7 @@ namespace LearningCard.Model
             return deckList;
         }
 
-        static CardPack LoadCardPackFromFile(String deckName)
+        static public CardPack LoadCardPackFromFile(String deckName)
         {
             CardPack tmpDeck;
             String path;
@@ -49,7 +49,9 @@ namespace LearningCard.Model
             else
             {
                 path = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName;
-                path += "\\CardPacks\\" + deckName + ".lcp";
+                path += "\\CardPacks\\" + deckName;
+                if (!deckName.EndsWith(".lcp"))
+                    path += ".lcp";
             }
             using (FileStream fStream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {

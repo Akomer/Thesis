@@ -13,11 +13,14 @@ namespace LearningCard.ViewModel
     {
         private Model.OnlineLobbyClientModel LobbyClient;
 
-        public ObservableCollection<OnlineLearningCardService.Profile> ActiveUserProfileList 
+        public ObservableCollection<Model.Profile> ActiveUserProfileList 
         {
             get
             {
-                return new ObservableCollection<OnlineLearningCardService.Profile>(this.LobbyClient.GetActiveUsers());
+                ObservableCollection<Model.Profile> obc = new ObservableCollection<Model.Profile>();
+                foreach (var item in this.LobbyClient.GetActiveUsers())
+                    obc.Add(new Model.Profile(item));
+                return obc;
             }
             set
             { }
@@ -69,7 +72,7 @@ namespace LearningCard.ViewModel
             else
             {
                 this.Command_RefresIP = new DelegateCommand(x => this.Execute_RefresIP());
-
+                this.LobbyClient.NewPlayerJoined += new EventHandler(this.RefreshViewEvent);
                 this.RefreshView();
             }
         }
@@ -84,10 +87,16 @@ namespace LearningCard.ViewModel
             //this.OnPropertyChanged("HostIpAddres");
         }
 
+        private void RefreshViewEvent(object sender, EventArgs e)
+        {
+            this.RefreshView();
+        }
+
         private void RefreshView()
         {
             this.OnPropertyChanged("HostIpAddres");
-            //this.OnPropertyChanged("ActiveUserProfileList");
+            String[] a = this.LobbyClient.GetActiveUsers();
+            this.OnPropertyChanged("ActiveUserProfileList");
         }
     }
 }

@@ -70,7 +70,6 @@
     <Compile Include="Model\MultiPlayerService.cs" />
     <Compile Include="Model\OnlineLobbyClientModel.cs" />
     <Compile Include="Model\OnlineLobbyServiceModel.cs" />
-    <Compile Include="Model\PartialClientClasses.cs" />
     <Compile Include="Model\Profile.cs" />
     <Compile Include="Model\QnAModel.cs" />
     <Compile Include="Model\QuestionPictureModel.cs" />
@@ -249,22 +248,19 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\OnlineLearningCardService\item.xsd">
+    <None Include="Service References\OnlineLearningCardService\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\OnlineLearningCardService\item1.xsd">
+    <None Include="Service References\OnlineLearningCardService\LearningCard.Model.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\OnlineLearningCardService\item2.xsd">
+    <None Include="Service References\OnlineLearningCardService\service.wsdl" />
+    <None Include="Service References\OnlineLearningCardService\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\OnlineLearningCardService\item3.xsd">
+    <None Include="Service References\OnlineLearningCardService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\OnlineLearningCardService\LearningCard.OnlineLearningCardService.Profile.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\OnlineLearningCardService\OnlineLobbyServiceModel.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -283,10 +279,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\OnlineLearningCardService\" />
+    <Resource Include="Images\error1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\OnlineLearningCardService\item.disco" />
+    <WCFMetadataStorage Include="Service References\OnlineLearningCardService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\OnlineLearningCardService\configuration91.svcinfo" />
@@ -299,9 +295,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\error1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

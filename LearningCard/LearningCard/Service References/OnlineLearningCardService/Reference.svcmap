@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e94fd760-0a57-4376-8191-2793b403ec1d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b31cda39-e17b-4419-84f3-2122685d6e52" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,15 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8080/learningcard/" Protocol="http" SourceId="1" />
+    <MetadataSource Address="net.tcp://localhost:8080/learningcard/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="297d3d61-a0cf-421e-b712-ea3d1db7053a" SourceId="1" SourceUrl="http://localhost:8080/learningcard/?xsd=xsd2" />
-    <MetadataFile FileName="OnlineLobbyServiceModel.wsdl" MetadataType="Wsdl" ID="c3dfff9b-2af1-4166-971d-bf4fdeb6bd38" SourceId="1" SourceUrl="http://localhost:8080/learningcard/?wsdl" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="0e7632fd-3182-4c29-a7f7-bc6e4eaf94cb" SourceId="1" SourceUrl="http://localhost:8080/learningcard/?xsd=xsd0" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="3b8df44e-163c-4a6d-beee-c795c4208636" SourceId="1" SourceUrl="http://localhost:8080/learningcard/?xsd=xsd3" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="d9d5e3ec-bd04-40d7-9220-eff4920467f1" SourceId="1" SourceUrl="http://localhost:8080/learningcard/?disco" />
-    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="d649c064-6ecd-4d70-9d55-0064f79881b7" SourceId="1" SourceUrl="http://localhost:8080/learningcard/?xsd=xsd1" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="c45f1868-1b97-4898-ad3e-9bd129623bb1" SourceId="1" SourceUrl="net.tcp://localhost:8080/learningcard/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="84f6c7cf-a2e1-40ca-bf7e-9014f9bf10e5" SourceId="1" SourceUrl="net.tcp://localhost:8080/learningcard/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="1c2d17d0-fd77-46fd-abe9-f57eb35c756a" SourceId="1" SourceUrl="net.tcp://localhost:8080/learningcard/mex" />
+    <MetadataFile FileName="LearningCard.Model.xsd" MetadataType="Schema" ID="c5e228e6-6f8f-4123-8e95-20e14cbe5d8e" SourceId="1" SourceUrl="net.tcp://localhost:8080/learningcard/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="36fa882d-b05a-4dbd-bf62-68ac7d590a8a" SourceId="1" SourceUrl="net.tcp://localhost:8080/learningcard/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

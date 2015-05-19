@@ -49,15 +49,20 @@ namespace LearningCard.Model
             this.Name = name;
             //this.ProfilePicture = new BitmapImage(new Uri(@"\\Images\\question_mark.png", UriKind.Relative));
             this.ImageSource = new Uri(@"/Images/question_mark.png", UriKind.Relative);
-            this.StatisticData = new Dictionary<string, List<int>>();
+            this.StatisticData = new Dictionary<string, StatisticInfo>();
             this.LanguageFile = GlobalLanguage.Instance.GetLanguageFile();
         }
 
-        public List<Int32> GetStatInfo(String DeckName)
+        public List<Int32> GetStatInfo(String DeckFile)
         {
-            List<Int32> o;
-            if (StatisticData.TryGetValue(DeckName, out o))
-                return o;
+            StatisticInfo o;
+            if (StatisticData.TryGetValue(DeckFile, out o))
+            {
+                if (o.CardPackName == CardPack.LoadCardPackFromFile(DeckFile).PackName)
+                {
+                    return o.StatInfo;
+                }
+            }
             return null;
         }
 
@@ -68,12 +73,7 @@ namespace LearningCard.Model
             {
                 l.Add(5);
             }
-            this.StatisticData.Add(cards.PackName, l);
-        }
-
-        public OnlineLearningCardService.Profile GetServiceProfile()
-        {
-            return new OnlineLearningCardService.Profile() { Name = this.Name };
+            //this.StatisticData.Add(cards.PackName, l);
         }
 
         public static void SaveProfileToFile(String fileName, Profile tmpProfile)
