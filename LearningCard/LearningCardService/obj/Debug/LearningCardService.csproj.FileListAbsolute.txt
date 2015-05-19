@@ -1,0 +1,6 @@
+D:\GitHub\Thesis\LearningCard\LearningCardService\bin\Debug\LearningCardService.dll.config
+D:\GitHub\Thesis\LearningCard\LearningCardService\bin\Debug\LearningCardService.dll
+D:\GitHub\Thesis\LearningCard\LearningCardService\bin\Debug\LearningCardService.pdb
+D:\GitHub\Thesis\LearningCard\LearningCardService\obj\Debug\LearningCardService.dll
+D:\GitHub\Thesis\LearningCard\LearningCardService\obj\Debug\LearningCardService.pdb
+D:\GitHub\Thesis\LearningCard\LearningCardService\obj\Debug\LearningCardService.csprojResolveAssemblyReference.cache

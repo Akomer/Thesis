@@ -11,15 +11,17 @@ namespace LearningCard.ViewModel
 {
     class OnlineLobbyViewModel : MainViewModelBase
     {
-        private Model.OnlineLobbyClientModel LobbyClient;
+        private Model.OnlineLobbyClientModel lobbyClient;
 
         public ObservableCollection<Model.Profile> ActiveUserProfileList 
         {
             get
             {
                 ObservableCollection<Model.Profile> obc = new ObservableCollection<Model.Profile>();
-                foreach (var item in this.LobbyClient.GetActiveUsers())
+                foreach (var item in lobbyClient.GetActivePlayers())
+                {
                     obc.Add(new Model.Profile(item));
+                }
                 return obc;
             }
             set
@@ -30,20 +32,9 @@ namespace LearningCard.ViewModel
         {
             get
             {
-                return this.LobbyClient.HostIP;
+                return "IP.Adr";
             }
             set { }
-        }
-        public Boolean Host
-        {
-            get
-            {
-                return this.LobbyClient.isHost;
-            }
-            set
-            {
-                this.LobbyClient.isHost = value;
-            }
         }
 
         public OnlineLobbyViewModel()
@@ -55,36 +46,21 @@ namespace LearningCard.ViewModel
 
         public OnlineLobbyViewModel(Boolean isHost, String hostip = "127.0.0.1")
         {
-            try
-            {
-                this.LobbyClient = new Model.OnlineLobbyClientModel(isHost, hostip);
-            }
-            catch (InvalidOperationException e)
-            {
-                this.LobbyClient = null;
-            }
-
-            if (this.LobbyClient == null)
-            {
-                //throw new NotImplementedException();
-                return;
-            }
-            else
-            {
-                this.Command_RefresIP = new DelegateCommand(x => this.Execute_RefresIP());
-                this.LobbyClient.NewPlayerJoined += new EventHandler(this.RefreshViewEvent);
-                this.RefreshView();
-            }
+            this.lobbyClient = new Model.OnlineLobbyClientModel();
+            this.lobbyClient.NewPlayerJoined += new EventHandler(this.RefreshViewEvent);
+            //this.Command_RefresIP = new DelegateCommand(x => this.Execute_RefresIP());
+            this.RefreshView();
         }
 
         public override bool IsReady()
         {
-            return this.LobbyClient != null;
+            //return this.LobbyClient != null;
+            return true;
         }
 
         private void Execute_RefresIP()
         {
-            //this.OnPropertyChanged("HostIpAddres");
+
         }
 
         private void RefreshViewEvent(object sender, EventArgs e)
@@ -95,7 +71,6 @@ namespace LearningCard.ViewModel
         private void RefreshView()
         {
             this.OnPropertyChanged("HostIpAddres");
-            var a = this.LobbyClient.GetActiveUsers();
             this.OnPropertyChanged("ActiveUserProfileList");
         }
     }

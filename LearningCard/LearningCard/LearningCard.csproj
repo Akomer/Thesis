@@ -69,11 +69,11 @@
     <Compile Include="Model\GlobalProfile.cs" />
     <Compile Include="Model\MultiPlayerService.cs" />
     <Compile Include="Model\OnlineLobbyClientModel.cs" />
-    <Compile Include="Model\OnlineLobbyServiceModel.cs" />
     <Compile Include="Model\Profile.cs" />
     <Compile Include="Model\QnAModel.cs" />
     <Compile Include="Model\QuestionPictureModel.cs" />
     <Compile Include="Model\QuestionTextModel.cs" />
+    <Compile Include="Model\ServiceCallBack.cs" />
     <Compile Include="Model\StatisticInfo.cs" />
     <Compile Include="Model\TippMix.cs" />
     <Compile Include="Service References\OnlineLearningCardService\Reference.cs">
@@ -251,7 +251,7 @@
     <None Include="Service References\OnlineLearningCardService\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\OnlineLearningCardService\LearningCard.Model.xsd">
+    <None Include="Service References\OnlineLearningCardService\LearningCardService.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\OnlineLearningCardService\service.wsdl" />
@@ -280,6 +280,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\error1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LearningCardService\LearningCardService.csproj">
+      <Project>{15b3e0d2-6217-493a-a690-158c497f5318}</Project>
+      <Name>LearningCardService</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\OnlineLearningCardService\" />

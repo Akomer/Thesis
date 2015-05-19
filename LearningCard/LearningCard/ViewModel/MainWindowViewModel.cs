@@ -197,15 +197,15 @@ namespace LearningCard.ViewModel
         {
             Uri baseAddress = new Uri("net.tcp://localhost:8080/learningcard/");
             //Uri baseAddress = new Uri("http://86.59.238.248:8080/learningcard/");
-            ServiceHost lobbyHost = new ServiceHost(typeof(Model.OnlineLobbyServiceModel), baseAddress);
+            //ServiceHost lobbyHost = new ServiceHost(typeof(Model.OnlineLobbyServiceModel), baseAddress);
             {
-                lobbyHost.OpenTimeout = new System.TimeSpan(1, 0, 0);
+                //lobbyHost.OpenTimeout = new System.TimeSpan(1, 0, 0);
                 //lobbyHost.AddServiceEndpoint("IMetadataExchange", new System.ServiceModel.NetTcpBinding(), new Uri("net.tcp://localhost:8080/learningcard"));
                 //lobbyHost.AddDefaultEndpoints();
                 //lobbyHost.Description.Endpoints[0].Binding = new System.ServiceModel.NetTcpBinding();
                 try
                 {
-                    lobbyHost.Open();
+                    //lobbyHost.Open();
                 }
                 catch (AddressAccessDeniedException e)
                 {

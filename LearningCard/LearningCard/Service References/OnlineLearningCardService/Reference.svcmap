@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b31cda39-e17b-4419-84f3-2122685d6e52" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="15bd6c10-8c84-4af9-abdb-b6f1f3056c78" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
     <EnableDataBinding>true</EnableDataBinding>
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
-    <GenerateInternalTypes>true</GenerateInternalTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
     <CollectionMappings>
@@ -21,14 +21,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="net.tcp://localhost:8080/learningcard/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="net.tcp://localhost:8080/LearningCardService/Service1/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="c45f1868-1b97-4898-ad3e-9bd129623bb1" SourceId="1" SourceUrl="net.tcp://localhost:8080/learningcard/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="84f6c7cf-a2e1-40ca-bf7e-9014f9bf10e5" SourceId="1" SourceUrl="net.tcp://localhost:8080/learningcard/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="1c2d17d0-fd77-46fd-abe9-f57eb35c756a" SourceId="1" SourceUrl="net.tcp://localhost:8080/learningcard/mex" />
-    <MetadataFile FileName="LearningCard.Model.xsd" MetadataType="Schema" ID="c5e228e6-6f8f-4123-8e95-20e14cbe5d8e" SourceId="1" SourceUrl="net.tcp://localhost:8080/learningcard/mex" />
-    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="a52d263f-bbe0-41c6-8551-eae41d8f6a71" SourceId="1" SourceUrl="net.tcp://localhost:8080/learningcard/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="e0474b70-8caf-4ccf-8ddc-f5ea42d30fa1" SourceId="1" SourceUrl="net.tcp://localhost:8080/LearningCardService/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="64bbea30-03cf-451f-b0c0-310315fddbe2" SourceId="1" SourceUrl="net.tcp://localhost:8080/LearningCardService/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="a6b46d01-74e9-4c7e-b8d5-2e76f9526e2f" SourceId="1" SourceUrl="net.tcp://localhost:8080/LearningCardService/Service1/mex" />
+    <MetadataFile FileName="LearningCardService.xsd" MetadataType="Schema" ID="2603241d-e65d-411b-bdc5-d68a4b6d8a47" SourceId="1" SourceUrl="net.tcp://localhost:8080/LearningCardService/Service1/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="6b88814c-d8ed-479e-89d8-f7f32dbb6a2a" SourceId="1" SourceUrl="net.tcp://localhost:8080/LearningCardService/Service1/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

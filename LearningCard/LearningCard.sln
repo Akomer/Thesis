@@ -2,8 +2,13 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningCard", "LearningCard\LearningCard.csproj", "{2AE11E0D-9FEC-4D4C-9576-6E67C421F06B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{15B3E0D2-6217-493A-A690-158C497F5318} = {15B3E0D2-6217-493A-A690-158C497F5318}
+	EndProjectSection
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingProject1", "ModelingProject1\ModelingProject1.modelproj", "{AB224E7D-D6FA-423A-A59D-C88BDC0CAFAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningCardService", "LearningCardService\LearningCardService.csproj", "{15B3E0D2-6217-493A-A690-158C497F5318}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +24,10 @@ Global
 		{AB224E7D-D6FA-423A-A59D-C88BDC0CAFAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB224E7D-D6FA-423A-A59D-C88BDC0CAFAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB224E7D-D6FA-423A-A59D-C88BDC0CAFAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15B3E0D2-6217-493A-A690-158C497F5318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B3E0D2-6217-493A-A690-158C497F5318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B3E0D2-6217-493A-A690-158C497F5318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B3E0D2-6217-493A-A690-158C497F5318}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

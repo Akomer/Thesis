@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="OnlineLobbyServiceModel" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsp:Policy wsu:Id="NetTcpBinding_IOnlineLobbyService_policy">
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LearningCardService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_ILearningCardService_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
@@ -37,103 +37,58 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import namespace="http://schemas.datacontract.org/2004/07/LearningCard.Model" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/LearningCardService" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IOnlineLobbyService_JoinToLobby_InputMessage">
-    <wsdl:part name="parameters" element="tns:JoinToLobby" />
+  <wsdl:message name="ILearningCardService_RegisterClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterClient" />
   </wsdl:message>
-  <wsdl:message name="IOnlineLobbyService_JoinToLobby_OutputMessage">
-    <wsdl:part name="parameters" element="tns:JoinToLobbyResponse" />
-  </wsdl:message>
-  <wsdl:message name="IOnlineLobbyService_NotifyServer_InputMessage">
+  <wsdl:message name="ILearningCardService_NotifyServer_InputMessage">
     <wsdl:part name="parameters" element="tns:NotifyServer" />
   </wsdl:message>
-  <wsdl:message name="IOnlineLobbyService_GetActiveUsers_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetActiveUsers" />
+  <wsdl:message name="ILearningCardService_GetActivePlayers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivePlayers" />
   </wsdl:message>
-  <wsdl:message name="IOnlineLobbyService_GetActiveUsers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetActiveUsersResponse" />
+  <wsdl:message name="ILearningCardService_GetActivePlayers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivePlayersResponse" />
   </wsdl:message>
-  <wsdl:message name="IOnlineLobbyService_GetRandomString_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetRandomString" />
-  </wsdl:message>
-  <wsdl:message name="IOnlineLobbyService_GetRandomString_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetRandomStringResponse" />
-  </wsdl:message>
-  <wsdl:message name="IOnlineLobbyService_GetPublicIP_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPublicIP" />
-  </wsdl:message>
-  <wsdl:message name="IOnlineLobbyService_GetPublicIP_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPublicIPResponse" />
-  </wsdl:message>
-  <wsdl:message name="IOnlineLobbyService_BroadcastToClient_OutputCallbackMessage">
+  <wsdl:message name="ILearningCardService_BroadcastToClient_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:BroadcastToClient" />
   </wsdl:message>
-  <wsdl:portType name="IOnlineLobbyService">
-    <wsdl:operation name="JoinToLobby">
-      <wsdl:input wsaw:Action="http://tempuri.org/IOnlineLobbyService/JoinToLobby" message="tns:IOnlineLobbyService_JoinToLobby_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IOnlineLobbyService/JoinToLobbyResponse" message="tns:IOnlineLobbyService_JoinToLobby_OutputMessage" />
+  <wsdl:portType name="ILearningCardService">
+    <wsdl:operation name="RegisterClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILearningCardService/RegisterClient" message="tns:ILearningCardService_RegisterClient_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="NotifyServer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IOnlineLobbyService/NotifyServer" message="tns:IOnlineLobbyService_NotifyServer_InputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILearningCardService/NotifyServer" message="tns:ILearningCardService_NotifyServer_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetActiveUsers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IOnlineLobbyService/GetActiveUsers" message="tns:IOnlineLobbyService_GetActiveUsers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IOnlineLobbyService/GetActiveUsersResponse" message="tns:IOnlineLobbyService_GetActiveUsers_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetRandomString">
-      <wsdl:input wsaw:Action="http://tempuri.org/IOnlineLobbyService/GetRandomString" message="tns:IOnlineLobbyService_GetRandomString_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IOnlineLobbyService/GetRandomStringResponse" message="tns:IOnlineLobbyService_GetRandomString_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetPublicIP">
-      <wsdl:input wsaw:Action="http://tempuri.org/IOnlineLobbyService/GetPublicIP" message="tns:IOnlineLobbyService_GetPublicIP_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IOnlineLobbyService/GetPublicIPResponse" message="tns:IOnlineLobbyService_GetPublicIP_OutputMessage" />
+    <wsdl:operation name="GetActivePlayers">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILearningCardService/GetActivePlayers" message="tns:ILearningCardService_GetActivePlayers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILearningCardService/GetActivePlayersResponse" message="tns:ILearningCardService_GetActivePlayers_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="BroadcastToClient">
-      <wsdl:output wsaw:Action="http://tempuri.org/IOnlineLobbyService/BroadcastToClient" message="tns:IOnlineLobbyService_BroadcastToClient_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILearningCardService/BroadcastToClient" message="tns:ILearningCardService_BroadcastToClient_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="NetTcpBinding_IOnlineLobbyService" type="tns:IOnlineLobbyService">
-    <wsp:PolicyReference URI="#NetTcpBinding_IOnlineLobbyService_policy">
+  <wsdl:binding name="NetTcpBinding_ILearningCardService" type="tns:ILearningCardService">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILearningCardService_policy">
     </wsp:PolicyReference>
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="JoinToLobby">
-      <soap12:operation soapAction="http://tempuri.org/IOnlineLobbyService/JoinToLobby" style="document" />
+    <wsdl:operation name="RegisterClient">
+      <soap12:operation soapAction="http://tempuri.org/ILearningCardService/RegisterClient" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="NotifyServer">
-      <soap12:operation soapAction="http://tempuri.org/IOnlineLobbyService/NotifyServer" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/ILearningCardService/NotifyServer" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="GetActiveUsers">
-      <soap12:operation soapAction="http://tempuri.org/IOnlineLobbyService/GetActiveUsers" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetRandomString">
-      <soap12:operation soapAction="http://tempuri.org/IOnlineLobbyService/GetRandomString" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetPublicIP">
-      <soap12:operation soapAction="http://tempuri.org/IOnlineLobbyService/GetPublicIP" style="document" />
+    <wsdl:operation name="GetActivePlayers">
+      <soap12:operation soapAction="http://tempuri.org/ILearningCardService/GetActivePlayers" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -142,17 +97,17 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="BroadcastToClient">
-      <soap12:operation soapAction="http://tempuri.org/IOnlineLobbyService/BroadcastToClient" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/ILearningCardService/BroadcastToClient" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="OnlineLobbyServiceModel">
-    <wsdl:port name="NetTcpBinding_IOnlineLobbyService" binding="tns:NetTcpBinding_IOnlineLobbyService">
-      <soap12:address location="net.tcp://localhost:8080/learningcard/" />
+  <wsdl:service name="LearningCardService">
+    <wsdl:port name="NetTcpBinding_ILearningCardService" binding="tns:NetTcpBinding_ILearningCardService">
+      <soap12:address location="net.tcp://localhost:8080/LearningCardService/Service1/" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8080/learningcard/</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:8080/LearningCardService/Service1/</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Upn>Speeder-A\Speeder</Upn>
         </Identity>
