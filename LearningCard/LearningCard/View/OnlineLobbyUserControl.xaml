@@ -16,10 +16,10 @@
         </ListView>
         <StackPanel Orientation="Vertical" DockPanel.Dock="Right" />
         <StackPanel Orientation="Vertical">
-            <Button Margin="10" Padding="5" Content="{Binding ActiveLanguage[LoadCardPack]}"  HorizontalAlignment="Center"/>
+            <Button Margin="10" Padding="5" Content="{Binding ActiveLanguage[LoadCardPack]}"  HorizontalAlignment="Center" Command="{Binding Command_LoadCardPack}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label Content="{Binding ActiveLanguage[Activecardpack]}" />
-                <Label Content="{Binding ActiveLanguage[Nothing]}" />
+                <Label Content="{Binding ActivePackName}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label Content="{Binding ActiveLanguage[HostIPaddress]}" VerticalAlignment="Center"/>

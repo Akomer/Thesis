@@ -14,6 +14,7 @@ namespace LearningCardService
     {
         private static Dictionary<string, IServiceCallBack> clients = new Dictionary<string, IServiceCallBack>();
         private static object locker = new object();
+        private CardPack deck;
 
         public void RegisterClient(string clientName)
         {
@@ -74,6 +75,11 @@ namespace LearningCardService
             {
                 return new List<String>(clients.Keys);
             }
+        }
+
+        public void SetupDeck(CardPack cp)
+        {
+            this.deck = cp;
         }
     }
 }

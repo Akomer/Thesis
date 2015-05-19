@@ -28,7 +28,19 @@ namespace LearningCard.ViewModel
             set
             { }
         }
+        public String ActivePackName
+        {
+            get
+            {
+                if (this.lobbyClient.Deck == null)
+                {
+                    return Model.GlobalLanguage.Instance.GetDict()["Nothing"];
+                }
+                return this.lobbyClient.Deck.PackName;
+            }
+        }
         public DelegateCommand Command_RefresIP { get; set; }
+        public DelegateCommand Command_LoadCardPack { get; set; }
         public String HostIpAddres 
         {
             get
@@ -50,6 +62,7 @@ namespace LearningCard.ViewModel
             this.lobbyClient = new Model.OnlineLobbyClientModel();
             this.lobbyClient.NewPlayerJoined += new EventHandler(this.RefreshViewEvent);
             this.Command_RefresIP = new DelegateCommand(x => this.Execute_RefreshIP());
+            this.Command_LoadCardPack = new DelegateCommand(x => this.Execute_LoadCardPack());
             this.RefreshView();
         }
 
@@ -72,7 +85,21 @@ namespace LearningCard.ViewModel
         private void RefreshView()
         {
             this.OnPropertyChanged("HostIpAddres");
+            this.OnPropertyChanged("ActivePackName");
             this.OnPropertyChanged("ActiveUserProfileList");
+        }
+
+        private void Execute_LoadCardPack()
+        {
+            View.LoadCardPackDialog newDialog = new View.LoadCardPackDialog();
+            LoadCardPackDiagViewModel diagVM = new LoadCardPackDiagViewModel(newDialog);
+            newDialog.DataContext = diagVM;
+
+            if (newDialog.ShowDialog() == true)
+            {
+                this.lobbyClient.Deck = diagVM.GetSelectedItem();
+                this.OnPropertyChanged("ActivePackName");
+            }
         }
     }
 }

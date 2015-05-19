@@ -9,6 +9,8 @@ namespace LearningCard.Model
 {
     class OnlineLobbyClientModel : ServiceCallBack
     {
+        public CardPack Deck { get; set; }
+
         public OnlineLobbyClientModel()
         {
             this.RegisterClient();
