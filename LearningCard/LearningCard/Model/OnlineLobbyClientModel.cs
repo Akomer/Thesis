@@ -11,7 +11,6 @@ namespace LearningCard.Model
 {
     class OnlineLobbyClientModel : OnlineLearningCardService.IOnlineLobbyServiceCallback
     {
-        private OnlineLobbyServiceModel LobbyService;
         private System.Threading.SynchronizationContext syncContext =
             System.ComponentModel.AsyncOperationManager.SynchronizationContext;
 
@@ -60,7 +59,7 @@ namespace LearningCard.Model
 
             System.ServiceModel.InstanceContext context = new InstanceContext(this);
             this._client = new OnlineLearningCardService.OnlineLobbyServiceClient(context);
-            this._client.JoinToLobby("Client G Name");
+            this._client.JoinToLobby("Client A Name");
             this._client.NotifyServer(new OnlineLearningCardService.EventDataType() { ClientName = "Client G Name", EventMessage = "NewMember" });
         }
 
@@ -85,6 +84,7 @@ namespace LearningCard.Model
             this.isHost = ishost;
             if (isHost)
             {
+                System.Net.ServicePointManager.DefaultConnectionLimit = 10;
                 Thread service = new Thread(this.StartLobbyService);
                 service.Start();
             }
@@ -103,11 +103,15 @@ namespace LearningCard.Model
             
         }
 
-        public string[] GetActiveUsers()
+        public List<String> GetActiveUsers()
         {
             var a = this._client.GetActiveUsers();
+            // var b = this._client.GetRandomString();
+            //var a = new Lost<String>{"a", "b"};
             return a;
         }
+
+
 
         private void StartLobbyService()
         {
@@ -122,6 +126,13 @@ namespace LearningCard.Model
                 catch (AddressAccessDeniedException e)
                 {
                     System.Windows.Forms.MessageBox.Show("Can not start server, if you are not adminstrator\nTry to start the program in administrator mode.", "Admin mode",
+                    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    this.serverStatus = 1;
+                    return;
+                }
+                catch (Exception)
+                {
+                    System.Windows.Forms.MessageBox.Show("Unkown issue has occured.", "N/A error",
                     System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     this.serverStatus = 1;
                     return;

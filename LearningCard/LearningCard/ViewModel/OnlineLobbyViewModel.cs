@@ -95,7 +95,7 @@ namespace LearningCard.ViewModel
         private void RefreshView()
         {
             this.OnPropertyChanged("HostIpAddres");
-            String[] a = this.LobbyClient.GetActiveUsers();
+            var a = this.LobbyClient.GetActiveUsers();
             this.OnPropertyChanged("ActiveUserProfileList");
         }
     }

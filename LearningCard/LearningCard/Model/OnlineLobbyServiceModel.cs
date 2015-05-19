@@ -20,8 +20,10 @@ namespace LearningCard.Model
         void JoinToLobby(String name);
         [OperationContract(IsOneWay = true)]
         void NotifyServer(EventDataType eventData);
-        [OperationContract(IsOneWay=false)]
+        [OperationContract]
         List<String> GetActiveUsers();
+        [OperationContract]
+        String GetRandomString();
         [OperationContract]
         String GetPublicIP();
     }
@@ -85,6 +87,7 @@ namespace LearningCard.Model
                         clients.Remove(name);
                     }
                     clients.Add(name, callback);
+                    callback.BroadcastToClient(new EventDataType() { ClientName = "server", EventMessage = "Joined" });
                 }
                 catch (Exception)
                 { }
@@ -117,6 +120,11 @@ namespace LearningCard.Model
             {
                 clients.Remove(client);
             }
+        }
+
+        public String GetRandomString()
+        {
+            return "Random";
         }
 
         public String GetPublicIP()

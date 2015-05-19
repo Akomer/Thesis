@@ -17,7 +17,7 @@ namespace LearningCard.OnlineLearningCardService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="EventDataType", Namespace="http://schemas.datacontract.org/2004/07/LearningCard.Model")]
     [System.SerializableAttribute()]
-    public partial class EventDataType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    internal partial class EventDataType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -39,7 +39,7 @@ namespace LearningCard.OnlineLearningCardService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ClientName {
+        internal string ClientName {
             get {
                 return this.ClientNameField;
             }
@@ -52,7 +52,7 @@ namespace LearningCard.OnlineLearningCardService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string EventMessage {
+        internal string EventMessage {
             get {
                 return this.EventMessageField;
             }
@@ -76,7 +76,7 @@ namespace LearningCard.OnlineLearningCardService {
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="OnlineLearningCardService.IOnlineLobbyService", CallbackContract=typeof(LearningCard.OnlineLearningCardService.IOnlineLobbyServiceCallback))]
-    public interface IOnlineLobbyService {
+    internal interface IOnlineLobbyService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyService/JoinToLobby", ReplyAction="http://tempuri.org/IOnlineLobbyService/JoinToLobbyResponse")]
         void JoinToLobby(string name);
@@ -91,10 +91,16 @@ namespace LearningCard.OnlineLearningCardService {
         System.Threading.Tasks.Task NotifyServerAsync(LearningCard.OnlineLearningCardService.EventDataType eventData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyService/GetActiveUsers", ReplyAction="http://tempuri.org/IOnlineLobbyService/GetActiveUsersResponse")]
-        string[] GetActiveUsers();
+        System.Collections.Generic.List<string> GetActiveUsers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyService/GetActiveUsers", ReplyAction="http://tempuri.org/IOnlineLobbyService/GetActiveUsersResponse")]
-        System.Threading.Tasks.Task<string[]> GetActiveUsersAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<string>> GetActiveUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyService/GetRandomString", ReplyAction="http://tempuri.org/IOnlineLobbyService/GetRandomStringResponse")]
+        string GetRandomString();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyService/GetRandomString", ReplyAction="http://tempuri.org/IOnlineLobbyService/GetRandomStringResponse")]
+        System.Threading.Tasks.Task<string> GetRandomStringAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOnlineLobbyService/GetPublicIP", ReplyAction="http://tempuri.org/IOnlineLobbyService/GetPublicIPResponse")]
         string GetPublicIP();
@@ -104,19 +110,19 @@ namespace LearningCard.OnlineLearningCardService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IOnlineLobbyServiceCallback {
+    internal interface IOnlineLobbyServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IOnlineLobbyService/BroadcastToClient")]
         void BroadcastToClient(LearningCard.OnlineLearningCardService.EventDataType eventData);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IOnlineLobbyServiceChannel : LearningCard.OnlineLearningCardService.IOnlineLobbyService, System.ServiceModel.IClientChannel {
+    internal interface IOnlineLobbyServiceChannel : LearningCard.OnlineLearningCardService.IOnlineLobbyService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class OnlineLobbyServiceClient : System.ServiceModel.DuplexClientBase<LearningCard.OnlineLearningCardService.IOnlineLobbyService>, LearningCard.OnlineLearningCardService.IOnlineLobbyService {
+    internal partial class OnlineLobbyServiceClient : System.ServiceModel.DuplexClientBase<LearningCard.OnlineLearningCardService.IOnlineLobbyService>, LearningCard.OnlineLearningCardService.IOnlineLobbyService {
         
         public OnlineLobbyServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
@@ -154,12 +160,20 @@ namespace LearningCard.OnlineLearningCardService {
             return base.Channel.NotifyServerAsync(eventData);
         }
         
-        public string[] GetActiveUsers() {
+        public System.Collections.Generic.List<string> GetActiveUsers() {
             return base.Channel.GetActiveUsers();
         }
         
-        public System.Threading.Tasks.Task<string[]> GetActiveUsersAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<string>> GetActiveUsersAsync() {
             return base.Channel.GetActiveUsersAsync();
+        }
+        
+        public string GetRandomString() {
+            return base.Channel.GetRandomString();
+        }
+        
+        public System.Threading.Tasks.Task<string> GetRandomStringAsync() {
+            return base.Channel.GetRandomStringAsync();
         }
         
         public string GetPublicIP() {

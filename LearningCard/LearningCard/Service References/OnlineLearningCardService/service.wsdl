@@ -56,6 +56,12 @@
   <wsdl:message name="IOnlineLobbyService_GetActiveUsers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetActiveUsersResponse" />
   </wsdl:message>
+  <wsdl:message name="IOnlineLobbyService_GetRandomString_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRandomString" />
+  </wsdl:message>
+  <wsdl:message name="IOnlineLobbyService_GetRandomString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRandomStringResponse" />
+  </wsdl:message>
   <wsdl:message name="IOnlineLobbyService_GetPublicIP_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPublicIP" />
   </wsdl:message>
@@ -76,6 +82,10 @@
     <wsdl:operation name="GetActiveUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IOnlineLobbyService/GetActiveUsers" message="tns:IOnlineLobbyService_GetActiveUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOnlineLobbyService/GetActiveUsersResponse" message="tns:IOnlineLobbyService_GetActiveUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRandomString">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOnlineLobbyService/GetRandomString" message="tns:IOnlineLobbyService_GetRandomString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOnlineLobbyService/GetRandomStringResponse" message="tns:IOnlineLobbyService_GetRandomString_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPublicIP">
       <wsdl:input wsaw:Action="http://tempuri.org/IOnlineLobbyService/GetPublicIP" message="tns:IOnlineLobbyService_GetPublicIP_InputMessage" />
@@ -106,6 +116,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetActiveUsers">
       <soap12:operation soapAction="http://tempuri.org/IOnlineLobbyService/GetActiveUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRandomString">
+      <soap12:operation soapAction="http://tempuri.org/IOnlineLobbyService/GetRandomString" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

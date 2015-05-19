@@ -6,10 +6,12 @@
     <EnableDataBinding>true</EnableDataBinding>
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
-    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateInternalTypes>true</GenerateInternalTypes>
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
-    <CollectionMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
@@ -26,7 +28,7 @@
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="84f6c7cf-a2e1-40ca-bf7e-9014f9bf10e5" SourceId="1" SourceUrl="net.tcp://localhost:8080/learningcard/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="1c2d17d0-fd77-46fd-abe9-f57eb35c756a" SourceId="1" SourceUrl="net.tcp://localhost:8080/learningcard/mex" />
     <MetadataFile FileName="LearningCard.Model.xsd" MetadataType="Schema" ID="c5e228e6-6f8f-4123-8e95-20e14cbe5d8e" SourceId="1" SourceUrl="net.tcp://localhost:8080/learningcard/mex" />
-    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="36fa882d-b05a-4dbd-bf62-68ac7d590a8a" SourceId="1" SourceUrl="net.tcp://localhost:8080/learningcard/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="a52d263f-bbe0-41c6-8551-eae41d8f6a71" SourceId="1" SourceUrl="net.tcp://localhost:8080/learningcard/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
