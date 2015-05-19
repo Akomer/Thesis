@@ -18,7 +18,7 @@ namespace LearningCard.Model
         private static String ActiveFile;
         private Dictionary<String, String> fileToLang;
 
-        static private Int32 NumberOfKeysInLanguageDict = 57;
+        static private Int32 NumberOfKeysInLanguageDict = 60;
 
         private GlobalLanguage() 
         {

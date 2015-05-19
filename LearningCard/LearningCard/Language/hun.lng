@@ -72,4 +72,8 @@
 
 	"InvalidDataException" : "Érvénytelen adat"
 	"<NewCard>" : "<New Card>"
+
+	"CouldNotConnectToTheServer" : "Nem sikerült csatlakozni a szerverhez",
+	"InalidIP" : "Helytelen IP",
+	"ServerIsAlreadyRunning" : "A szerver már fut"
 }

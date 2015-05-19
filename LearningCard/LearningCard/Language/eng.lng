@@ -71,5 +71,9 @@
 	"YourAnswerComesHere" : "Your answer comes here",
 
 	"InvalidDataException" : "Invalid Data",
-	"<NewCard>" : "<New Card>"
+	"<NewCard>" : "<New Card>",
+
+	"CouldNotConnectToTheServer" : "Could not connect to the server",
+	"InalidIP" : "Invalid IP"
+	"ServerIsAlreadyRunning" : "Server is already running"
 }

@@ -31,20 +31,30 @@ namespace LearningCard.ViewModel
             }
             try
             {
-                OnlineLearningCardService.LearningCardServiceClient connection_test;
-                String endp = "net.tcp://" + this.HostIPAddress + "/learningcard/";
-                //connection_test = new OnlineLearningCardService.OnlineLobbyServiceClient(new InstanceContext(new Model.OnlineLobbyClientModel(false)), new System.ServiceModel.NetTcpBinding(),
-                //    new EndpointAddress(endp));
-                // connection_test.GetPublicIP();
+                CheckEndpoint();
             }
             catch (EndpointNotFoundException)
             {
-                System.Windows.Forms.MessageBox.Show("Could connect to the server", "Invalid IP",
+                System.Windows.Forms.MessageBox.Show(Model.GlobalLanguage.Instance.GetDict()["CouldNotConnectToTheServer"], 
+                    Model.GlobalLanguage.Instance.GetDict()["InalidIP"],
                     System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                 return;
             }
             this.OnChangeMainWindowContent(typeof(View.OnlineLobbyUserControl), typeof(ViewModel.OnlineLobbyViewModel),
                 new object[] { false, this.HostIPAddress });
+        }
+
+        private void CheckEndpoint()
+        {
+            System.Net.Sockets.Socket sock = new System.Net.Sockets.Socket(System.Net.Sockets.AddressFamily.InterNetwork,
+                                                                           System.Net.Sockets.SocketType.Stream, 
+                                                                           System.Net.Sockets.ProtocolType.Tcp);
+            sock.ReceiveTimeout = sock.SendTimeout = 1000;
+            IAsyncResult res = sock.BeginConnect(this.HostIPAddress, 8080, null, null);
+            if (!res.AsyncWaitHandle.WaitOne(1000, true))
+            {
+                throw new EndpointNotFoundException();
+            }
         }
     }
 }
