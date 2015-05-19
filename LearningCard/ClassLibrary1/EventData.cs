@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ServiceModel;
 using System.Runtime.Serialization;
 
-namespace LearningCard.Model
+namespace LearningCardClasses
 {
-    [DataContract]
-    class TippMix
+    [DataContract()]
+    public class EventDataType
     {
         [DataMember]
-        public Boolean IsChecked { get; set; }
+        public string ClientName { get; set; }
         [DataMember]
-        public String TippText { get; set; }
+        public string EventMessage { get; set; }
     }
 }

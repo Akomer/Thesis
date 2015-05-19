@@ -8,10 +8,10 @@ using System.IO;
 using System.Runtime.Serialization.Json;
 using System.IO.Compression;
 
-namespace LearningCard.Model
+namespace LearningCardClasses
 {
     [DataContract]
-    class CardPack
+    public class CardPack
     {
         [DataMember]
         public String PackName { get; set; }
@@ -86,17 +86,7 @@ namespace LearningCard.Model
 
             if (!System.IO.Directory.Exists(ImagePath))
             {
-                try
-                {
-                    System.IO.Directory.CreateDirectory(ImagePath);
-                }
-                catch (ArgumentException)
-                {
-                    System.Windows.Forms.MessageBox.Show(GlobalLanguage.Instance.GetDict()["CouldNotSaveCardPack"],
-                        GlobalLanguage.Instance.GetDict()["SaveError"],
-                        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-                    return;
-                }
+                System.IO.Directory.CreateDirectory(ImagePath);
             }
 
             HashSet<String> imgSet = new HashSet<String>();
@@ -183,13 +173,6 @@ namespace LearningCard.Model
             {
                 Directory.Delete(importDir, true);
                 ZipFile.ExtractToDirectory(sourceFile, importDir);
-            }
-            catch (InvalidDataException)
-            {
-                System.Windows.Forms.MessageBox.Show(GlobalLanguage.Instance.GetDict()["InvalidDataException"],
-                        GlobalLanguage.Instance.GetDict()["InvalidDataException"], System.Windows.Forms.MessageBoxButtons.OK, 
-                        System.Windows.Forms.MessageBoxIcon.Exclamation);
-                return;
             }
 
             String cardPack = Directory.GetFiles(importDir, "*.lcp")[0];

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LearningCardClasses;
 
 namespace LearningCard.ViewModel
 {
     class QuestionTextViewModel : QuestionViewModelBase
     {
-        private Model.QuestionTextModel QuestionModel;
+        private QuestionTextModel QuestionModel;
 
         public String QuestionText 
         {
@@ -23,7 +24,7 @@ namespace LearningCard.ViewModel
             }
         }
 
-        public QuestionTextViewModel(Model.QuestionTextModel qModel, Boolean changeAble = true)
+        public QuestionTextViewModel(QuestionTextModel qModel, Boolean changeAble = true)
             : base(qModel, changeAble)
         {
             this.QuestionModel = qModel;

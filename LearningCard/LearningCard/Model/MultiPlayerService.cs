@@ -7,6 +7,7 @@ using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Runtime.Serialization.Json;
 using System.IO;
+using LearningCardClasses;
 
 namespace LearningCard.Model
 {

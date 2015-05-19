@@ -37,7 +37,7 @@ namespace LearningCard.ViewModel
                 //    new EndpointAddress(endp));
                 // connection_test.GetPublicIP();
             }
-            catch (EndpointNotFoundException e)
+            catch (EndpointNotFoundException)
             {
                 System.Windows.Forms.MessageBox.Show("Could connect to the server", "Invalid IP",
                     System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);

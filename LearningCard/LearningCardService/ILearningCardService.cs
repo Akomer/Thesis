@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using LearningCardClasses;
 
 namespace LearningCardService
 {
@@ -19,15 +20,6 @@ namespace LearningCardService
 
         [OperationContract]
         List<String> GetActivePlayers();
-    }
-
-    [DataContract()]
-    public class EventDataType
-    {
-        [DataMember]
-        public string ClientName { get; set; }
-        [DataMember]
-        public string EventMessage { get; set; }
     }
 
     public interface IServiceCallBack

@@ -10,6 +10,8 @@ Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingProject1", "Modelin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningCardService", "LearningCardService\LearningCardService.csproj", "{15B3E0D2-6217-493A-A690-158C497F5318}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningCardClasses", "ClassLibrary1\LearningCardClasses.csproj", "{6DB31E05-4067-4774-A1B6-5C73D0CEFF24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{15B3E0D2-6217-493A-A690-158C497F5318}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15B3E0D2-6217-493A-A690-158C497F5318}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15B3E0D2-6217-493A-A690-158C497F5318}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DB31E05-4067-4774-A1B6-5C73D0CEFF24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DB31E05-4067-4774-A1B6-5C73D0CEFF24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DB31E05-4067-4774-A1B6-5C73D0CEFF24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DB31E05-4067-4774-A1B6-5C73D0CEFF24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

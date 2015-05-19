@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using System.Windows.Forms;
 using System.IO;
+using LearningCardClasses;
 
 namespace LearningCard.ViewModel
 {
     class QuestionPictureViewModel : QuestionViewModelBase
     {
-        private Model.QuestionPictureModel QuestionModel;
+        private QuestionPictureModel QuestionModel;
 
         public BitmapImage ImageSource
         {
@@ -42,7 +43,7 @@ namespace LearningCard.ViewModel
             }
         }
 
-        public QuestionPictureViewModel(Model.QuestionPictureModel qModel, Boolean changeAble = true)
+        public QuestionPictureViewModel(QuestionPictureModel qModel, Boolean changeAble = true)
             : base(qModel, changeAble)
         {
             this.QuestionModel = qModel;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LearningCardClasses;
 
 namespace LearningCard.ViewModel
 {
@@ -21,9 +22,9 @@ namespace LearningCard.ViewModel
             }
         }
 
-        private Model.AnswerLotofTextModel AnswerModel;
+        private AnswerLotofTextModel AnswerModel;
 
-        public AnswerLotofTextViewModel(Model.AnswerLotofTextModel aModel) : base(aModel)
+        public AnswerLotofTextViewModel(AnswerLotofTextModel aModel) : base(aModel)
         {
             this.AnswerModel = aModel;
         }

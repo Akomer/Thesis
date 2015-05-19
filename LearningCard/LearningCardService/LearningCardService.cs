@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using LearningCardClasses;
 
 namespace LearningCardService
 {
@@ -30,7 +31,7 @@ namespace LearningCardService
                         this.NotifyServer(new EventDataType() { ClientName = clientName, EventMessage = "NewMemberArrived" });
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             }
@@ -49,7 +50,7 @@ namespace LearningCardService
                         {
                             client.Value.BroadcastToClient(eventData);
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             inactiveClients.Add(client.Key);
                         }

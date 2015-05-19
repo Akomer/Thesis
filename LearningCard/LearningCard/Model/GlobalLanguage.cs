@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Text.RegularExpressions;
+using LearningCardClasses;
 
 namespace LearningCard.Model
 {
@@ -17,7 +18,7 @@ namespace LearningCard.Model
         private static String ActiveFile;
         private Dictionary<String, String> fileToLang;
 
-        static private Int32 NumberOfKeysInLanguageDict = 56;
+        static private Int32 NumberOfKeysInLanguageDict = 57;
 
         private GlobalLanguage() 
         {

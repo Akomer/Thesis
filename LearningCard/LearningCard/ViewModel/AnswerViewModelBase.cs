@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LearningCardClasses;
 
 namespace LearningCard.ViewModel
 {
     class AnswerViewModelBase : MainViewModelBase
     {
-        protected Model.IAnswer AnswerModel;
+        protected IAnswer AnswerModel;
 
-        public AnswerViewModelBase(Model.IAnswer aModel)
+        public AnswerViewModelBase(IAnswer aModel)
         {
             this.AnswerModel = aModel;
         }
 
-        public Model.IAnswer GetModel()
+        public IAnswer GetModel()
         {
             return this.AnswerModel;
         }

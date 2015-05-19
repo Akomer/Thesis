@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
-namespace LearningCard.Model
+namespace LearningCardClasses
 {
     [DataContract]
     [KnownType(typeof(AnswerLotofTextModel))]
     [KnownType(typeof(AnswerExactTextModel))]
     [KnownType(typeof(AnswerTippMixModel))]
-    abstract class IAnswer
+    abstract public class IAnswer
     {
         public abstract Type GetAnswerType();
         public abstract Boolean CheckAnswer(IAnswer UserAnswer);

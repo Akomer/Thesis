@@ -8,10 +8,10 @@ using System.Windows.Media.Imaging;
 using System.IO;
 using System.Runtime.Serialization.Json;
 
-namespace LearningCard.Model
+namespace LearningCardClasses
 {
     [DataContract]
-    class Profile
+    public class Profile
     {
         [DataMember]
         public String Name { get; set; }
@@ -33,7 +33,7 @@ namespace LearningCard.Model
                 {
                     return new BitmapImage(this.ImageSource);
                 }
-                catch (FileNotFoundException e)
+                catch (FileNotFoundException)
                 {
                     return new BitmapImage(new Uri(@"/Images/error1.jpg", UriKind.Relative));
                 }
@@ -50,7 +50,6 @@ namespace LearningCard.Model
             //this.ProfilePicture = new BitmapImage(new Uri(@"\\Images\\question_mark.png", UriKind.Relative));
             this.ImageSource = new Uri(@"/Images/question_mark.png", UriKind.Relative);
             this.StatisticData = new Dictionary<string, StatisticInfo>();
-            this.LanguageFile = GlobalLanguage.Instance.GetLanguageFile();
         }
 
         public List<Int32> GetStatInfo(String DeckFile)

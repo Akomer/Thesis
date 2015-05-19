@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using LearningCardClasses;
 
 namespace LearningCard.ViewModel
 {
@@ -14,7 +15,7 @@ namespace LearningCard.ViewModel
         {
             get
             {
-                return new ObservableCollection<String>(Model.Profile.ListOfAvailableProfiles());
+                return new ObservableCollection<String>(Profile.ListOfAvailableProfiles());
             }
             set { }
         }

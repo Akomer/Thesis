@@ -58,24 +58,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\AnswerExactTextModel.cs" />
-    <Compile Include="Model\AnswerLotofTextModel.cs" />
-    <Compile Include="Model\AnswerTippMixModel.cs" />
-    <Compile Include="Model\Card.cs" />
-    <Compile Include="Model\CardPack.cs" />
     <Compile Include="Model\CreateProfileModel.cs" />
+    <Compile Include="Model\ErrorWrappers.cs" />
     <Compile Include="Model\GlobalLanguage.cs" />
     <Compile Include="Model\CreateQnAModel.cs" />
     <Compile Include="Model\GlobalProfile.cs" />
+    <Compile Include="Model\LanguageFactory.cs" />
     <Compile Include="Model\MultiPlayerService.cs" />
     <Compile Include="Model\OnlineLobbyClientModel.cs" />
-    <Compile Include="Model\Profile.cs" />
     <Compile Include="Model\QnAModel.cs" />
-    <Compile Include="Model\QuestionPictureModel.cs" />
-    <Compile Include="Model\QuestionTextModel.cs" />
     <Compile Include="Model\ServiceCallBack.cs" />
-    <Compile Include="Model\StatisticInfo.cs" />
-    <Compile Include="Model\TippMix.cs" />
     <Compile Include="Service References\OnlineLearningCardService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -221,8 +213,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\IAnswer.cs" />
-    <Compile Include="Model\IQuestion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -251,7 +241,7 @@
     <None Include="Service References\OnlineLearningCardService\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\OnlineLearningCardService\LearningCardService.xsd">
+    <None Include="Service References\OnlineLearningCardService\LearningCardClasses.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\OnlineLearningCardService\service.wsdl" />
@@ -282,12 +272,6 @@
     <Resource Include="Images\error1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LearningCardService\LearningCardService.csproj">
-      <Project>{15b3e0d2-6217-493a-a690-158c497f5318}</Project>
-      <Name>LearningCardService</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadataStorage Include="Service References\OnlineLearningCardService\" />
   </ItemGroup>
   <ItemGroup>
@@ -301,6 +285,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\LearningCardClasses.csproj">
+      <Project>{6db31e05-4067-4774-a1b6-5c73d0ceff24}</Project>
+      <Name>LearningCardClasses</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

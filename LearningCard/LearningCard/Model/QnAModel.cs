@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization.Json;
+using LearningCardClasses;
 
 namespace LearningCard.Model
 {
@@ -13,7 +14,7 @@ namespace LearningCard.Model
         public enum AnswerPhase { CkeckAnswer, ShowAnser };
         public AnswerPhase QuizPhase;
         private Profile UserProfile;
-        public List<Model.Card> CardPack
+        public List<Card> CardPack
         {
             get
             {
@@ -71,7 +72,7 @@ namespace LearningCard.Model
                 AnswerTippMixModel newAnswer = new AnswerTippMixModel();
                 foreach (TippMix item in oldAnswer.TippMixList)
                 {
-                    newAnswer.AddTipp(item.TippText);
+                    newAnswer.AddEmptyTipp(item);
                 }
                 return (IAnswer)newAnswer;
             }
@@ -107,7 +108,7 @@ namespace LearningCard.Model
 
         public void AnswerWasWrong()
         {
-            if (this.UserAnswer.GetAnswerType() == typeof(Model.AnswerLotofTextModel))
+            if (this.UserAnswer.GetAnswerType() == typeof(AnswerLotofTextModel))
             {
                 SetupNewCard();
                 return;

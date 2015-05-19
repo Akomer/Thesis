@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LearningCardClasses;
 
 namespace LearningCard.Model
 {
@@ -23,14 +24,14 @@ namespace LearningCard.Model
         {
             try
             {
-                LearningCardService.EventDataType eventData = (LearningCardService.EventDataType)sender;
+                EventDataType eventData = (EventDataType)sender;
                 if (eventData.EventMessage == "NewMemberArrived" || eventData.EventMessage == "MemberDisconnected")
                 {
                     await Task.Delay(50);
                     this.OnNewPlayerJoined();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }

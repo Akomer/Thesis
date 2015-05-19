@@ -22,10 +22,10 @@ namespace LearningCard.OnlineLearningCardService {
         System.Threading.Tasks.Task RegisterClientAsync(string clientName);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILearningCardService/NotifyServer")]
-        void NotifyServer(LearningCardService.EventDataType eventData);
+        void NotifyServer(LearningCardClasses.EventDataType eventData);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILearningCardService/NotifyServer")]
-        System.Threading.Tasks.Task NotifyServerAsync(LearningCardService.EventDataType eventData);
+        System.Threading.Tasks.Task NotifyServerAsync(LearningCardClasses.EventDataType eventData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILearningCardService/GetActivePlayers", ReplyAction="http://tempuri.org/ILearningCardService/GetActivePlayersResponse")]
         System.Collections.Generic.List<string> GetActivePlayers();
@@ -38,7 +38,7 @@ namespace LearningCard.OnlineLearningCardService {
     public interface ILearningCardServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILearningCardService/BroadcastToClient")]
-        void BroadcastToClient(LearningCardService.EventDataType eventData);
+        void BroadcastToClient(LearningCardClasses.EventDataType eventData);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -77,11 +77,11 @@ namespace LearningCard.OnlineLearningCardService {
             return base.Channel.RegisterClientAsync(clientName);
         }
         
-        public void NotifyServer(LearningCardService.EventDataType eventData) {
+        public void NotifyServer(LearningCardClasses.EventDataType eventData) {
             base.Channel.NotifyServer(eventData);
         }
         
-        public System.Threading.Tasks.Task NotifyServerAsync(LearningCardService.EventDataType eventData) {
+        public System.Threading.Tasks.Task NotifyServerAsync(LearningCardClasses.EventDataType eventData) {
             return base.Channel.NotifyServerAsync(eventData);
         }
         

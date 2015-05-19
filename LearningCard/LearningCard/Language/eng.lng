@@ -70,5 +70,6 @@
 
 	"YourAnswerComesHere" : "Your answer comes here",
 
-	"InvalidDataException" : "Invalid Data"
+	"InvalidDataException" : "Invalid Data",
+	"<NewCard>" : "<New Card>"
 }

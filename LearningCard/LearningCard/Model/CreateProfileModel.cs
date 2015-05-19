@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using System.IO;
 using System.Runtime.Serialization.Json;
+using LearningCardClasses;
 
 namespace LearningCard.Model
 {
@@ -49,7 +50,7 @@ namespace LearningCard.Model
         {
             Profile tmpProfile = Profile.LoadProfileFromFile(profileName);
             this.UserName = tmpProfile.Name;
-            this.ProfilPicture = tmpProfile.ProfilePicture;
+            this.ProfilPicture = (BitmapImage)tmpProfile.ProfilePicture;
         }
     }
 }

@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LearningCardClasses;
 
 namespace LearningCard.ViewModel
 {
     class QuestionViewModelBase : MainViewModelBase
     {
-        protected Model.IQuestion QuestionModel;
+        protected IQuestion QuestionModel;
         public Boolean isChangeable { get; set; }
 
-        public QuestionViewModelBase(Model.IQuestion qModel, Boolean changeAble)
+        public QuestionViewModelBase(IQuestion qModel, Boolean changeAble)
         {
             this.QuestionModel = qModel;
             this.isChangeable = changeAble;
         }
 
-        public Model.IQuestion GetModel()
+        public IQuestion GetModel()
         {
             return this.QuestionModel;
         }

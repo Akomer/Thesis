@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-
-using LearningCard;
+using LearningCardClasses;
 
 namespace LearningCard.ViewModel
 {
     class QnAViewModel : MainViewModelBase
     {
-        private Model.Card ActualCard
+        private Card ActualCard
         {
             get
             {
@@ -112,20 +111,20 @@ namespace LearningCard.ViewModel
 
         private UserControl QuestionViewGenerator()
         {
-            if (this.ActualCard.Question.GetQuestionType() == typeof(Model.QuestionTextModel))
+            if (this.ActualCard.Question.GetQuestionType() == typeof(QuestionTextModel))
             {
                 UserControl v = new View.QuestionTextUserControl();
                 ViewModel.QuestionTextViewModel dc = new ViewModel.QuestionTextViewModel(
-                    (Model.QuestionTextModel)this.ActualCard.Question, false
+                    (QuestionTextModel)this.ActualCard.Question, false
                 );
                 v.DataContext = dc;
                 return v;
             }
-            else if (this.ActualCard.Question.GetQuestionType() == typeof(Model.QuestionPictureModel))
+            else if (this.ActualCard.Question.GetQuestionType() == typeof(QuestionPictureModel))
             {
                 UserControl v = new View.QuestionPictureUserControl();
                 ViewModel.QuestionPictureViewModel dc = new ViewModel.QuestionPictureViewModel(
-                    (Model.QuestionPictureModel)this.ActualCard.Question, false
+                    (QuestionPictureModel)this.ActualCard.Question, false
                 );
                 dc.EnableImageChange = true;
                 v.DataContext = dc;
@@ -136,27 +135,27 @@ namespace LearningCard.ViewModel
 
         private UserControl AnswerViewGenerator()
         {
-            if (this.ActualCard.Answer.GetAnswerType() == typeof(Model.AnswerLotofTextModel))
+            if (this.ActualCard.Answer.GetAnswerType() == typeof(AnswerLotofTextModel))
             {
                 UserControl v = new View.AnswerTextUserControl();
                 ViewModel.AnswerLotofTextViewModel dc = new ViewModel.AnswerLotofTextViewModel( 
-                    (Model.AnswerLotofTextModel)this.QnAModel.UserAnswer );
+                    (AnswerLotofTextModel)this.QnAModel.UserAnswer );
                 v.DataContext = dc;
                 return v;
             }
-            if (this.ActualCard.Answer.GetAnswerType() == typeof(Model.AnswerExactTextModel))
+            if (this.ActualCard.Answer.GetAnswerType() == typeof(AnswerExactTextModel))
             {
                 UserControl v = new View.AnswerTextUserControl();
                 ViewModel.AnswerExactTextViewModel dc = new ViewModel.AnswerExactTextViewModel(
-                    (Model.AnswerExactTextModel)this.QnAModel.UserAnswer);
+                    (AnswerExactTextModel)this.QnAModel.UserAnswer);
                 v.DataContext = dc;
                 return v;
             }
-            if (this.ActualCard.Answer.GetAnswerType() == typeof(Model.AnswerTippMixModel))
+            if (this.ActualCard.Answer.GetAnswerType() == typeof(AnswerTippMixModel))
             {
                 UserControl v = new View.UseAnswerTippMixUserControl();
                 ViewModel.AnswerTippMixViewModel dc = new ViewModel.AnswerTippMixViewModel(
-                    (Model.AnswerTippMixModel)this.QnAModel.UserAnswer);
+                    (AnswerTippMixModel)this.QnAModel.UserAnswer);
                 v.DataContext = dc;
                 return v;
             }
@@ -171,9 +170,9 @@ namespace LearningCard.ViewModel
                 //     System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.None);
                 this.RightAnswer();
             }
-            else if (this.QnAModel.UserAnswer.GetAnswerType() == typeof(Model.AnswerLotofTextModel))
+            else if (this.QnAModel.UserAnswer.GetAnswerType() == typeof(AnswerLotofTextModel))
             {
-                Model.AnswerLotofTextModel rightAnswerModel = (Model.AnswerLotofTextModel)this.QnAModel.GetCard().Answer;
+                AnswerLotofTextModel rightAnswerModel = (AnswerLotofTextModel)this.QnAModel.GetCard().Answer;
                 String rightAnswer = rightAnswerModel.Text;
                 if (System.Windows.Forms.MessageBox.Show("Is your answer right?\n" + rightAnswer, "Check your answer",
                     System.Windows.Forms.MessageBoxButtons.YesNo,

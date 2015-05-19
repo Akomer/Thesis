@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using LearningCardClasses;
 
 namespace LearningCard.ViewModel
 {
@@ -15,7 +16,7 @@ namespace LearningCard.ViewModel
             get
             {
                 ObservableCollection<String> obc = new ObservableCollection<string>();
-                foreach (Tuple<Model.CardPack, String> item in Model.CardPack.CardPackList())
+                foreach (Tuple<CardPack, String> item in CardPack.CardPackList())
                 {
                     obc.Add(String.Format("{0} ({1})",item.Item1.PackName, item.Item2));
                 }
@@ -65,13 +66,13 @@ namespace LearningCard.ViewModel
             dialog.DialogResult = false;
         }
 
-        public Model.CardPack GetSelectedItem()
+        public CardPack GetSelectedItem()
         {
             if (CardPackList_SelectedIndex == -1)
             {
                 return null;
             }
-            return Model.CardPack.CardPackList()[this.CardPackList_SelectedIndex].Item1;
+            return CardPack.CardPackList()[this.CardPackList_SelectedIndex].Item1;
         }
 
     }

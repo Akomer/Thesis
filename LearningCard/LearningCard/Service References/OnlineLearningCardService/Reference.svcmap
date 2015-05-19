@@ -27,7 +27,7 @@
     <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="e0474b70-8caf-4ccf-8ddc-f5ea42d30fa1" SourceId="1" SourceUrl="net.tcp://localhost:8080/LearningCardService/Service1/mex" />
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="64bbea30-03cf-451f-b0c0-310315fddbe2" SourceId="1" SourceUrl="net.tcp://localhost:8080/LearningCardService/Service1/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="a6b46d01-74e9-4c7e-b8d5-2e76f9526e2f" SourceId="1" SourceUrl="net.tcp://localhost:8080/LearningCardService/Service1/mex" />
-    <MetadataFile FileName="LearningCardService.xsd" MetadataType="Schema" ID="2603241d-e65d-411b-bdc5-d68a4b6d8a47" SourceId="1" SourceUrl="net.tcp://localhost:8080/LearningCardService/Service1/mex" />
+    <MetadataFile FileName="LearningCardClasses.xsd" MetadataType="Schema" ID="0b2da78b-8fc1-41b1-8991-da38a0e418ad" SourceId="1" SourceUrl="net.tcp://localhost:8080/LearningCardService/Service1/mex" />
     <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="6b88814c-d8ed-479e-89d8-f7f32dbb6a2a" SourceId="1" SourceUrl="net.tcp://localhost:8080/LearningCardService/Service1/mex" />
   </Metadata>
   <Extensions>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using LearningCardClasses;
 
 namespace LearningCard.ViewModel
 {
@@ -60,12 +61,12 @@ namespace LearningCard.ViewModel
             }
             set { }
         }
-        public ObservableCollection<Model.Card> CardTitleList 
+        public ObservableCollection<Card> CardTitleList 
         {
             get
             {
-                ObservableCollection<Model.Card>  obsC = new ObservableCollection<Model.Card>(this.QnAModel.CardPack);
-                obsC.Add(new Model.Card() { Title = "<New Card>" });
+                ObservableCollection<Card>  obsC = new ObservableCollection<Card>(this.QnAModel.PackOfCards);
+                obsC.Add(new Card() { Title = Model.GlobalLanguage.Instance.GetDict()["<NewCard>"] });
                 return obsC;
             }
             set { }
@@ -226,7 +227,7 @@ namespace LearningCard.ViewModel
             else
             {
                 this.AddModifyButtonText = "Modify Card Title";
-                this.CardTitle = this.QnAModel.CardPack[this.Card_SelectedIndex].Title;
+                this.CardTitle = this.QnAModel.PackOfCards[this.Card_SelectedIndex].Title;
                 // UserControl qView = null;
                 // if (this.QnAModel.CardPack[this.Card_SelectedIndex].Question.GetType().Name == "QuestionTextModel")
                 // {
@@ -243,7 +244,7 @@ namespace LearningCard.ViewModel
                 //     qView.DataContext = dc;
                 // }
                 // this.QuestionPanel = qView;
-                Model.IQuestion selectedQuestion = this.QnAModel.CardPack[this.Card_SelectedIndex].Question;
+                IQuestion selectedQuestion = this.QnAModel.PackOfCards[this.Card_SelectedIndex].Question;
                 this.QuestionPanel = this.QuestionViewGenerator(selectedQuestion.GetQuestionType(), selectedQuestion);
 
                 // UserControl aView = null;
@@ -255,36 +256,37 @@ namespace LearningCard.ViewModel
                 //     aView.DataContext = dc;
                 // }
                 // this.AnswerPanel = aView;
-                Model.IAnswer selectedAnswer = this.QnAModel.CardPack[this.Card_SelectedIndex].Answer;
+                IAnswer selectedAnswer = this.QnAModel.PackOfCards[this.Card_SelectedIndex].Answer;
                 this.AnswerPanel = this.AnswerViewGenerator(selectedAnswer.GetAnswerType(), selectedAnswer);
                 // this.OnPropertyChanged("AnswerPanel");
             }
         }
 
-        private UserControl QuestionViewGenerator(Type type, Model.IQuestion model = null)
+        private UserControl QuestionViewGenerator(Type type, IQuestion model = null)
         {
-            if (type == typeof(Model.QuestionTextModel))
+            if (type == typeof(QuestionTextModel))
             {
                 if (model == null)
                 {
-                    model = new Model.QuestionTextModel();
+                    model = Model.LanguageFactory.DefaultQuestionTextModel();
                 }
                 UserControl v = new View.QuestionTextUserControl();
                 ViewModel.QuestionTextViewModel dc = new ViewModel.QuestionTextViewModel(
-                    (Model.QuestionTextModel)model
+                    (QuestionTextModel)model
                 );
                 v.DataContext = dc;
                 return v;
             }
-            if (type == typeof(Model.QuestionPictureModel))
+            if (type == typeof(QuestionPictureModel))
             {
                 if (model == null)
                 {
-                    model = new Model.QuestionPictureModel(new Uri(@"/Images/question_mark.png", UriKind.Relative));
+                    //model = new QuestionPictureModel(new Uri(@"/Images/question_mark.png", UriKind.Relative));
+                    model = Model.LanguageFactory.DefaultQuestionPictureModel(new Uri(@"/Images/question_mark.png"));
                 }
                 UserControl v = new View.QuestionPictureUserControl();
                 ViewModel.QuestionPictureViewModel dc = new ViewModel.QuestionPictureViewModel(
-                    (Model.QuestionPictureModel)model
+                    (QuestionPictureModel)model
                 );
                 dc.EnableImageChange = true;
                 v.DataContext = dc;
@@ -293,43 +295,43 @@ namespace LearningCard.ViewModel
             return null;
         }
 
-        private UserControl AnswerViewGenerator(Type type, Model.IAnswer model = null)
+        private UserControl AnswerViewGenerator(Type type, IAnswer model = null)
         {
-            if (type == typeof(Model.AnswerLotofTextModel))
+            if (type == typeof(AnswerLotofTextModel))
             {
                 if (model == null)
                 {
-                    model = new Model.AnswerLotofTextModel();
+                    model = Model.LanguageFactory.DefaultAnswerLotofTextModel();
                 }
                 UserControl v = new View.AnswerTextUserControl();
                 ViewModel.AnswerLotofTextViewModel dc = new ViewModel.AnswerLotofTextViewModel(
-                    (Model.AnswerLotofTextModel)model
+                    (AnswerLotofTextModel)model
                 );
                 v.DataContext = dc;
                 return v;
             }
-            if (type == typeof(Model.AnswerExactTextModel))
+            if (type == typeof(AnswerExactTextModel))
             {
                 if (model == null)
                 {
-                    model = new Model.AnswerExactTextModel();
+                    model = Model.LanguageFactory.DefaultAnswerExactTextModel();
                 }
                 UserControl v = new View.AnswerTextUserControl();
                 ViewModel.AnswerExactTextViewModel dc = new ViewModel.AnswerExactTextViewModel(
-                    (Model.AnswerExactTextModel)model
+                    (AnswerExactTextModel)model
                 );
                 v.DataContext = dc;
                 return v;
             }
-            if (type == typeof(Model.AnswerTippMixModel))
+            if (type == typeof(AnswerTippMixModel))
             {
                 if (model == null)
                 {
-                    model = new Model.AnswerTippMixModel();
+                    model = new AnswerTippMixModel();
                 }
                 UserControl v = new View.CreateAnswerTippMixUserControl();
                 ViewModel.AnswerTippMixViewModel dc = new ViewModel.AnswerTippMixViewModel(
-                    (Model.AnswerTippMixModel)model
+                    (AnswerTippMixModel)model
                 );
                 v.DataContext = dc;
                 return v;
@@ -360,15 +362,15 @@ namespace LearningCard.ViewModel
             if (this.IsNewCard() || this.Card_SelectedIndex == -1)
             {
                 QuestionViewModelBase qVMB = (QuestionViewModelBase)this.QuestionPanelList[this.QuestionType_SelectedIndex].DataContext;
-                Model.IQuestion qModel = qVMB.GetModel();
+                IQuestion qModel = qVMB.GetModel();
                 AnswerViewModelBase aVMB = (AnswerViewModelBase)this.AnswerPanelList[this.AnswerType_SelectedIndex].DataContext;
-                Model.IAnswer aModel = aVMB.GetModel();
+                IAnswer aModel = aVMB.GetModel();
                 this.QnAModel.AddCard(this.CardTitle, qModel, aModel);
                 this.ClearAfterNewCardAdded();
             }
             else
             {
-                this.QnAModel.CardPack[this.Card_SelectedIndex].Title = this.CardTitle;
+                this.QnAModel.PackOfCards[this.Card_SelectedIndex].Title = this.CardTitle;
                 //this.QnAModel.CardPack[this.Card_SelectedIndex].Question 
             }
             this.OnPropertyChanged("CardTitleList");
@@ -407,7 +409,7 @@ namespace LearningCard.ViewModel
 
         private void Execute_DeleteCard()
         {
-            if (this.Card_SelectedIndex < this.QnAModel.CardPack.Count && this.Card_SelectedIndex >= 0)
+            if (this.Card_SelectedIndex < this.QnAModel.PackOfCards.Count && this.Card_SelectedIndex >= 0)
             {
                 this.QnAModel.DeleteCard(this.Card_SelectedIndex);
                 this.OnPropertyChanged("CardTitleList");
@@ -440,7 +442,7 @@ namespace LearningCard.ViewModel
 
         private Boolean IsNewCard()
         {
-            return this.Card_SelectedIndex == this.QnAModel.CardPack.Count;
+            return this.Card_SelectedIndex == this.QnAModel.PackOfCards.Count;
         }
 
         private void InitiateTypeLists()
@@ -452,17 +454,17 @@ namespace LearningCard.ViewModel
         private void InitiateQuestionTypeList()
         {
             this._QuestionTypeList = new List<Tuple<string, Type>>();
-            this._QuestionTypeList.Add(new Tuple<string, Type>("Simple Text", typeof(Model.QuestionTextModel)));
-            this._QuestionTypeList.Add(new Tuple<string, Type>("Picture and text", typeof(Model.QuestionPictureModel)));
+            this._QuestionTypeList.Add(new Tuple<string, Type>("Simple Text", typeof(QuestionTextModel)));
+            this._QuestionTypeList.Add(new Tuple<string, Type>("Picture and text", typeof(QuestionPictureModel)));
             this.OnPropertyChanged("QuestionTypeList");
         }
 
         private void InitiateAnswerTypeList()
         {
             this._AnswerTypeList = new List<Tuple<string, Type>>();
-            this._AnswerTypeList.Add(new Tuple<string, Type>("Exact Text", typeof(Model.AnswerExactTextModel)));
-            this._AnswerTypeList.Add(new Tuple<string, Type>("Lot of Text", typeof(Model.AnswerLotofTextModel)));
-            this._AnswerTypeList.Add(new Tuple<string, Type>("Tipp Mix", typeof(Model.AnswerTippMixModel)));
+            this._AnswerTypeList.Add(new Tuple<string, Type>("Exact Text", typeof(AnswerExactTextModel)));
+            this._AnswerTypeList.Add(new Tuple<string, Type>("Lot of Text", typeof(AnswerLotofTextModel)));
+            this._AnswerTypeList.Add(new Tuple<string, Type>("Tipp Mix", typeof(AnswerTippMixModel)));
             this.OnPropertyChanged("AnswerTypeList");
         }
     }

@@ -5,12 +5,12 @@ using System.Text;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
-namespace LearningCard.Model
+namespace LearningCardClasses
 {
     [DataContract]
     [KnownType(typeof(QuestionPictureModel))]
     [KnownType(typeof(QuestionTextModel))]
-    abstract class IQuestion
+    abstract public class IQuestion
     {
         public abstract Type GetQuestionType();
     }

@@ -5,20 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
-namespace LearningCard.Model
+namespace LearningCardClasses
 {   
     [DataContract]
-    class AnswerExactTextModel : IAnswer
+    public class AnswerExactTextModel : IAnswer
     {
         [DataMember]
         public String Text { get; set; }
 
-        public AnswerExactTextModel(String txt = "")
+        public AnswerExactTextModel(String txt)
         {
-            if (txt == "")
-            {
-                txt = GlobalLanguage.Instance.GetDict()["NewAnswerExactText"];
-            }
             this.Text = txt;
         }
 

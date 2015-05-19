@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization.Json;
+using LearningCardClasses;
 
 namespace LearningCard.Model
 {
@@ -12,7 +13,7 @@ namespace LearningCard.Model
     {
 
         public CardPack CardPackItem;
-        public List<Model.Card> CardPack
+        public List<Card> PackOfCards
         {
             get
             {
@@ -28,12 +29,12 @@ namespace LearningCard.Model
         public CreateQnAModel()
         {
             this.CardPackItem = new CardPack();
-            this.CardPack = new List<Card>();
+            this.PackOfCards = new List<Card>();
         }
 
         public void AddCard(String title, IQuestion question, IAnswer answer)
         {
-            this.CardPack.Add(new Card() { Title = title, Question = question, Answer = answer });
+            this.PackOfCards.Add(new Card() { Title = title, Question = question, Answer = answer });
         }
 
         public void SaveCardPack(String fileName)
@@ -45,7 +46,7 @@ namespace LearningCard.Model
             //     serializer.WriteObject(saveFile, this.CardPackItem);
             // }
             this.CardPackItem.PackName = fileName;
-            Model.CardPack.SaveCardPackToFile(this.CardPackItem);
+            CardPack.SaveCardPackToFile(this.CardPackItem);
         }
 
         public void LoadCardPack(String fileName)
@@ -59,7 +60,7 @@ namespace LearningCard.Model
 
         public void DeleteCard(Int32 index)
         {
-            this.CardPack.RemoveAt(index);
+            this.PackOfCards.RemoveAt(index);
         }
     }
 }

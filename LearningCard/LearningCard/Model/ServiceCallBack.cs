@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using LearningCardClasses;
 
 namespace LearningCard.Model
 {
@@ -19,7 +20,7 @@ namespace LearningCard.Model
             this._serviceCallBackHandler = handler;
         }
 
-        public void BroadcastToClient(LearningCardService.EventDataType eventData)
+        public void BroadcastToClient(EventDataType eventData)
         {
             syncContext.Post(new System.Threading.SendOrPostCallback(OnBroadcast), eventData);
         }
@@ -34,10 +35,10 @@ namespace LearningCard.Model
         {
             try
             {
-                LearningCardService.EventDataType eventData = (LearningCardService.EventDataType)sender;
+                EventDataType eventData = (EventDataType)sender;
                     //eventData.EventMessage, eventData.ClientName);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }

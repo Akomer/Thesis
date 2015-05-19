@@ -4,3 +4,5 @@ D:\GitHub\Thesis\LearningCard\LearningCardService\bin\Debug\LearningCardService.
 D:\GitHub\Thesis\LearningCard\LearningCardService\obj\Debug\LearningCardService.dll
 D:\GitHub\Thesis\LearningCard\LearningCardService\obj\Debug\LearningCardService.pdb
 D:\GitHub\Thesis\LearningCard\LearningCardService\obj\Debug\LearningCardService.csprojResolveAssemblyReference.cache
+D:\GitHub\Thesis\LearningCard\LearningCardService\bin\Debug\ClassLibrary1.dll
+D:\GitHub\Thesis\LearningCard\LearningCardService\bin\Debug\ClassLibrary1.pdb

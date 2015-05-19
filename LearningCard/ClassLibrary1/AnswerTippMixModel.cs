@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
-namespace LearningCard.Model
+namespace LearningCardClasses
 {
     [DataContract]
-    class AnswerTippMixModel : IAnswer
+    public class AnswerTippMixModel : IAnswer
     {
         [DataMember]
         public List<TippMix> TippMixList { get; set; }
@@ -38,13 +38,14 @@ namespace LearningCard.Model
             return true;
         }
 
-        public void AddTipp(String txt = "")
+        public void AddTipp(TippMix tmx)
         {
-            if (txt == "")
-            {
-                txt = GlobalLanguage.Instance.GetDict()["NewAnswerTippMixNewTipp"];
-            }
-            this.TippMixList.Add(new TippMix() { IsChecked = false, TippText = txt});
+            this.TippMixList.Add(tmx);
+        }
+
+        public void AddEmptyTipp(TippMix tmx)
+        {
+            this.TippMixList.Add(new TippMix() { IsChecked = false, TippText = tmx.TippText});
         }
     }
 }

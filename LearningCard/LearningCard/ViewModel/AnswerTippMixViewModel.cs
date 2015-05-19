@@ -4,31 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using LearningCardClasses;
 
 namespace LearningCard.ViewModel
 {
     class AnswerTippMixViewModel : AnswerViewModelBase
     {
-        private Model.AnswerTippMixModel aModel;
-        private ObservableCollection<Model.TippMix> _TippMixList;
+        private AnswerTippMixModel aModel;
+        private ObservableCollection<TippMix> _TippMixList;
 
         public DelegateCommand Command_AddNewTipp { get; set; }
-        public ObservableCollection<Model.TippMix> TippMixList
+        public ObservableCollection<TippMix> TippMixList
         {
             get
             {
-                this._TippMixList = new ObservableCollection<Model.TippMix>(this.aModel.TippMixList);
+                this._TippMixList = new ObservableCollection<TippMix>(this.aModel.TippMixList);
                 return this._TippMixList;
             }
             set
             {
                 this._TippMixList = value;
-                this.aModel.TippMixList = new List<Model.TippMix>(this._TippMixList);
+                this.aModel.TippMixList = new List<TippMix>(this._TippMixList);
                 this.OnPropertyChanged("TippMixList");
             }
         }
 
-        public AnswerTippMixViewModel(Model.AnswerTippMixModel answerTippMixModel)
+        public AnswerTippMixViewModel(AnswerTippMixModel answerTippMixModel)
             : base(answerTippMixModel)
         {
             this.aModel = answerTippMixModel;
@@ -37,7 +38,7 @@ namespace LearningCard.ViewModel
 
         private void Execute_AddNewTipp()
         {
-            this.aModel.AddTipp();
+            this.aModel.AddTipp(Model.LanguageFactory.DefaultTippMix());
             this.OnPropertyChanged("TippMixList");
         }
     }

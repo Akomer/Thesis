@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
+using LearningCardClasses;
 
 namespace LearningCard.ViewModel
 {
@@ -13,14 +14,14 @@ namespace LearningCard.ViewModel
     {
         private Model.OnlineLobbyClientModel lobbyClient;
 
-        public ObservableCollection<Model.Profile> ActiveUserProfileList 
+        public ObservableCollection<Profile> ActiveUserProfileList 
         {
             get
             {
-                ObservableCollection<Model.Profile> obc = new ObservableCollection<Model.Profile>();
+                ObservableCollection<Profile> obc = new ObservableCollection<Profile>();
                 foreach (var item in lobbyClient.GetActivePlayers())
                 {
-                    obc.Add(new Model.Profile(item));
+                    obc.Add(new Profile(item));
                 }
                 return obc;
             }

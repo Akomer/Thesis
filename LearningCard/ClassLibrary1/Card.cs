@@ -5,14 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
-namespace LearningCard.Model
+namespace LearningCardClasses
 {
     [DataContract]
-    class StatisticInfo
+    public class Card
     {
+    	[DataMember]
+        public String Title { get; set; }
         [DataMember]
-        public String CardPackName { get; set; }
+        public IQuestion Question { get; set; }
         [DataMember]
-        public List<Int32> StatInfo { get; set; }
+        public IAnswer Answer { get; set; }
     }
 }

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.IO;
 
-namespace LearningCard.Model
+namespace LearningCardClasses
 {
     [DataContract]
-    class QuestionPictureModel : IQuestion
+    public class QuestionPictureModel : IQuestion
     {
         [DataMember]
         private Uri _ImageSRC { get; set; }
@@ -36,13 +36,9 @@ namespace LearningCard.Model
             return new Uri(BasePath + this.ImageSRC);
         }
 
-        public QuestionPictureModel(Uri imgeSrc, String txt = "")
+        public QuestionPictureModel(Uri imgeSrc, String txt)
         {
             this.ImageSRC = imgeSrc;
-            if (txt == "")
-            {
-                txt = GlobalLanguage.Instance.GetDict()["NewQuestionPictureTitle"];
-            }
             this.Text = txt;
         }
 

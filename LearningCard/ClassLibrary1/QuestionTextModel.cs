@@ -5,21 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
-namespace LearningCard.Model
+namespace LearningCardClasses
 {
     [Serializable]
     [DataContract]
-    class QuestionTextModel : IQuestion
+    public class QuestionTextModel : IQuestion
     {
         [DataMember]
         public String Text { get; set; }
 
-        public QuestionTextModel(String txt = "")
+        public QuestionTextModel(String txt)
         {
-            if (txt == "")
-            {
-                txt = GlobalLanguage.Instance.GetDict()["NewQuestionSimpleText"];
-            }
             this.Text = txt;
         }
 

@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Net;
 using System.ServiceModel;
 using System.ServiceModel.Description;
+using LearningCardClasses;
 
 namespace LearningCard.ViewModel
 {
@@ -47,7 +48,7 @@ namespace LearningCard.ViewModel
             }
             set { }
         }
-        public Model.Profile ActiveProfile
+        public Profile ActiveProfile
         {
             get
             {
@@ -122,7 +123,7 @@ namespace LearningCard.ViewModel
 
             if (newDialog.ShowDialog() == true && diagVM.ProfilList_SelectedIndex >= 0)
             {
-                this.ActiveProfile = Model.Profile.LoadProfileFromFile(diagVM.ProfileList[diagVM.ProfilList_SelectedIndex]);
+                this.ActiveProfile = Profile.LoadProfileFromFile(diagVM.ProfileList[diagVM.ProfilList_SelectedIndex]);
             }
         }
 
@@ -132,7 +133,7 @@ namespace LearningCard.ViewModel
             LoadCardPackDiagViewModel diagVM = new LoadCardPackDiagViewModel(newDialog);
             newDialog.DataContext = diagVM;
 
-            Model.CardPack SelectedCardPack;
+            CardPack SelectedCardPack;
             if (newDialog.ShowDialog() == true)
             {
                 SelectedCardPack = diagVM.GetSelectedItem();
@@ -142,7 +143,7 @@ namespace LearningCard.ViewModel
                 saveDialog.Title = "export card pack";
                 if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    Model.CardPack.ExportCardPack(SelectedCardPack.PackName, saveDialog.FileName);
+                    CardPack.ExportCardPack(SelectedCardPack.PackName, saveDialog.FileName);
                 }
             }
         }
@@ -154,7 +155,7 @@ namespace LearningCard.ViewModel
             loadDialog.Title = "Import card pack zip";
             if (loadDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                Model.CardPack.ImportCardPack(loadDialog.FileName);
+                CardPack.ImportCardPack(loadDialog.FileName);
             }
         }
 
@@ -207,7 +208,7 @@ namespace LearningCard.ViewModel
                 {
                     //lobbyHost.Open();
                 }
-                catch (AddressAccessDeniedException e)
+                catch (AddressAccessDeniedException)
                 {
                     System.Windows.Forms.MessageBox.Show("Can not start server, if you are not adminstrator\nTry to start the program in administrator mode.", "Admin mode",
                     System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
