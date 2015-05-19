@@ -48,7 +48,7 @@ namespace LearningCard.ViewModel
         {
             this.lobbyClient = new Model.OnlineLobbyClientModel();
             this.lobbyClient.NewPlayerJoined += new EventHandler(this.RefreshViewEvent);
-            //this.Command_RefresIP = new DelegateCommand(x => this.Execute_RefresIP());
+            this.Command_RefresIP = new DelegateCommand(x => this.Execute_RefreshIP());
             this.RefreshView();
         }
 
@@ -58,9 +58,9 @@ namespace LearningCard.ViewModel
             return true;
         }
 
-        private void Execute_RefresIP()
+        private void Execute_RefreshIP()
         {
-
+            this.RefreshView();
         }
 
         private void RefreshViewEvent(object sender, EventArgs e)

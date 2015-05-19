@@ -62,13 +62,17 @@ namespace LearningCardService
                     {
                         clients.Remove(client);
                     }
+                    this.NotifyServer(new EventDataType() { ClientName = "server", EventMessage = "MemberDisconnected" });
                 }
             }
         }
 
         public List<String> GetActivePlayers()
         {
-            return new List<String>(clients.Keys);
+            lock (locker)
+            {
+                return new List<String>(clients.Keys);
+            }
         }
     }
 }

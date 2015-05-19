@@ -15,20 +15,20 @@ namespace LearningCard.Model
 
         public List<String> GetActivePlayers()
         {
-            var a = this._client.GetActivePlayers();
+            var a = this._client.GetActivePlayersAsync().Result;
             return a;
         }
 
-        public override void HandleBroadcast(object sender, EventArgs e)
+        public override async void HandleBroadcast(object sender, EventArgs e)
         {
             try
             {
                 LearningCardService.EventDataType eventData = (LearningCardService.EventDataType)sender;
-                if (eventData.EventMessage == "NewMemberArrived")
+                if (eventData.EventMessage == "NewMemberArrived" || eventData.EventMessage == "MemberDisconnected")
                 {
-
+                    await Task.Delay(50);
+                    this.OnNewPlayerJoined();
                 }
-                //eventData.EventMessage, eventData.ClientName);
             }
             catch (Exception ex)
             {
