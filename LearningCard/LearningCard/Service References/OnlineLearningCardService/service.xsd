@@ -28,10 +28,48 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SetupDeck">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/LearningCardClasses" minOccurs="0" name="cp" nillable="true" type="q3:CardPack" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetVisibleDeckName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVisibleDeckName">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVisibleDeckNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetVisibleDeckNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServerDeck">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServerDeckResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/LearningCardClasses" minOccurs="0" name="GetServerDeckResult" nillable="true" type="q4:CardPack" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="BroadcastToClient">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/LearningCardClasses" minOccurs="0" name="eventData" nillable="true" type="q3:EventDataType" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/LearningCardClasses" minOccurs="0" name="eventData" nillable="true" type="q5:EventDataType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

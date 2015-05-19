@@ -81,5 +81,25 @@ namespace LearningCardService
         {
             this.deck = cp;
         }
+
+        public void SetVisibleDeckName(String name)
+        {
+            this.deck = new CardPack() { PackName = name };
+            this.NotifyServer(new EventDataType() { ClientName="Server", EventMessage="CardPackChanged"});
+        }
+
+        public String GetVisibleDeckName()
+        {
+            if (this.deck == null)
+            {
+                return "";
+            }
+            return this.deck.PackName;
+        }
+
+        public CardPack GetServerDeck()
+        {
+            return this.deck;
+        }
     }
 }

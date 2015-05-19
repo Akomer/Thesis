@@ -31,9 +31,9 @@ namespace LearningCard.ViewModel
             }
             try
             {
-                // OnlineLearningCardService.OnlineLobbyServiceClient connection_test;
-                // String endp = "net.tcp://" + this.HostIPAddress + "/learningcard/";
-                // connection_test = new OnlineLearningCardService.OnlineLobbyServiceClient(new InstanceContext(new Model.OnlineLobbyClientModel(false)), new System.ServiceModel.NetTcpBinding(),
+                OnlineLearningCardService.LearningCardServiceClient connection_test;
+                String endp = "net.tcp://" + this.HostIPAddress + "/learningcard/";
+                //connection_test = new OnlineLearningCardService.OnlineLobbyServiceClient(new InstanceContext(new Model.OnlineLobbyClientModel(false)), new System.ServiceModel.NetTcpBinding(),
                 //    new EndpointAddress(endp));
                 // connection_test.GetPublicIP();
             }

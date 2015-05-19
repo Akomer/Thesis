@@ -59,7 +59,7 @@ namespace LearningCard.Model
                 new System.ServiceModel.InstanceContext(cb);
             this._client = new OnlineLearningCardService.LearningCardServiceClient(context);
 
-            this._client.RegisterClient("First Reg 2!");
+            this._client.RegisterClient(GlobalProfile.Instance.ActiveProfile.Name);
         } 
     }
 }

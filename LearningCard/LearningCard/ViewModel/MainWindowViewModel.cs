@@ -175,12 +175,6 @@ namespace LearningCard.ViewModel
 
         private void Execute_StartMultiplayer()
         {
-            Boolean simply_start_server = true;
-            if (simply_start_server)
-            {
-                this.StartLobbyService();
-                return;
-            }
             this.VM_ChangeMainWindow(new ViewModel.MainControlChangeEventArgs (
                 typeof(View.OnlineLobbyUserControl), 
                 typeof(ViewModel.OnlineLobbyViewModel),
@@ -192,29 +186,6 @@ namespace LearningCard.ViewModel
             this.VM_ChangeMainWindow(new ViewModel.MainControlChangeEventArgs (
                 typeof(View.JoinMultiplayerUserControl), 
                 typeof(ViewModel.JoinMultiplayerViewModel)));
-        }
-
-        private void StartLobbyService()
-        {
-            Uri baseAddress = new Uri("net.tcp://localhost:8080/learningcard/");
-            //Uri baseAddress = new Uri("http://86.59.238.248:8080/learningcard/");
-            //ServiceHost lobbyHost = new ServiceHost(typeof(Model.OnlineLobbyServiceModel), baseAddress);
-            {
-                //lobbyHost.OpenTimeout = new System.TimeSpan(1, 0, 0);
-                //lobbyHost.AddServiceEndpoint("IMetadataExchange", new System.ServiceModel.NetTcpBinding(), new Uri("net.tcp://localhost:8080/learningcard"));
-                //lobbyHost.AddDefaultEndpoints();
-                //lobbyHost.Description.Endpoints[0].Binding = new System.ServiceModel.NetTcpBinding();
-                try
-                {
-                    //lobbyHost.Open();
-                }
-                catch (AddressAccessDeniedException)
-                {
-                    System.Windows.Forms.MessageBox.Show("Can not start server, if you are not adminstrator\nTry to start the program in administrator mode.", "Admin mode",
-                    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-                    return;
-                }
-            }
         }
     }
 }

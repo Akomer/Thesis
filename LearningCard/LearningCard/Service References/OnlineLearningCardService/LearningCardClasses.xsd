@@ -7,4 +7,97 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="EventDataType" nillable="true" type="tns:EventDataType" />
+  <xs:complexType name="CardPack">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CardList" nillable="true" type="tns:ArrayOfCard" />
+      <xs:element minOccurs="0" name="PackName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CardPack" nillable="true" type="tns:CardPack" />
+  <xs:complexType name="ArrayOfCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Card" nillable="true" type="tns:Card" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCard" nillable="true" type="tns:ArrayOfCard" />
+  <xs:complexType name="Card">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Answer" nillable="true" type="tns:IAnswer" />
+      <xs:element minOccurs="0" name="Question" nillable="true" type="tns:IQuestion" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Card" nillable="true" type="tns:Card" />
+  <xs:complexType name="IAnswer">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="IAnswer" nillable="true" type="tns:IAnswer" />
+  <xs:complexType name="AnswerTippMixModel">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:IAnswer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TippMixList" nillable="true" type="tns:ArrayOfTippMix" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AnswerTippMixModel" nillable="true" type="tns:AnswerTippMixModel" />
+  <xs:complexType name="ArrayOfTippMix">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TippMix" nillable="true" type="tns:TippMix" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTippMix" nillable="true" type="tns:ArrayOfTippMix" />
+  <xs:complexType name="TippMix">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsChecked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TippText" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TippMix" nillable="true" type="tns:TippMix" />
+  <xs:complexType name="AnswerExactTextModel">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:IAnswer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AnswerExactTextModel" nillable="true" type="tns:AnswerExactTextModel" />
+  <xs:complexType name="AnswerLotofTextModel">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:IAnswer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AnswerLotofTextModel" nillable="true" type="tns:AnswerLotofTextModel" />
+  <xs:complexType name="IQuestion">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="IQuestion" nillable="true" type="tns:IQuestion" />
+  <xs:complexType name="QuestionTextModel">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:IQuestion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QuestionTextModel" nillable="true" type="tns:QuestionTextModel" />
+  <xs:complexType name="QuestionPictureModel">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:IQuestion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="_ImageSRC" nillable="true" type="xs:anyURI" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QuestionPictureModel" nillable="true" type="tns:QuestionPictureModel" />
 </xs:schema>

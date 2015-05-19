@@ -78,8 +78,13 @@ namespace LearningCardClasses
         public static void SaveProfileToFile(String fileName, Profile tmpProfile)
         {
             String profilePath = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName;
-            profilePath += @"\\Profiles\\" + tmpProfile.Name + @".prof";
+            String profileDirPath = profilePath += @"\\Profiles\\";
+            profilePath = profileDirPath + tmpProfile.Name + @".prof";
 
+            if (!Directory.Exists(profileDirPath))
+            {
+                Directory.CreateDirectory(profileDirPath);
+            }
             using (FileStream fStream = new FileStream(profilePath, FileMode.Create, FileAccess.Write))
             {
                 DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Profile));

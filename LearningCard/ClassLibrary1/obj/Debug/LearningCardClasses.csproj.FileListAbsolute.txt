@@ -1,4 +1,3 @@
-D:\GitHub\Thesis\LearningCard\ClassLibrary1\obj\Debug\LearningCardClasses.csprojResolveAssemblyReference.cache
 D:\GitHub\Thesis\LearningCard\ClassLibrary1\bin\Debug\ClassLibrary1.dll
 D:\GitHub\Thesis\LearningCard\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
 D:\GitHub\Thesis\LearningCard\ClassLibrary1\obj\Debug\ClassLibrary1.dll

@@ -32,6 +32,30 @@ namespace LearningCard.OnlineLearningCardService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILearningCardService/GetActivePlayers", ReplyAction="http://tempuri.org/ILearningCardService/GetActivePlayersResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<string>> GetActivePlayersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILearningCardService/SetupDeck")]
+        void SetupDeck(LearningCardClasses.CardPack cp);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILearningCardService/SetupDeck")]
+        System.Threading.Tasks.Task SetupDeckAsync(LearningCardClasses.CardPack cp);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILearningCardService/SetVisibleDeckName")]
+        void SetVisibleDeckName(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILearningCardService/SetVisibleDeckName")]
+        System.Threading.Tasks.Task SetVisibleDeckNameAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILearningCardService/GetVisibleDeckName", ReplyAction="http://tempuri.org/ILearningCardService/GetVisibleDeckNameResponse")]
+        string GetVisibleDeckName();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILearningCardService/GetVisibleDeckName", ReplyAction="http://tempuri.org/ILearningCardService/GetVisibleDeckNameResponse")]
+        System.Threading.Tasks.Task<string> GetVisibleDeckNameAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILearningCardService/GetServerDeck", ReplyAction="http://tempuri.org/ILearningCardService/GetServerDeckResponse")]
+        LearningCardClasses.CardPack GetServerDeck();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILearningCardService/GetServerDeck", ReplyAction="http://tempuri.org/ILearningCardService/GetServerDeckResponse")]
+        System.Threading.Tasks.Task<LearningCardClasses.CardPack> GetServerDeckAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -91,6 +115,38 @@ namespace LearningCard.OnlineLearningCardService {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<string>> GetActivePlayersAsync() {
             return base.Channel.GetActivePlayersAsync();
+        }
+        
+        public void SetupDeck(LearningCardClasses.CardPack cp) {
+            base.Channel.SetupDeck(cp);
+        }
+        
+        public System.Threading.Tasks.Task SetupDeckAsync(LearningCardClasses.CardPack cp) {
+            return base.Channel.SetupDeckAsync(cp);
+        }
+        
+        public void SetVisibleDeckName(string name) {
+            base.Channel.SetVisibleDeckName(name);
+        }
+        
+        public System.Threading.Tasks.Task SetVisibleDeckNameAsync(string name) {
+            return base.Channel.SetVisibleDeckNameAsync(name);
+        }
+        
+        public string GetVisibleDeckName() {
+            return base.Channel.GetVisibleDeckName();
+        }
+        
+        public System.Threading.Tasks.Task<string> GetVisibleDeckNameAsync() {
+            return base.Channel.GetVisibleDeckNameAsync();
+        }
+        
+        public LearningCardClasses.CardPack GetServerDeck() {
+            return base.Channel.GetServerDeck();
+        }
+        
+        public System.Threading.Tasks.Task<LearningCardClasses.CardPack> GetServerDeckAsync() {
+            return base.Channel.GetServerDeckAsync();
         }
     }
 }

@@ -14,6 +14,15 @@ namespace LearningCard.ViewModel
     {
         private Model.OnlineLobbyClientModel lobbyClient;
 
+        public Boolean IsHost
+        {
+            get
+            {
+                return this.lobbyClient.Host;
+            }
+            set
+            { }
+        }
         public ObservableCollection<Profile> ActiveUserProfileList 
         {
             get
@@ -32,7 +41,7 @@ namespace LearningCard.ViewModel
         {
             get
             {
-                if (this.lobbyClient.Deck == null)
+                if (this.lobbyClient.Deck == null || this.lobbyClient.Deck.PackName == "")
                 {
                     return Model.GlobalLanguage.Instance.GetDict()["Nothing"];
                 }
@@ -59,8 +68,9 @@ namespace LearningCard.ViewModel
 
         public OnlineLobbyViewModel(Boolean isHost, String hostip = "127.0.0.1")
         {
-            this.lobbyClient = new Model.OnlineLobbyClientModel();
+            this.lobbyClient = new Model.OnlineLobbyClientModel(isHost);
             this.lobbyClient.NewPlayerJoined += new EventHandler(this.RefreshViewEvent);
+            this.lobbyClient.SelectedCardPackChanged += new EventHandler(this.RefreshViewEvent);
             this.Command_RefresIP = new DelegateCommand(x => this.Execute_RefreshIP());
             this.Command_LoadCardPack = new DelegateCommand(x => this.Execute_LoadCardPack());
             this.RefreshView();

@@ -53,6 +53,24 @@
   <wsdl:message name="ILearningCardService_GetActivePlayers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetActivePlayersResponse" />
   </wsdl:message>
+  <wsdl:message name="ILearningCardService_SetupDeck_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetupDeck" />
+  </wsdl:message>
+  <wsdl:message name="ILearningCardService_SetVisibleDeckName_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetVisibleDeckName" />
+  </wsdl:message>
+  <wsdl:message name="ILearningCardService_GetVisibleDeckName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVisibleDeckName" />
+  </wsdl:message>
+  <wsdl:message name="ILearningCardService_GetVisibleDeckName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVisibleDeckNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILearningCardService_GetServerDeck_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServerDeck" />
+  </wsdl:message>
+  <wsdl:message name="ILearningCardService_GetServerDeck_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServerDeckResponse" />
+  </wsdl:message>
   <wsdl:message name="ILearningCardService_BroadcastToClient_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:BroadcastToClient" />
   </wsdl:message>
@@ -66,6 +84,20 @@
     <wsdl:operation name="GetActivePlayers">
       <wsdl:input wsaw:Action="http://tempuri.org/ILearningCardService/GetActivePlayers" message="tns:ILearningCardService_GetActivePlayers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILearningCardService/GetActivePlayersResponse" message="tns:ILearningCardService_GetActivePlayers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetupDeck">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILearningCardService/SetupDeck" message="tns:ILearningCardService_SetupDeck_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetVisibleDeckName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILearningCardService/SetVisibleDeckName" message="tns:ILearningCardService_SetVisibleDeckName_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVisibleDeckName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILearningCardService/GetVisibleDeckName" message="tns:ILearningCardService_GetVisibleDeckName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILearningCardService/GetVisibleDeckNameResponse" message="tns:ILearningCardService_GetVisibleDeckName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerDeck">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILearningCardService/GetServerDeck" message="tns:ILearningCardService_GetServerDeck_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILearningCardService/GetServerDeckResponse" message="tns:ILearningCardService_GetServerDeck_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="BroadcastToClient">
       <wsdl:output wsaw:Action="http://tempuri.org/ILearningCardService/BroadcastToClient" message="tns:ILearningCardService_BroadcastToClient_OutputCallbackMessage" />
@@ -89,6 +121,36 @@
     </wsdl:operation>
     <wsdl:operation name="GetActivePlayers">
       <soap12:operation soapAction="http://tempuri.org/ILearningCardService/GetActivePlayers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetupDeck">
+      <soap12:operation soapAction="http://tempuri.org/ILearningCardService/SetupDeck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SetVisibleDeckName">
+      <soap12:operation soapAction="http://tempuri.org/ILearningCardService/SetVisibleDeckName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetVisibleDeckName">
+      <soap12:operation soapAction="http://tempuri.org/ILearningCardService/GetVisibleDeckName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerDeck">
+      <soap12:operation soapAction="http://tempuri.org/ILearningCardService/GetServerDeck" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
