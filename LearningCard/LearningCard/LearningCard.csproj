@@ -79,7 +79,7 @@
     <Compile Include="ViewModel\AnswerLotofTextViewModel.cs" />
     <Compile Include="ViewModel\AnswerTippMixViewModel.cs" />
     <Compile Include="ViewModel\AnswerViewModelBase.cs" />
-    <Compile Include="ViewModel\ChooseProfileAndPackViewModel.cs" />
+    <Compile Include="ViewModel\ChoosePackViewModel.cs" />
     <Compile Include="ViewModel\CreateProfileViewModel.cs" />
     <Compile Include="ViewModel\CreateQnAViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
@@ -101,8 +101,8 @@
     <Compile Include="View\AnswerTextUserControl.xaml.cs">
       <DependentUpon>AnswerTextUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ChooseProfileAndPackUserControl.xaml.cs">
-      <DependentUpon>ChooseProfileAndPackUserControl.xaml</DependentUpon>
+    <Compile Include="View\ChoosePackUserControl.xaml.cs">
+      <DependentUpon>ChoosePackUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CreateAnswerTippMixUserControl.xaml.cs">
       <DependentUpon>CreateAnswerTippMixUserControl.xaml</DependentUpon>
@@ -157,7 +157,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ChooseProfileAndPackUserControl.xaml">
+    <Page Include="View\ChoosePackUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

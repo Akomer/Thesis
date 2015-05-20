@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Json;
 
 namespace LearningCard.ViewModel
 {
-    class ChooseProfileAndPackViewModel : MainViewModelBase
+    class ChoosePackViewModel : MainViewModelBase
     {
         private String _ActiveProfileName;
         private Model.QnAModel QnAModel;
@@ -44,7 +44,7 @@ namespace LearningCard.ViewModel
             set { }
         }
 
-        public ChooseProfileAndPackViewModel()
+        public ChoosePackViewModel()
         {
             this.Command_CreateProfile = new DelegateCommand(x => this.Execute_CreateProfile());
             this.Command_LoadCardPack = new DelegateCommand(x => this.Execute_LoadCardPack());

@@ -41,7 +41,7 @@
                 <MenuItem Header="{Binding ActiveLanguage[ExportCardPack]}" Command="{Binding Command_ExportCardPack}"/>
                 <MenuItem Header="{Binding ActiveLanguage[ImportCardPack]}" Command="{Binding Command_ImportCardPack}"/>
             </MenuItem>
-            <MenuItem Header="{Binding ActiveLanguage[Help]}"/>
+            <MenuItem Header="{Binding ActiveLanguage[Help]}" Command="{Binding Command_Help}"/>
         </Menu>
         <StackPanel Grid.Row="1" Orientation="Horizontal" Height="Auto" HorizontalAlignment="Left">
             <Label Content="{Binding ActiveLanguage[ActiveProfileName]}" />

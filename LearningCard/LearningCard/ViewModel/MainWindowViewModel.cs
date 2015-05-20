@@ -22,11 +22,13 @@ namespace LearningCard.ViewModel
         public DelegateCommand Command_CreateNewQnA { get; private set; }
         public DelegateCommand Command_StartMultiplayer { get; private set; }
         public DelegateCommand Command_JoinMultiplayer { get; private set; }
+        public DelegateCommand Command_Exit { get; set; }
         public DelegateCommand Command_ChangeLanguage { get; set; }
         public DelegateCommand Command_NewProfile { get; set; }
         public DelegateCommand Command_LoadActiveProfile { get; set; }
         public DelegateCommand Command_ExportCardPack { get; set; }
         public DelegateCommand Command_ImportCardPack { get; set; }
+        public DelegateCommand Command_Help { get; set; }
         public Int32 LanguageListCount
         {
             get
@@ -71,6 +73,8 @@ namespace LearningCard.ViewModel
             }
         }
 
+        public event EventHandler Exit;
+
         public MainWindowViewModel()
         {
             // this.mainContent = new View.QnA();
@@ -87,6 +91,8 @@ namespace LearningCard.ViewModel
             this.Command_CreateNewQnA = new DelegateCommand(x => this.Execute_CreateNewQnA());
             this.Command_StartMultiplayer = new DelegateCommand(x => this.Execute_StartMultiplayer());
             this.Command_JoinMultiplayer = new DelegateCommand(x => this.Execute_JoinMultiplayer());
+            this.Command_Exit = new DelegateCommand(x => this.OnExit());
+            this.Command_Help = new DelegateCommand(x => this.Execute_Help());
 
             this.mainContentViewModel.ChangeMainWindowContent += new ViewModel.Event_mainControlChange(VM_ChangeMainWindow);
         }
@@ -162,8 +168,8 @@ namespace LearningCard.ViewModel
         private void Execute_StartNewQnA()
         {
             this.VM_ChangeMainWindow(new ViewModel.MainControlChangeEventArgs (
-                typeof(View.ChooseProfileAndPackUserControl),
-                typeof(ViewModel.ChooseProfileAndPackViewModel)));
+                typeof(View.ChoosePackUserControl),
+                typeof(ViewModel.ChoosePackViewModel)));
         }
 
         private void Execute_CreateNewQnA()
@@ -186,6 +192,20 @@ namespace LearningCard.ViewModel
             this.VM_ChangeMainWindow(new ViewModel.MainControlChangeEventArgs (
                 typeof(View.JoinMultiplayerUserControl), 
                 typeof(ViewModel.JoinMultiplayerViewModel)));
+        }
+
+        private void OnExit()
+        {
+            if (this.Exit != null)
+            {
+                this.Exit(this, EventArgs.Empty);
+            }
+        }
+
+        private void Execute_Help()
+        {
+            System.Windows.Forms.MessageBox.Show("Akomer@", "Info",
+            System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
         }
     }
 }

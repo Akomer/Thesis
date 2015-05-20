@@ -18,9 +18,9 @@ namespace LearningCard.View
     /// <summary>
     /// Interaction logic for ChooseProfileAndPackUserControl.xaml
     /// </summary>
-    public partial class ChooseProfileAndPackUserControl : UserControl
+    public partial class ChoosePackUserControl : UserControl
     {
-        public ChooseProfileAndPackUserControl()
+        public ChoosePackUserControl()
         {
             InitializeComponent();
         }

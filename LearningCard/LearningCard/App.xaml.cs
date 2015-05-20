@@ -26,6 +26,7 @@ namespace LearningCard
 
             this.mainWindow = new View.MainWindow();
             this.mainWindowViewModel = new ViewModel.MainWindowViewModel();
+            this.mainWindowViewModel.Exit += new EventHandler(this.Exit);
             this.mainWindow.DataContext = this.mainWindowViewModel;
 
             this.mainWindowViewModel.ChangeMainWindowContent += new ViewModel.Event_mainControlChange(VM_ChangeMainWindow);
@@ -36,6 +37,11 @@ namespace LearningCard
         private void VM_ChangeMainWindow(ViewModel.MainControlChangeEventArgs _args)
         {
             this.mainWindow = (Window)Activator.CreateInstance(_args.NewUserControl);
+        }
+
+        private void Exit(object sender, EventArgs _args)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
