@@ -33,11 +33,11 @@ namespace LearningCard.OnlineLearningCardService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILearningCardService/GetActivePlayers", ReplyAction="http://tempuri.org/ILearningCardService/GetActivePlayersResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<string>> GetActivePlayersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILearningCardService/SetupDeck")]
-        void SetupDeck(LearningCardClasses.CardPack cp);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILearningCardService/StartGame")]
+        void StartGame(LearningCardClasses.CardPack cp);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILearningCardService/SetupDeck")]
-        System.Threading.Tasks.Task SetupDeckAsync(LearningCardClasses.CardPack cp);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILearningCardService/StartGame")]
+        System.Threading.Tasks.Task StartGameAsync(LearningCardClasses.CardPack cp);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILearningCardService/SetVisibleDeckName")]
         void SetVisibleDeckName(string name);
@@ -56,6 +56,29 @@ namespace LearningCard.OnlineLearningCardService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILearningCardService/GetServerDeck", ReplyAction="http://tempuri.org/ILearningCardService/GetServerDeckResponse")]
         System.Threading.Tasks.Task<LearningCardClasses.CardPack> GetServerDeckAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILearningCardService/SendAnswer")]
+        void SendAnswer(string clientName, bool IsRight);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILearningCardService/SendAnswer")]
+        System.Threading.Tasks.Task SendAnswerAsync(string clientName, bool IsRight);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILearningCardService/GetCard", ReplyAction="http://tempuri.org/ILearningCardService/GetCardResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LearningCardClasses.AnswerTippMixModel))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LearningCardClasses.AnswerExactTextModel))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LearningCardClasses.AnswerLotofTextModel))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LearningCardClasses.QuestionTextModel))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(LearningCardClasses.QuestionPictureModel))]
+        LearningCardClasses.Card GetCard();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILearningCardService/GetCard", ReplyAction="http://tempuri.org/ILearningCardService/GetCardResponse")]
+        System.Threading.Tasks.Task<LearningCardClasses.Card> GetCardAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILearningCardService/GetScoreBoard", ReplyAction="http://tempuri.org/ILearningCardService/GetScoreBoardResponse")]
+        System.Collections.Generic.Dictionary<string, int> GetScoreBoard();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILearningCardService/GetScoreBoard", ReplyAction="http://tempuri.org/ILearningCardService/GetScoreBoardResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, int>> GetScoreBoardAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -117,12 +140,12 @@ namespace LearningCard.OnlineLearningCardService {
             return base.Channel.GetActivePlayersAsync();
         }
         
-        public void SetupDeck(LearningCardClasses.CardPack cp) {
-            base.Channel.SetupDeck(cp);
+        public void StartGame(LearningCardClasses.CardPack cp) {
+            base.Channel.StartGame(cp);
         }
         
-        public System.Threading.Tasks.Task SetupDeckAsync(LearningCardClasses.CardPack cp) {
-            return base.Channel.SetupDeckAsync(cp);
+        public System.Threading.Tasks.Task StartGameAsync(LearningCardClasses.CardPack cp) {
+            return base.Channel.StartGameAsync(cp);
         }
         
         public void SetVisibleDeckName(string name) {
@@ -147,6 +170,30 @@ namespace LearningCard.OnlineLearningCardService {
         
         public System.Threading.Tasks.Task<LearningCardClasses.CardPack> GetServerDeckAsync() {
             return base.Channel.GetServerDeckAsync();
+        }
+        
+        public void SendAnswer(string clientName, bool IsRight) {
+            base.Channel.SendAnswer(clientName, IsRight);
+        }
+        
+        public System.Threading.Tasks.Task SendAnswerAsync(string clientName, bool IsRight) {
+            return base.Channel.SendAnswerAsync(clientName, IsRight);
+        }
+        
+        public LearningCardClasses.Card GetCard() {
+            return base.Channel.GetCard();
+        }
+        
+        public System.Threading.Tasks.Task<LearningCardClasses.Card> GetCardAsync() {
+            return base.Channel.GetCardAsync();
+        }
+        
+        public System.Collections.Generic.Dictionary<string, int> GetScoreBoard() {
+            return base.Channel.GetScoreBoard();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, int>> GetScoreBoardAsync() {
+            return base.Channel.GetScoreBoardAsync();
         }
     }
 }

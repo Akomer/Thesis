@@ -282,7 +282,7 @@ namespace LearningCard.ViewModel
                 if (model == null)
                 {
                     //model = new QuestionPictureModel(new Uri(@"/Images/question_mark.png", UriKind.Relative));
-                    model = Model.LanguageFactory.DefaultQuestionPictureModel(new Uri(@"/Images/question_mark.png"));
+                    model = Model.LanguageFactory.DefaultQuestionPictureModel(new Uri(@"/Images/question_mark.png", UriKind.Relative));
                 }
                 UserControl v = new View.QuestionPictureUserControl();
                 ViewModel.QuestionPictureViewModel dc = new ViewModel.QuestionPictureViewModel(

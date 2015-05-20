@@ -50,6 +50,7 @@ namespace LearningCard.ViewModel
         }
         public DelegateCommand Command_RefresIP { get; set; }
         public DelegateCommand Command_LoadCardPack { get; set; }
+        public DelegateCommand Command_Start { get; set; }
         public String HostIpAddres 
         {
             get
@@ -73,6 +74,7 @@ namespace LearningCard.ViewModel
             this.lobbyClient.SelectedCardPackChanged += new EventHandler(this.RefreshViewEvent);
             this.Command_RefresIP = new DelegateCommand(x => this.Execute_RefreshIP());
             this.Command_LoadCardPack = new DelegateCommand(x => this.Execute_LoadCardPack());
+            this.Command_Start = new DelegateCommand(x => this.Execute_Start());
             this.RefreshView();
         }
 
@@ -110,6 +112,13 @@ namespace LearningCard.ViewModel
                 this.lobbyClient.Deck = diagVM.GetSelectedItem();
                 this.OnPropertyChanged("ActivePackName");
             }
+        }
+
+        private void Execute_Start()
+        {
+            lobbyClient.StartGame();
+            this.OnChangeMainWindowContent(typeof(View.OnlineGameUserControl), typeof(ViewModel.OnlineGameViewModel),
+    new object[] { new Model.OnlineGameModel(this.lobbyClient.GetServiceClient()) });
         }
     }
 }

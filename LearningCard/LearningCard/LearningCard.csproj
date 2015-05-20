@@ -66,6 +66,7 @@
     <Compile Include="Model\GlobalProfile.cs" />
     <Compile Include="Model\LanguageFactory.cs" />
     <Compile Include="Model\MultiPlayerService.cs" />
+    <Compile Include="Model\OnlineGameModel.cs" />
     <Compile Include="Model\OnlineLobbyClientModel.cs" />
     <Compile Include="Model\QnAModel.cs" />
     <Compile Include="Model\ServiceCallBack.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="ViewModel\MainUserControlViewModel.cs" />
     <Compile Include="ViewModel\MainViewModelBase.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\OnlineGameViewModel.cs" />
     <Compile Include="ViewModel\OnlineLobbyViewModel.cs" />
     <Compile Include="ViewModel\QnAViewModel.cs" />
     <Compile Include="ViewModel\QuestionPictureViewModel.cs" />
@@ -129,6 +131,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\OnlineGameUserControl.xaml.cs">
+      <DependentUpon>OnlineGameUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\OnlineLobbyUserControl.xaml.cs">
       <DependentUpon>OnlineLobbyUserControl.xaml</DependentUpon>
@@ -188,6 +193,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\OnlineGameUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\OnlineLobbyUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -234,6 +243,7 @@
     <None Include="ClassDiagram1.cd" />
     <None Include="Language\eng.lng" />
     <None Include="Language\hun.lng" />
+    <None Include="Properties\DataSources\LearningCardClasses.Card.datasource" />
     <None Include="Properties\DataSources\LearningCardClasses.CardPack.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

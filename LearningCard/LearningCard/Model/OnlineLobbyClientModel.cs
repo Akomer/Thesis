@@ -108,14 +108,6 @@ namespace LearningCard.Model
             }
         }
 
-        public void SetupDeckOnServer()
-        {
-            if (this._Deck != null)
-            {
-                this._client.SetupDeck(this._Deck);
-            }
-        }
-
         public event EventHandler SelectedCardPackChanged;
         public event EventHandler NewPlayerJoined;
 
@@ -134,7 +126,15 @@ namespace LearningCard.Model
             }
         }
 
-        
+        public OnlineLearningCardService.LearningCardServiceClient GetServiceClient()
+        {
+            return this._client;
+        }
+
+        public void StartGame()
+        {
+            this._client.StartGame(this._Deck);
+        }
 
     }
 }

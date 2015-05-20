@@ -13,8 +13,14 @@ namespace LearningCardService
     public class LearningCardService : ILearningCardService
     {
         private static Dictionary<string, IServiceCallBack> clients = new Dictionary<string, IServiceCallBack>();
+        private static Dictionary<String, Int32> clientAnserws;
+        private static Dictionary<String, Int32> clientScores;
         private static object locker = new object();
-        private CardPack deck;
+        private static CardPack deck;
+        private static Int32 cardIndex;
+        private static ServerStatus status = ServerStatus.Lobby;
+
+        enum ServerStatus { Lobby, InGame };
 
         public void RegisterClient(string clientName)
         {
@@ -77,29 +83,84 @@ namespace LearningCardService
             }
         }
 
-        public void SetupDeck(CardPack cp)
+        public void StartGame(CardPack cp)
         {
-            this.deck = cp;
+            deck = cp;
+            status = ServerStatus.InGame;
+            clientScores = new Dictionary<string, int>();
+            foreach (var client in clients.Keys)
+            {
+                clientScores.Add(client, 0);
+            }
+            NextTurn();
+        }
+
+        private void NextTurn()
+        {
+            clientAnserws = new Dictionary<string, Int32>();
+            foreach(var client in clients.Keys)
+            {
+                clientAnserws.Add(client, -1);
+            }
+            Random r = new Random();
+            cardIndex = r.Next(deck.CardList.Count);
+        }
+
+        public Card GetCard()
+        {
+            return deck.CardList[cardIndex];
+        }
+
+        public void SendAnswer(String clientName, Boolean IsRight)
+        {
+            if (IsRight)
+            {
+                clientAnserws[clientName] = 1;
+            }
+            else
+            {
+                clientAnserws[clientName] = 0;
+            }
+            clientScores[clientName] += clientAnserws[clientName];
+            if(EveryoneSentAnswer())
+            {
+                NextTurn();
+            }
+        }
+
+        private Boolean EveryoneSentAnswer()
+        {
+            foreach (var item in clientAnserws.Values)
+            {
+                if (item == -1)
+                    return false;
+            }
+            return true;
         }
 
         public void SetVisibleDeckName(String name)
         {
-            this.deck = new CardPack() { PackName = name };
+            deck = new CardPack() { PackName = name };
             this.NotifyServer(new EventDataType() { ClientName="Server", EventMessage="CardPackChanged"});
         }
 
         public String GetVisibleDeckName()
         {
-            if (this.deck == null)
+            if (deck == null)
             {
                 return "";
             }
-            return this.deck.PackName;
+            return deck.PackName;
         }
 
         public CardPack GetServerDeck()
         {
-            return this.deck;
+            return deck;
+        }
+
+        public Dictionary<String, int> GetScoreBoard()
+        {
+            return clientScores;
         }
     }
 }

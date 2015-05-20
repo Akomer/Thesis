@@ -7,7 +7,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <DockPanel LastChildFill="True">
         <Button Content="{Binding ActiveLanguage[Start]}" Margin="10" Padding="5" DockPanel.Dock="Bottom" 
-                IsEnabled="{Binding IsHost}"/>
+                IsEnabled="{Binding IsHost}" Command="{Binding Command_Start}"/>
         <ListView DockPanel.Dock="Right" ItemsSource="{Binding ActiveUserProfileList}">
             <ListView.ItemTemplate>
                 <DataTemplate>

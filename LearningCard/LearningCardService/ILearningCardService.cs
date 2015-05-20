@@ -21,13 +21,19 @@ namespace LearningCardService
         [OperationContract]
         List<String> GetActivePlayers();
         [OperationContract(IsOneWay = true)]
-        void SetupDeck(CardPack cp);
+        void StartGame(CardPack cp);
         [OperationContract(IsOneWay = true)]
         void SetVisibleDeckName(String name);
         [OperationContract]
         String GetVisibleDeckName();
         [OperationContract]
         CardPack GetServerDeck();
+        [OperationContract(IsOneWay = true)]
+        void SendAnswer(String clientName, Boolean IsRight);
+        [OperationContract]
+        Card GetCard();
+        [OperationContract]
+        Dictionary<String, int> GetScoreBoard();
     }
 
     public interface IServiceCallBack
