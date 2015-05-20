@@ -55,7 +55,7 @@ namespace LearningCard.ViewModel
         {
             get
             {
-                return "IP.Adr";
+                return "127.0.0.1";
             }
             set { }
         }

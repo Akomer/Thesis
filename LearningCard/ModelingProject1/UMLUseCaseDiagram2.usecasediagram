@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="93a5716d-8b33-4827-886c-caa455b5e541" name="UMLUseCaseDiagram2" linkedPackageId="c236479b-1be8-4fa0-bbcc-60979c0ec5df" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="4781a36a-c719-49f4-8874-265819a1cae2">
+      <profileInstance Id="754ede31-688a-4b10-84c5-4b15a1051477" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="b39e9ed5-611d-4ceb-b36f-28ff591affcf">
+      <profileInstance Id="9e587305-a348-42ab-a31f-23113957e097" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6bc26ce5-024e-437a-af87-1ccbafb8a911" name="Learning Card" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f51e18d4-0772-4842-8ff0-c1a4988f0f77" />
+        <additions>
+          <include Id="0ec26f97-cc56-4d93-b84e-22d3ffd3443d">
+            <useCaseMoniker Id="5ff69f1d-469f-417b-85ad-72db51dd4362" LastKnownName="LearningCardClasses" />
+            <elementDefinition Id="3e039951-e621-493e-8d0f-030ea94e56f4" />
+          </include>
+          <include Id="ebecb0b8-5718-4527-834d-8ed450487649">
+            <useCaseMoniker Id="20252586-d243-4426-b687-5b6dc8e9c074" LastKnownName="LearningCardService" />
+            <elementDefinition Id="b877a55d-2507-4531-8813-87ca6dd43d64" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="20252586-d243-4426-b687-5b6dc8e9c074" name="LearningCardService" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a91d2480-4039-4c5d-9154-137f22762e8a" />
+        <additions>
+          <include Id="a33e2afe-6f4f-4daa-a656-846db5af81e4">
+            <useCaseMoniker Id="5ff69f1d-469f-417b-85ad-72db51dd4362" LastKnownName="LearningCardClasses" />
+            <elementDefinition Id="516757c6-6236-4d25-9800-432304f4ed25" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="5ff69f1d-469f-417b-85ad-72db51dd4362" name="LearningCardClasses" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b0f4dff7-f4a9-4717-85e9-d981383efb32" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="c236479b-1be8-4fa0-bbcc-60979c0ec5df" name="ModelingProject1">
+    <elementDefinition Id="82df111a-27a5-4f36-98a3-08d28ed78b80" />
+  </package>
+</useCaseModelRoot>

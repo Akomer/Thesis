@@ -165,6 +165,75 @@
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="6bf434ed-4f9f-4f63-8504-c81d78555ae7"
+        LastKnownName="Package1"
+        LastKnownLocation="Package_0241.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="7bb67b9b-7ff1-4e2a-b0f8-1d5e1f735b10"
+        name="Subsystem1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <artifact
+        Id="4688c6fb-9d32-4630-88c4-7e80149f4521"
+        name="Artifact1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f51e18d4-0772-4842-8ff0-c1a4988f0f77"
+        name="Learning Card"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="3e039951-e621-493e-8d0f-030ea94e56f4">
+            <useCaseMoniker
+              Id="b0f4dff7-f4a9-4717-85e9-d981383efb32"
+              LastKnownName="LearningCardClasses"
+              LastKnownLocation="ModelingProject1.uml" />
+          </include>
+          <include
+            Id="b877a55d-2507-4531-8813-87ca6dd43d64">
+            <useCaseMoniker
+              Id="a91d2480-4039-4c5d-9154-137f22762e8a"
+              LastKnownName="LearningCardService"
+              LastKnownLocation="ModelingProject1.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a91d2480-4039-4c5d-9154-137f22762e8a"
+        name="LearningCardService"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="516757c6-6236-4d25-9800-432304f4ed25">
+            <useCaseMoniker
+              Id="b0f4dff7-f4a9-4717-85e9-d981383efb32"
+              LastKnownName="LearningCardClasses"
+              LastKnownLocation="ModelingProject1.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b0f4dff7-f4a9-4717-85e9-d981383efb32"
+        name="LearningCardClasses"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
   </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"

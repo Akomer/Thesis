@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLUseCaseDiagram2">
+  <useCaseModelRootMoniker Id="93a5716d-8b33-4827-886c-caa455b5e541" />
+  <nestedChildShapes>
+    <useCaseShape Id="91141a53-51bf-46c2-822e-d5033acc2bbe" absoluteBounds="4.625, 0.875, 1.125, 0.625" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="6bc26ce5-024e-437a-af87-1ccbafb8a911" LastKnownName="Learning Card" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseShape Id="b15b879b-ab27-4bfc-8927-26ff67a2802a" absoluteBounds="6.125, 1.375, 1.125, 0.625" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="20252586-d243-4426-b687-5b6dc8e9c074" LastKnownName="LearningCardService" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <includeConnector edgePoints="[(5.66983977071331 : 1.3482799235711); (6.20516022928669 : 1.5267200764289)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«include»">
+      <includeMoniker Id="ebecb0b8-5718-4527-834d-8ed450487649" />
+      <relativeChildShapes />
+      <moveableDecoratorHostShapes>
+        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="5.875, 1.0625, 0.52439594268798828, 0.14800345897674561" shapeFieldName="NameDecorator" />
+      </moveableDecoratorHostShapes>
+      <nodes>
+        <useCaseShapeMoniker Id="91141a53-51bf-46c2-822e-d5033acc2bbe" />
+        <useCaseShapeMoniker Id="b15b879b-ab27-4bfc-8927-26ff67a2802a" />
+      </nodes>
+    </includeConnector>
+    <useCaseShape Id="75aed1d9-0e29-4907-a77a-f930dc353b05" absoluteBounds="4.75, 2.5, 1.125, 0.625" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="5ff69f1d-469f-417b-85ad-72db51dd4362" LastKnownName="LearningCardClasses" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <includeConnector edgePoints="[(5.21151654103132 : 1.4997150334072); (5.28848345896868 : 2.5002849665928)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«include»">
+      <includeMoniker Id="0ec26f97-cc56-4d93-b84e-22d3ffd3443d" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="91141a53-51bf-46c2-822e-d5033acc2bbe" />
+        <useCaseShapeMoniker Id="75aed1d9-0e29-4907-a77a-f930dc353b05" />
+      </nodes>
+    </includeConnector>
+    <includeConnector edgePoints="[(6.37151497303212 : 1.94603320388281); (5.62848502696788 : 2.55396679611719)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«include»">
+      <includeMoniker Id="a33e2afe-6f4f-4daa-a656-846db5af81e4" />
+      <relativeChildShapes />
+      <moveableDecoratorHostShapes>
+        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="6, 2.3125, 0.52439594268798828, 0.14800345897674561" shapeFieldName="NameDecorator" />
+      </moveableDecoratorHostShapes>
+      <nodes>
+        <useCaseShapeMoniker Id="b15b879b-ab27-4bfc-8927-26ff67a2802a" />
+        <useCaseShapeMoniker Id="75aed1d9-0e29-4907-a77a-f930dc353b05" />
+      </nodes>
+    </includeConnector>
+  </nestedChildShapes>
+</useCaseDiagram>
